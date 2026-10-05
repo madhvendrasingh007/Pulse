@@ -1,0 +1,11 @@
+"use client";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Eye, EyeOff, LoaderCircle } from "lucide-react";
+
+export function LoginForm({configured}:{configured:boolean}) {
+  const router=useRouter();const [username,setUsername]=useState("");const [password,setPassword]=useState("");const [visible,setVisible]=useState(false);const [busy,setBusy]=useState(false);const [error,setError]=useState("");
+  async function submit(event:React.FormEvent<HTMLFormElement>){event.preventDefault();setBusy(true);setError("");try{const params=new URLSearchParams(window.location.search);const target=params.get("callbackUrl")||"/";const safeTarget=target.startsWith("/")&&!target.startsWith("//")?target:"/";const result=await signIn("credentials",{username,password,redirect:false,callbackUrl:safeTarget});if(result?.error||!result?.ok){setError("Those details didn’t match the owner account. Please try again.");return;}router.replace(safeTarget);router.refresh();}catch{setError("Sign-in is temporarily unavailable. Please try again.");}finally{setBusy(false);}}
+  return <form className="login-form" onSubmit={submit}>{!configured&&<p className="login-error" role="status">Owner sign-in setup is incomplete. Add the required secrets and MongoDB connection from the deployment guide, then restart.</p>}<label>Username<span className="login-input"><input autoComplete="username" type="text" required maxLength={80} value={username} onChange={e=>setUsername(e.target.value)} placeholder="Your owner username" disabled={!configured}/></span></label><label>Password<span className="login-input"><input autoComplete="current-password" type={visible?"text":"password"} required maxLength={256} value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter your password" disabled={!configured}/><button type="button" aria-label={visible?"Hide password":"Show password"} onClick={()=>setVisible(!visible)}>{visible?<EyeOff size={16}/>:<Eye size={16}/>}</button></span></label>{error&&<p className="login-error" role="alert">{error}</p>}<button className="login-submit" disabled={!configured||busy}>{busy?<><LoaderCircle className="spin" size={16}/> Securing session…</>:<>Enter your space <ArrowRight size={16}/></>}</button></form>;
+}
