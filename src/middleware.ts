@@ -1,5 +1,9 @@
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+import authConfig from "@/auth.config";
 import { NextResponse } from "next/server";
+
+// Keep Node-only authentication and MongoDB code out of the Edge middleware bundle.
+const { auth } = NextAuth(authConfig);
 
 export default auth((request) => {
   const { pathname, search } = request.nextUrl;
