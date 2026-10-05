@@ -3,13 +3,12 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { verifyPassword } from "@/lib/auth/password";
 import { clearLoginAttempts, consumeLoginAttempt } from "@/lib/auth/login-limit";
+import authConfig from "@/auth.config";
 
 const credentialsSchema = z.object({ username: z.string().trim().min(3).max(80), password: z.string().min(1).max(256) });
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  trustHost: true,
-  pages: { signIn: "/login" },
-  session: { strategy: "jwt", maxAge: 60 * 60 * 8 },
+  ...authConfig,
   providers: [Credentials({
     name: "Owner access",
     credentials: { username: { label: "Username", type: "text" }, password: { label: "Password", type: "password" } },
