@@ -879,3 +879,99 @@
   .app-shell .wk-video{max-height:175px;aspect-ratio:16/9}
   .app-shell .wk-card.has-media .wk-demo{max-height:165px;aspect-ratio:16/9}
 }
+
+/* Shorter habit routines and a compact nutrition workspace */
+.app-shell .habit-group-panel{padding:12px 14px;margin-bottom:8px}
+.app-shell .habit-group-panel>summary{list-style:none;cursor:pointer;margin:0;align-items:center}
+.app-shell .habit-group-panel>summary::-webkit-details-marker{display:none}
+.app-shell .habit-group-panel>summary::after{content:"+";display:grid;place-items:center;width:25px;height:25px;margin-left:8px;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:17px;line-height:1;flex:0 0 auto}
+.app-shell .habit-group-panel[open]>summary::after{content:"−"}
+.app-shell .habit-group-panel>summary h3{font-size:13px}
+.app-shell .habit-group-panel>summary p{margin:3px 0 0}
+.app-shell .habit-group-panel .habit-manage-row{gap:6px;padding:5px 0}
+.app-shell .habit-group-panel .habit-row{padding:6px 5px}
+.app-shell .habit-group-panel .habit-icon{width:27px;height:27px}
+.app-shell .habit-group-panel .habit-copy strong{font-size:11px}
+.app-shell .habit-group-panel .habit-copy small{font-size:9px}
+.app-shell .nutrition-page{display:grid;gap:10px}
+.app-shell .nutrition-page .nutrition-summary{margin:0;padding:14px 17px}
+.app-shell .nutrition-page .nutrition-summary strong{font-size:25px;margin:2px 0}
+.app-shell .nutrition-main-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:start}
+.app-shell .nutrition-main-grid>.panel{margin:0;padding:14px}
+.app-shell .nutrition-page .macro-chart{height:205px}
+.app-shell .nutrition-food-panel .panel-heading{align-items:center}
+.app-shell .nutrition-food-panel .panel-heading h3{font-size:14px}
+.app-shell .nutrition-food-panel .food-row{padding:8px 0}
+.app-shell .nutrition-copy-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.app-shell .nutrition-copy-card{display:grid;gap:5px;min-width:0;padding:10px;text-align:left;border:1px solid var(--g-line);border-radius:11px;background:var(--g-bg-soft);color:var(--text);cursor:pointer}
+.app-shell .nutrition-copy-card:hover{border-color:var(--n1);background:color-mix(in srgb,var(--n1) 9%,var(--surface))}
+.app-shell .nutrition-copy-card>span{display:grid;gap:2px;min-width:0}
+.app-shell .nutrition-copy-card b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-shell .nutrition-copy-card strong{font-size:11px;color:var(--n1)}
+.app-shell .nutrition-copy-card small{font-size:9px;color:var(--muted);line-height:1.35}
+.app-shell .nutrition-copy-card>small{white-space:nowrap}
+@media(max-width:760px){
+  .app-shell .habit-group-panel{padding:10px 11px;margin-bottom:7px}
+  .app-shell .habit-group-panel>summary h3{font-size:12px}
+  .app-shell .habit-group-panel>summary p{font-size:9px}
+  .app-shell .habit-group-panel .routine-status{font-size:8px;padding:5px 7px}
+  .app-shell .habit-groups{gap:7px}
+  .app-shell .habit-group-panel .habit-manage-row{gap:4px;padding:4px 0}
+  .app-shell .habit-group-panel .habit-row{padding:5px 3px}
+  .app-shell .habit-group-panel .compact-action,.app-shell .habit-group-panel .delete-btn{width:34px;min-width:34px;height:34px;min-height:34px;padding:0;justify-content:center}
+  .app-shell .habit-bulk-fields input,.app-shell .habit-bulk-fields select{height:33px;padding:0 6px;font-size:10px}
+  .app-shell .nutrition-main-grid{grid-template-columns:1fr;gap:8px}
+  .app-shell .nutrition-page .nutrition-summary{padding:12px;gap:9px}
+  .app-shell .nutrition-page .nutrition-summary strong{font-size:22px}
+  .app-shell .nutrition-main-grid>.panel{padding:11px;margin:0}
+  .app-shell .nutrition-page .macro-chart{height:185px}
+  .app-shell .nutrition-page .panel-heading h3{font-size:13px}
+  .app-shell .nutrition-page .panel-heading p{font-size:9px}
+  .app-shell .nutrition-copy-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .app-shell .nutrition-copy-card{padding:8px}
+  .app-shell .nutrition-copy-card b{font-size:10px}
+  .app-shell .nutrition-copy-card>small{font-size:8px}
+  .app-shell .nutrition-food-panel .food-row .secondary-btn{min-height:30px;height:30px;font-size:9px}
+  .app-shell .nutrition-food-panel .food-row .delete-btn{height:30px;min-height:30px}
+  .app-shell .food-dialog .nutrition-inputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .app-shell .food-dialog .nutrition-inputs .field-label{font-size:10px;margin:6px 0}
+  .app-shell .food-dialog .nutrition-inputs input{height:35px}
+}
+@media(max-width:420px){
+  .app-shell .nutrition-copy-grid{grid-template-columns:1fr 1fr}
+  .app-shell .habit-group-panel>summary .routine-status{max-width:70px;text-align:center}
+}
+
+/* Final workout-density pass */
+.app-shell .wk-session-pill{display:inline-flex;width:max-content;max-width:100%;margin:0 0 5px;padding:4px 8px;border:1px solid color-mix(in srgb,var(--n1) 30%,var(--border));border-radius:99px;background:color-mix(in srgb,var(--n1) 8%,transparent);color:var(--n1);font-size:9px;font-weight:700;letter-spacing:.06em}
+@media(max-width:760px){
+  .app-shell .wk-week,.app-shell .wk-day{padding:10px;margin-bottom:8px}
+  .app-shell .wk-week-head{margin-bottom:6px}
+  .app-shell .wk-week-head h3{font-size:13px}
+  .app-shell .wk-day-head{gap:7px;margin-bottom:7px}
+  .app-shell .wk-day-title h2{font-size:19px;margin:3px 0}
+  .app-shell .wk-tags{gap:4px;margin-top:4px}
+  .app-shell .wk-chip{padding:4px 7px;font-size:10px}
+  .app-shell .wk-day-actions{flex:0 0 100%;justify-content:flex-start}
+  .app-shell .wk-stats>div{padding:7px 9px}
+  .app-shell .wk-card{gap:7px;padding:9px}
+  .app-shell .wk-progress{gap:7px}
+  .app-shell .wk-progress small{font-size:9px}
+  .app-shell .wk-sets{gap:5px}
+  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:36px minmax(0,1fr) minmax(0,1fr) 46px;gap:4px}
+  .app-shell .wk-set-head span{font-size:7px;letter-spacing:.04em}
+  .app-shell .wk-set{padding:4px;border-radius:8px}
+  .app-shell .wk-set input{height:32px;border-radius:7px;font-size:13px}
+  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:22px;height:22px}
+  .app-shell .wk-card-foot .secondary-btn{min-height:34px;padding:6px 8px;font-size:10px}
+  .app-shell .wk-map-reference{margin-top:8px}
+  .app-shell .wk-reference-grid{gap:8px}
+  .app-shell .wk-reference-row{padding:5px 0}
+}
+@media(max-width:420px){
+  .app-shell .wk-day-actions{flex:1 1 auto}
+  .app-shell .wk-day-actions>.primary-btn,.app-shell .wk-day-actions>.wk-map-add{font-size:9px;padding:6px 7px}
+  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:33px minmax(0,1fr) minmax(0,1fr) 42px}
+  .app-shell .wk-set input{height:31px;padding:0 4px;font-size:12px}
+  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:21px;height:21px}
+}
