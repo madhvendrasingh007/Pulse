@@ -75,3 +75,682 @@
 @media(max-width:420px){.login-page{padding:0 17px}.login-security{font-size:7px;letter-spacing:.1em}.login-top{height:66px}.login-story{min-height:245px}.login-orbit{width:190px;height:190px;right:-8px}.login-story-copy h1{font-size:37px}.login-story-copy p{max-width:245px}.login-panel{padding:19px}.coach-assistant-head{padding:12px}.coach-thread{padding:12px}.coach-compose{padding:10px}.coach-compose .primary-btn{width:42px;justify-content:center;padding:0}.coach-compose .primary-btn span{display:none}.coach-proposal>div{flex-wrap:wrap}}
 .sync-gate{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 37%,rgba(72,169,138,.16),transparent 42%),linear-gradient(145deg,#0a1714,#0c1117 60%,#141423);color:#edf4ef;text-align:center}.sync-mark{width:56px;height:56px;display:grid;place-items:center;margin-bottom:24px;border:1px solid rgba(169,240,220,.35);border-radius:18px;color:#a9f0dc;background:rgba(169,240,220,.08);box-shadow:0 0 45px rgba(115,227,184,.11)}.sync-gate>.eyebrow{color:#a9f0dc}.sync-gate h1{max-width:560px;margin:13px 0 8px;font:600 clamp(24px,4vw,36px) Manrope,Arial,sans-serif;letter-spacing:-.04em}.sync-gate p{max-width:430px;margin:0 0 20px;color:#a5b0b6;font-size:12px;line-height:1.6}
 .profile-setup{min-height:100svh;display:grid;place-items:center;padding:25px;background:radial-gradient(ellipse at 50% 14%,rgba(72,169,138,.18),transparent 45%),linear-gradient(145deg,#0a1714,#0c1117 62%,#141423);color:#edf4ef}.profile-setup-card{width:min(590px,100%);padding:clamp(22px,5vw,42px);border:1px solid rgba(220,244,232,.15);border-radius:21px;background:linear-gradient(145deg,rgba(30,45,40,.88),rgba(14,25,23,.93));box-shadow:0 28px 85px rgba(0,0,0,.34);backdrop-filter:blur(20px)}.profile-setup-card .sync-mark{margin-bottom:22px}.profile-setup-card h1{margin:10px 0;font:650 clamp(26px,5vw,38px) Manrope,Arial,sans-serif;letter-spacing:-.045em}.profile-setup-card>p{max-width:475px;color:#a5b3ae;font-size:12px;line-height:1.7}.profile-setup-form{margin-top:22px}.profile-fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.profile-fields label{display:grid;gap:7px;color:#d9e5df;font-size:10px}.profile-fields input,.profile-fields select{height:44px;width:100%;padding:0 12px;border:1px solid rgba(222,243,232,.15);border-radius:9px;background:rgba(3,11,9,.38);color:white;font-size:12px}.profile-fields input::placeholder{color:#71817b}.profile-setup-form>.primary-btn{margin-top:18px;height:42px}.profile-privacy{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:21px;padding-top:15px;border-top:1px solid rgba(215,238,229,.12);color:#a3b4ad;font-size:9px}.profile-privacy svg{color:#a6f0d1}@media(max-width:460px){.profile-setup{padding:16px}.profile-setup-card{padding:22px 18px}.profile-fields{grid-template-columns:1fr}.profile-privacy{align-items:flex-start;line-height:1.5}}
+
+/* Daily routines, food trends, energy, and completion states */
+.dashboard-feature-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:13px;margin-top:13px}.dashboard-planner-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:13px}.dashboard-feature-grid .panel,.dashboard-planner-grid .panel{margin:0}.dashboard-macro-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin:6px 0 14px}.dashboard-macro>span,.dashboard-macro>b{display:block}.dashboard-macro>span{font-size:9px;color:var(--muted)}.dashboard-macro>b{font:650 15px Manrope;margin-top:4px}.dashboard-macro>b small{font:400 8px "DM Sans";color:var(--muted)}.dashboard-macro .bar-track{margin-top:6px}.dashboard-foods{display:grid;gap:8px;margin:8px 0 13px;padding-top:10px;border-top:1px solid var(--border)}.dashboard-foods>div{display:flex;justify-content:space-between;gap:12px;font-size:9px}.dashboard-foods span{display:flex;align-items:center;gap:6px;min-width:0}.dashboard-foods span svg{color:var(--accent);flex:0 0 auto}.dashboard-foods small{color:var(--muted);white-space:nowrap}.dashboard-workout-row{display:flex;align-items:center;gap:9px;padding:9px 2px;border-bottom:1px solid var(--border)}.dashboard-workout-row>div{flex:1}.dashboard-workout-row b,.dashboard-workout-row small{display:block}.dashboard-workout-row b{font-size:9px}.dashboard-workout-row small{font-size:8px;color:var(--muted);margin-top:3px}.dashboard-workout>.secondary-btn,.dashboard-nutrition>.secondary-btn{margin-top:10px}.dashboard-event-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}.dashboard-event-row:last-child{border-bottom:0}.dashboard-event-row .event-info{min-width:0}.dashboard-event-row .event-info>strong,.dashboard-event-row .event-info>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.energy-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:13px}.energy-summary-card{padding:15px;border:1px solid var(--border);border-radius:11px;background:var(--surface)}.energy-summary-card>span{display:block;color:var(--muted);font-size:9px}.energy-summary-card>b{display:block;margin-top:8px;font:700 21px Manrope;letter-spacing:-.04em}.energy-summary-card>b small{font:500 10px "DM Sans";color:var(--muted)}.energy-summary-card>p{margin:4px 0 0;color:var(--muted);font-size:8px}.burn-entry-field{display:grid;gap:7px;font-size:10px;font-weight:600}.burn-entry-field input{height:42px;max-width:300px;padding:0 12px;border:1px solid var(--border);border-radius:9px;background:var(--background);color:var(--text)}.burn-entry-field small{font-size:8px;color:var(--muted);font-weight:400}.macro-chart,.burn-chart{height:240px;width:100%}.habit-date-toolbar{margin-bottom:12px}.habit-date-toolbar .demo-tag{margin-left:auto}.habit-manage-row{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}.habit-manage-row:last-child{border-bottom:0}.habit-manage-row>.habit-row{flex:1;min-width:0;border:0}.habit-manage-row>.habit-row:disabled{opacity:.5;cursor:not-allowed}.compact-action{display:inline-flex;align-items:center;gap:5px;padding:7px 9px;font-size:9px}.habit-day-field{margin:12px 0 4px;padding:11px 12px;border:1px solid var(--border);border-radius:10px}.habit-day-field legend{padding:0 5px;color:var(--muted);font-size:9px}.habit-day-picker{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.habit-day-picker button{height:34px;border:1px solid var(--border);border-radius:8px;background:var(--surface-soft);color:var(--muted);font-size:9px}.habit-day-picker button.selected{border-color:color-mix(in srgb,var(--accent) 55%,var(--border));background:color-mix(in srgb,var(--accent) 13%,var(--surface));color:var(--accent);font-weight:700}.habit-day-field>small{display:block;margin-top:8px;color:var(--muted);font-size:8px}.planner-event-done{opacity:.68}.planner-event-done .event-info>strong{text-decoration:line-through}.planner-complete-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid color-mix(in srgb,var(--lime) 35%,var(--border));border-radius:8px;background:color-mix(in srgb,var(--lime) 8%,var(--surface));color:var(--lime);font-size:9px;white-space:nowrap}.planner-complete-btn.is-complete{background:color-mix(in srgb,var(--lime) 14%,var(--surface))}.workout-completion{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.workout-completion.is-complete{color:var(--lime);border-color:color-mix(in srgb,var(--lime) 40%,var(--border))}.workout-completion:disabled{opacity:.58;cursor:not-allowed}.exercise-preview{width:170px!important;height:125px!important;flex:0 0 170px!important;border-radius:12px!important;background:var(--background)!important;overflow:hidden}.exercise-preview img{width:100%!important;height:100%!important;object-fit:contain!important}.gif-preview{max-height:280px;overflow:hidden;border:1px solid var(--border);border-radius:11px;background:var(--background)}.gif-preview img{display:block;width:100%;max-height:280px;object-fit:contain}.exercise-card{align-items:center}.planner-event{flex-wrap:wrap}.planner-event .planner-complete-btn{margin-left:auto}
+@media(max-width:900px){.dashboard-feature-grid{grid-template-columns:1fr}.dashboard-planner-grid{grid-template-columns:1fr}.exercise-preview{width:150px!important;height:110px!important;flex-basis:150px!important}}
+@media(max-width:620px){.energy-summary-grid{grid-template-columns:1fr}.energy-summary-card{display:grid;grid-template-columns:1fr auto;align-items:center}.energy-summary-card>b{grid-column:2;grid-row:1/3;margin:0}.energy-summary-card>p{grid-column:1}.nutrition-summary{align-items:flex-start;flex-direction:column;gap:14px}.macro-cards{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.macro-cards span{padding:9px}.food-row{flex-wrap:wrap}.food-row>div{min-width:calc(100% - 45px)}.food-row>strong{margin-left:40px}.dashboard-foods>div{align-items:flex-start;flex-direction:column;gap:3px}.planner-event{gap:7px}.planner-event .event-info{min-width:calc(100% - 55px)}.planner-event .planner-complete-btn{margin-left:0}.habit-manage-row{flex-wrap:wrap}.habit-manage-row>.habit-row{flex-basis:100%}.macro-chart,.burn-chart{height:210px}}
+.blue-fill{background:var(--blue)}.lime-fill{background:var(--lime)}.dashboard-balance{display:grid;gap:0;margin-top:3px}.dashboard-balance>div{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 1px;border-bottom:1px solid var(--border)}.dashboard-balance>div:last-child{border-bottom:0}.dashboard-balance span{color:var(--muted);font-size:10px}.dashboard-balance b{font:650 14px Manrope}.dashboard-balance small{font:400 8px 'DM Sans';color:var(--muted)}
+
+.habit-day-display{font-size:11px;color:var(--muted)}.habit-day-display b{color:var(--text)}.habit-groups{display:grid;grid-template-columns:1fr;gap:12px}.habit-group-panel{margin:0}.habit-group-panel .habit-manage-row{padding:7px 0}.routine-status{padding:5px 8px;border:1px solid var(--border);border-radius:99px;color:var(--muted);font-size:8px;letter-spacing:.1em}.routine-status.active{border-color:color-mix(in srgb,var(--accent) 40%,var(--border));color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}.habit-bulk-fields{display:grid;grid-template-columns:1.2fr 1.3fr 1.4fr 1fr;gap:7px;flex:1;min-width:0;padding:8px 2px}.habit-bulk-fields input,.habit-bulk-fields select,.settings-goal-grid input,.activity-factor-setting input{min-width:0;height:36px;padding:0 9px;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--text);font-size:10px}.habit-add-panel{display:flex;align-items:center;justify-content:space-between;gap:12px}.habit-add-panel h3{margin:0}.habit-add-panel p{margin:4px 0 0;color:var(--muted);font-size:9px}.habit-preset-picker{display:grid;gap:7px}.habit-preset-picker button{min-height:36px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface-soft);color:var(--muted);font-size:10px;text-align:left}.habit-preset-picker button.selected{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 50%,var(--border));background:color-mix(in srgb,var(--accent) 10%,var(--surface))}.settings-targets{padding:18px}.settings-targets .panel-heading{margin-bottom:13px}.settings-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.settings-goal-grid label,.activity-factor-setting{display:grid;gap:7px;color:var(--muted);font-size:10px}.settings-goal-grid label>span{display:flex;align-items:center;gap:6px}.settings-goal-grid input{width:100%;height:40px}.settings-goal-grid small,.activity-factor-setting small{white-space:nowrap;color:var(--muted);font-size:8px}.activity-factor-setting input{display:block;width:170px;height:40px}.energy-info{cursor:help;text-decoration:underline dotted;text-underline-offset:3px}.history-layout{display:grid;grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr);gap:13px;align-items:start}.history-calendar{position:sticky;top:14px}.history-month-nav{display:flex;align-items:center;gap:7px}.history-month-nav b{min-width:112px;text-align:center;font-size:10px}.history-weekdays,.history-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.history-weekdays{margin-bottom:6px}.history-weekdays span{padding:5px 0;text-align:center;color:var(--muted);font-size:8px}.history-day{position:relative;display:grid;place-items:center;aspect-ratio:1;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--text);font-size:10px}.history-day:hover{background:var(--surface-soft)}.history-day.has-records{background:color-mix(in srgb,var(--accent) 9%,var(--surface));border-color:color-mix(in srgb,var(--accent) 18%,var(--border))}.history-day.selected{background:color-mix(in srgb,var(--accent) 18%,var(--surface));border-color:var(--accent);font-weight:700}.history-day.is-today span{ text-decoration:underline;text-underline-offset:3px}.history-day i,.history-legend i{position:absolute;bottom:4px;width:4px;height:4px;border-radius:50%;background:var(--accent)}.history-calendar-blank{aspect-ratio:1}.history-legend{display:flex;gap:14px;margin:12px 0;color:var(--muted);font-size:8px}.history-legend span{position:relative;display:flex;align-items:center;gap:6px}.history-legend i{position:static}.history-legend b{width:8px;height:8px;border:1px solid var(--accent);border-radius:3px}.history-detail{display:grid;gap:12px}.history-day-heading{padding:18px}.history-day-heading h2{margin:7px 0;font:650 20px Manrope;letter-spacing:-.04em}.history-day-heading p{margin:0;color:var(--muted);font-size:10px}.history-summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.history-summary-card{padding:13px;border:1px solid var(--border);border-radius:11px;background:var(--surface)}.history-summary-card>span{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:9px}.history-summary-card>span svg{color:var(--accent)}.history-summary-card>b{display:block;margin-top:8px;font:700 18px Manrope}.history-summary-card>b small{font:400 9px 'DM Sans';color:var(--muted)}.history-summary-card>p{margin:4px 0 0;color:var(--muted);font-size:8px}.history-record-list{padding:14px 16px}.history-record-list h4{margin:14px 0 5px;font-size:10px}.history-record-row{display:flex;align-items:center;gap:8px;min-height:39px;border-bottom:1px solid var(--border);font-size:9px}.history-record-row:last-child{border:0}.history-record-row>b{flex:1}.history-record-row>span:last-child{color:var(--muted)}.history-status-done{color:var(--lime)!important}.history-status-open{color:var(--muted)}.history-actions{display:flex;flex-wrap:wrap;gap:8px}.history-actions button{font-size:9px;padding:9px 11px}@media(max-width:850px){.history-layout{grid-template-columns:1fr}.history-calendar{position:static}.history-summary-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.habit-bulk-fields{grid-template-columns:1fr 1fr;flex-basis:100%}.habit-manage-row{align-items:flex-start}.settings-goal-grid{grid-template-columns:1fr 1fr}.settings-goal-grid label>span{align-items:flex-start;flex-direction:column}.settings-goal-grid small{white-space:normal}.habit-add-panel{align-items:flex-start;flex-direction:column}.history-day-heading h2{font-size:17px}.history-record-row{gap:6px}.history-record-row>span:last-child{max-width:44%;text-align:right}}
+
+.habit-icon.rose{color:#ed6b98;background:color-mix(in srgb,#ed6b98 13%,transparent)}.habit-icon.amber{color:#d79b18;background:color-mix(in srgb,#f2bd4d 15%,transparent)}.habit-icon.teal{color:#32ac98;background:color-mix(in srgb,#49c9b5 14%,transparent)}.habit-icon.sky{color:#358cbc;background:color-mix(in srgb,#4aa9db 14%,transparent)}.habit-icon.pink{color:#c952b7;background:color-mix(in srgb,#e47ad4 14%,transparent)}.habit-icon.mint{color:#3ba878;background:color-mix(in srgb,#62c99a 14%,transparent)}.habit-icon.indigo{color:#6767d3;background:color-mix(in srgb,#7777e9 14%,transparent)}.habit-color-field{margin:12px 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px}.habit-color-field legend{padding:0 5px;color:var(--muted);font-size:9px}.habit-color-field>div{display:flex;flex-wrap:wrap;gap:8px}.habit-color-field button{width:29px;height:29px;display:grid;place-items:center;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--surface);cursor:pointer}.habit-color-field button.selected{border-color:var(--text);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}.habit-color-field i{width:17px;height:17px;border-radius:50%}.habit-bulk-fields{grid-template-columns:1.2fr 1.3fr 1.35fr 1fr 1fr}@media(max-width:620px){.habit-bulk-fields{grid-template-columns:1fr 1fr}}
+
+
+/* =====================================================================
+   PULSE · Aurora Glass v2   (ADD-ON — do NOT replace globals.css)
+   Keep your original globals.css exactly as it was, then paste this
+   whole file at the very END of it.
+   Everything is scoped to `.app-shell`, so login / loading / onboarding
+   screens are untouched, and it works even without blur support.
+   ===================================================================== */
+
+/* ---------- tokens (dark) ---------- */
+.app-shell{
+  --n1:#5cf2c8; --n2:#4cc9ff; --n3:#b49bff; --n4:#c8ff6a; --n5:#ff8f6b;
+  --glow:58%;
+  --g-bg:rgba(22,32,42,.62);
+  --g-bg-soft:rgba(255,255,255,.045);
+  --g-line:rgba(255,255,255,.12);
+  --g-hi:rgba(255,255,255,.12);
+  --g-shadow:0 16px 44px rgba(0,0,0,.34);
+  --g-track:rgba(255,255,255,.08);
+  --ring-track:rgba(255,255,255,.1);
+  --font-display:'Sora','Manrope',system-ui,sans-serif;
+  background:
+    radial-gradient(520px 420px at 85% 4%,rgba(180,155,255,.20),transparent 70%),
+    radial-gradient(560px 460px at 6% 40%,rgba(92,242,200,.15),transparent 70%),
+    radial-gradient(520px 420px at 72% 98%,rgba(76,201,255,.15),transparent 70%),
+    var(--background);
+  background-attachment:fixed;
+}
+/* ---------- tokens (light) ---------- */
+:root[data-theme="light"] .app-shell{
+  --n1:#0db38f; --n2:#1f8fe6; --n3:#7a5af0; --n4:#5fae14; --n5:#f2603a;
+  --glow:32%;
+  --g-bg:rgba(255,255,255,.68);
+  --g-bg-soft:rgba(255,255,255,.55);
+  --g-line:rgba(255,255,255,.9);
+  --g-hi:rgba(255,255,255,1);
+  --g-shadow:0 12px 36px rgba(52,70,90,.13),0 0 0 1px rgba(30,50,70,.06);
+  --g-track:rgba(30,50,70,.10);
+  --ring-track:rgba(30,50,70,.11);
+  background:
+    radial-gradient(520px 420px at 85% 4%,rgba(122,90,240,.20),transparent 70%),
+    radial-gradient(560px 460px at 6% 40%,rgba(13,179,143,.20),transparent 70%),
+    radial-gradient(520px 420px at 72% 98%,rgba(31,143,230,.20),transparent 70%),
+    #e8eef1;
+  background-attachment:fixed;
+}
+
+/* ---------- type ---------- */
+.app-shell h1,.app-shell h2,.app-shell h3,.app-shell .brand,
+.app-shell .stat-value,.app-shell .ring-inner strong,.app-shell .dashboard-macro>b,
+.app-shell .dashboard-balance b,.app-shell .energy-summary-card>b,.app-shell .history-summary-card>b{font-family:var(--font-display)}
+.app-shell .stat-value,.app-shell .dashboard-macro>b,.app-shell .dashboard-balance b{font-variant-numeric:tabular-nums}
+.app-shell .welcome-row h1{font-size:32px;font-weight:700;letter-spacing:-.045em}
+.app-shell .stat-value{font-size:28px}
+.app-shell .stat-head{font-size:11.5px;font-weight:500}
+.app-shell .stat-sub{font-size:10.5px}
+.app-shell .subtitle{font-size:13px}
+.app-shell .eyebrow{font-size:10px;letter-spacing:.15em}
+.app-shell .section-heading h2{font-size:18px}
+.app-shell .panel-heading h3{font-size:14px}
+.app-shell .panel-heading p,.app-shell .section-heading p{font-size:11px}
+.app-shell .habit-copy strong{font-size:12px}
+.app-shell .habit-copy small{font-size:9.5px}
+.app-shell .macro-line,.app-shell .foot-note,.app-shell .dashboard-workout-row small{font-size:9.5px}
+.app-shell .dashboard-macro>span,.app-shell .dashboard-balance span,.app-shell .dashboard-foods>div,.app-shell .dashboard-workout-row b{font-size:11px}
+.app-shell .event-info>strong{font-size:11.5px}.app-shell .event-info>span{font-size:9.5px}
+.app-shell .insight-strip strong{font-size:12px}.app-shell .insight-strip p{font-size:10.5px}
+
+/* ---------- glass surfaces (translucent works even without blur) ---------- */
+.app-shell .stat-card,.app-shell .panel,.app-shell .insight-strip,.app-shell .insight-card,
+.app-shell .nutrition-summary,.app-shell .energy-summary-card,.app-shell .history-summary-card,
+.app-shell .weight-feature,.app-shell .setting-row{
+  background:linear-gradient(145deg,var(--g-bg-soft),transparent 60%),var(--g-bg);
+  border:1px solid var(--g-line);
+  border-radius:18px;
+  box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi);
+}
+.app-shell .panel{padding:20px 20px 16px}
+.app-shell .stat-card{padding:17px 18px 14px;min-height:170px;position:relative;transition:transform .25s,border-color .25s}
+.app-shell .stat-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--n1) 45%,var(--g-line))}
+.app-shell .stats-grid{gap:14px}
+.app-shell .lower-grid,.app-shell .dashboard-feature-grid,.app-shell .dashboard-planner-grid{gap:14px;margin-top:14px}
+
+/* soft coloured corner glow on each stat card */
+.app-shell .stat-card::after{content:"";position:absolute;right:-26%;bottom:-48%;width:72%;height:72%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--n1) 18%,transparent),transparent 70%)}
+.app-shell .stats-grid .stat-card:nth-child(2)::after{background:radial-gradient(circle,color-mix(in srgb,var(--n4) 18%,transparent),transparent 70%)}
+.app-shell .stats-grid .stat-card:nth-child(3)::after{background:radial-gradient(circle,color-mix(in srgb,var(--n3) 20%,transparent),transparent 70%)}
+.app-shell .stats-grid .stat-card:nth-child(4)::after{background:radial-gradient(circle,color-mix(in srgb,var(--n2) 20%,transparent),transparent 70%)}
+
+/* chrome */
+.app-shell .sidebar{background:color-mix(in srgb,var(--g-bg) 85%,transparent);border-right:1px solid var(--g-line)}
+.app-shell .topbar{background:color-mix(in srgb,var(--g-bg) 70%,transparent);border-bottom:1px solid var(--g-line)}
+.app-shell .mobile-nav{background:var(--g-bg);border-top:1px solid var(--g-line)}
+.app-shell .quick-sheet,.app-shell .food-dialog{background:color-mix(in srgb,var(--surface) 90%,transparent);border:1px solid var(--g-line);box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi)}
+.app-shell .toast{background:color-mix(in srgb,var(--surface-raised) 92%,transparent);border:1px solid var(--g-line)}
+.app-shell .streak-mini,.app-shell .date-pill,.app-shell .theme-select,.app-shell .pref-tag,.app-shell .privacy-tag,
+.app-shell .workout-progress,.app-shell .quick-action,.app-shell .secondary-btn{background:var(--g-bg-soft);border-color:var(--g-line)}
+:root[data-theme="light"] .app-shell .secondary-btn,:root[data-theme="light"] .app-shell .quick-action{background:rgba(255,255,255,.7)}
+
+/* blur only where supported, only on top-level surfaces (no nested blur) */
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .app-shell .stat-card,.app-shell .panel,.app-shell .hero-card,.app-shell .insight-strip,
+  .app-shell .nutrition-summary,.app-shell .weight-feature,.app-shell .sidebar,.app-shell .topbar,
+  .app-shell .mobile-nav,.app-shell .quick-sheet,.app-shell .food-dialog{
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+}
+
+/* ---------- brand / nav / buttons ---------- */
+.app-shell .brand-mark{background:linear-gradient(135deg,var(--n1),var(--n2));color:#06231c;box-shadow:0 0 20px color-mix(in srgb,var(--n1) var(--glow),transparent)}
+.app-shell .brand-dot,.app-shell .live-dot{background:var(--n4);box-shadow:0 0 10px var(--n4)}
+.app-shell .nav-item{border-radius:12px;font-size:12.5px}
+.app-shell .nav-item.selected{background:linear-gradient(90deg,color-mix(in srgb,var(--n1) 18%,transparent),transparent);box-shadow:inset 2px 0 0 var(--n1)}
+.app-shell .nav-item.selected>svg{color:var(--n1)}
+.app-shell .nav-indicator{background:var(--n1);box-shadow:0 0 8px var(--n1)}
+.app-shell .primary-btn{background:linear-gradient(110deg,var(--n1),var(--n2));color:#04201a;border-radius:12px;padding:11px 17px;font-size:12px;
+  box-shadow:0 6px 20px color-mix(in srgb,var(--n1) var(--glow),transparent),inset 0 1px 0 rgba(255,255,255,.4)}
+:root[data-theme="light"] .app-shell .primary-btn{background:linear-gradient(110deg,#0a9d7c,#1a7fd0);color:#fff}
+.app-shell .mobile-nav .mobile-add{background:linear-gradient(135deg,var(--n1),var(--n2));color:#04201a}
+.app-shell .text-btn:hover,.app-shell .tiny-link:hover,.app-shell .add-habit:hover,.app-shell .calendar-link:hover{color:var(--n1)}
+
+/* ---------- hero (follows the theme) ---------- */
+.app-shell .hero-card{height:auto;min-height:232px;border-radius:24px;padding:30px 36px;color:var(--text);
+  background:
+    radial-gradient(420px 260px at 80% 50%,color-mix(in srgb,var(--n1) 22%,transparent),transparent 70%),
+    radial-gradient(380px 240px at 15% 0%,color-mix(in srgb,var(--n3) 18%,transparent),transparent 70%),
+    var(--g-bg);
+  border:1px solid var(--g-line);box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi)}
+.app-shell .hero-card h2{font-size:38px;line-height:1.05;letter-spacing:-.055em}
+.app-shell .hero-card h2 span{color:var(--n1);background:linear-gradient(100deg,var(--n1),var(--n2),var(--n3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.app-shell .hero-card p{color:var(--muted);font-size:13px}
+.app-shell .hero-chip,.app-shell .hero-chip svg,.app-shell .hero-link{color:var(--n1)}
+.app-shell .hero-chip{font-size:10px}.app-shell .hero-link{font-size:12px;font-weight:700}
+.app-shell .hero-orbit{border-color:color-mix(in srgb,var(--n1) 16%,transparent)}
+.app-shell .orbit-two{border-color:color-mix(in srgb,var(--n3) 12%,transparent)}
+.app-shell .wave{color:var(--n4)}
+
+/* neon ring (uses --deg when you apply the small TSX edit; otherwise the original inline gradient is kept) */
+.app-shell .ring{width:158px;height:158px;
+  background:conic-gradient(from 0deg,var(--n5),var(--n4) calc(var(--deg,0deg) * .5),var(--n1) var(--deg,0deg),var(--ring-track) 0);
+  filter:drop-shadow(0 0 12px color-mix(in srgb,var(--n1) var(--glow),transparent));box-shadow:none}
+.app-shell .ring:before{inset:9px;background:color-mix(in srgb,var(--surface) 94%,transparent);box-shadow:inset 0 0 0 1px var(--g-line)}
+.app-shell .ring-inner strong{font-size:36px;color:var(--text)}
+.app-shell .ring-inner strong span{color:var(--n1);font-size:18px}
+.app-shell .ring-inner small,.app-shell .ring-caption{color:var(--muted)}
+.app-shell .ring-caption{font-size:10.5px}
+.app-shell .ring-caption-dot{background:var(--n1);box-shadow:0 0 8px var(--n1)}
+
+/* ---------- icon chips ---------- */
+.app-shell .stat-icon,.app-shell .habit-icon,.app-shell .quick-icon{border-radius:12px}
+.app-shell .stat-icon.coral,.app-shell .quick-icon.coral,.app-shell .quick-icon.orange{color:var(--n5);background:color-mix(in srgb,var(--n5) 16%,transparent)}
+.app-shell .stat-icon.lime,.app-shell .quick-icon.lime{color:var(--n4);background:color-mix(in srgb,var(--n4) 16%,transparent)}
+.app-shell .stat-icon.violet,.app-shell .quick-icon.violet{color:var(--n3);background:color-mix(in srgb,var(--n3) 17%,transparent)}
+.app-shell .stat-icon.blue,.app-shell .quick-icon.blue{color:var(--n2);background:color-mix(in srgb,var(--n2) 17%,transparent)}
+
+/* ---------- NEON progress bars ---------- */
+.app-shell .bar-track{height:7px;border-radius:99px;background:var(--g-track);overflow:hidden}
+.app-shell .bar-fill{position:relative;border-radius:99px;overflow:hidden}
+.app-shell .bar-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-100%);animation:pulse-sweep 3.4s ease-in-out infinite}
+@keyframes pulse-sweep{60%,100%{transform:translateX(100%)}}
+.app-shell .coral-fill{background:linear-gradient(90deg,var(--n5),#ffc15e);box-shadow:0 0 12px color-mix(in srgb,var(--n5) var(--glow),transparent)}
+.app-shell .blue-fill{background:linear-gradient(90deg,var(--n2),var(--n1));box-shadow:0 0 12px color-mix(in srgb,var(--n2) var(--glow),transparent)}
+.app-shell .lime-fill{background:linear-gradient(90deg,var(--n4),var(--n1));box-shadow:0 0 12px color-mix(in srgb,var(--n4) var(--glow),transparent)}
+.app-shell .mini-bars{height:34px;gap:6px}
+.app-shell .mini-bars i{background:var(--g-track);border-radius:5px 5px 2px 2px}
+.app-shell .mini-bars i.today{background:linear-gradient(180deg,var(--n4),var(--n1));box-shadow:0 0 12px color-mix(in srgb,var(--n4) var(--glow),transparent)}
+.app-shell .weight-bars i.today{background:linear-gradient(180deg,var(--n2),var(--n1));box-shadow:0 0 12px color-mix(in srgb,var(--n2) var(--glow),transparent)}
+
+/* ---------- habits, checks, events ---------- */
+.app-shell .habit-row{border-radius:12px;padding:10px 8px;border-bottom:1px solid color-mix(in srgb,var(--g-line) 70%,transparent)}
+.app-shell .habit-row:hover{background:color-mix(in srgb,var(--n1) 8%,transparent)}
+.app-shell .check-circle{width:21px;height:21px}
+.app-shell .check-circle.checked{background:linear-gradient(135deg,var(--n4),var(--n1));border-color:transparent;color:#07261c;box-shadow:0 0 12px color-mix(in srgb,var(--n1) var(--glow),transparent)}
+.app-shell .habit-row.is-done .habit-copy strong{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.app-shell .event-date{width:40px;height:42px;border-radius:11px;color:var(--n1);border-color:color-mix(in srgb,var(--n1) 40%,transparent);background:color-mix(in srgb,var(--n1) 10%,transparent)}
+.app-shell .event-date.soft{color:var(--n3);border-color:color-mix(in srgb,var(--n3) 35%,transparent);background:color-mix(in srgb,var(--n3) 10%,transparent)}
+.app-shell .event-date strong{font-family:var(--font-display);font-size:14px}
+.app-shell .dashboard-macro{padding:12px 13px;border:1px solid var(--g-line);border-radius:14px;background:var(--g-bg-soft)}
+.app-shell .dashboard-macro>b{font-size:17px}
+.app-shell .dashboard-balance b{font-size:16px}
+.app-shell .dashboard-foods span svg{color:var(--n5)}
+.app-shell .insight-strip{border-color:color-mix(in srgb,var(--n3) 32%,var(--g-line))}
+.app-shell .insight-spark{color:var(--n3);background:color-mix(in srgb,var(--n3) 17%,transparent)}
+
+/* ---------- inputs ---------- */
+.app-shell .field-label input:focus,.app-shell .field-label select:focus{outline:none;border-color:var(--n1);box-shadow:0 0 0 3px color-mix(in srgb,var(--n1) 18%,transparent)}
+:root[data-theme="light"] .app-shell .field-label select{color-scheme:light}
+
+/* ---------- mobile ---------- */
+@media(max-width:760px){
+  .app-shell .hero-card{padding:20px;min-height:200px;border-radius:20px}
+  .app-shell .hero-card h2{font-size:27px}
+  .app-shell .ring{width:112px;height:112px}
+  .app-shell .ring:before{inset:7px}
+  .app-shell .ring-inner strong{font-size:26px}
+  .app-shell .welcome-row h1{font-size:25px}
+  .app-shell .stat-value{font-size:23px}
+  .app-shell .stat-card{min-height:150px;padding:13px}
+}
+@media(prefers-reduced-motion:reduce){.app-shell .bar-fill::after{animation:none}}
+
+
+/* =====================================================================
+   PULSE · Soft neon + habit picker   (add-on)
+   Paste at the very END of globals.css, AFTER pulse-glass-v2.css.
+   ===================================================================== */
+
+/* ---------- 1) calmer neon: softer colors, much less glow, no shimmer ---------- */
+.app-shell{
+  --n1:#79dcc0; --n2:#86c3ea; --n3:#b9abf0; --n4:#c4e592; --n5:#f2a285;
+  --glow:20%;
+}
+:root[data-theme="light"] .app-shell{
+  --n1:#2fae93; --n2:#4a9fdb; --n3:#8f78e6; --n4:#78ae3c; --n5:#ec7a5a;
+  --glow:12%;
+}
+.app-shell .bar-fill::after{display:none}                 /* no sweeping shine */
+.app-shell .bar-track{height:6px}
+.app-shell .coral-fill{background:linear-gradient(90deg,var(--n5),color-mix(in srgb,var(--n5) 60%,#ffd9a0))}
+.app-shell .blue-fill{background:linear-gradient(90deg,var(--n2),color-mix(in srgb,var(--n2) 60%,var(--n1)))}
+.app-shell .lime-fill{background:linear-gradient(90deg,var(--n4),color-mix(in srgb,var(--n4) 60%,var(--n1)))}
+.app-shell .stat-card::after,
+.app-shell .stats-grid .stat-card:nth-child(n)::after{opacity:.55}   /* quieter corner tint */
+.app-shell .ring{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--n1) var(--glow),transparent));
+  background:conic-gradient(from 0deg,var(--n5),var(--n1) var(--deg,0deg),var(--ring-track) 0)}
+.app-shell .primary-btn{box-shadow:0 4px 14px color-mix(in srgb,var(--n1) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.25)}
+.app-shell .brand-mark{box-shadow:0 0 10px color-mix(in srgb,var(--n1) var(--glow),transparent)}
+.app-shell .check-circle.checked{box-shadow:none}
+.app-shell .hero-card h2 span{background:linear-gradient(100deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text}
+.app-shell .live-dot,.app-shell .brand-dot,.app-shell .ring-caption-dot,.app-shell .nav-indicator{box-shadow:none}
+
+/* ---------- 2) habit dialog: live preview + icon grid + color swatches ---------- */
+.app-shell .habit-preview{display:flex;align-items:center;gap:12px;margin:12px 0;padding:12px 14px;border:1px solid var(--g-line);border-radius:14px;background:var(--g-bg-soft)}
+.app-shell .habit-preview .habit-icon{width:38px;height:38px;border-radius:12px;transition:background .15s,color .15s}
+.app-shell .habit-preview>div{flex:1;min-width:0}
+.app-shell .habit-preview strong,.app-shell .habit-preview small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-shell .habit-preview strong{font-size:12px}
+.app-shell .habit-preview small{font-size:10px;color:var(--muted);margin-top:3px}
+.app-shell .habit-preview-tag{font-size:9px;letter-spacing:.06em;color:var(--muted);padding:4px 8px;border:1px solid var(--g-line);border-radius:99px;white-space:nowrap}
+
+.app-shell .habit-icon-field{margin:12px 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px}
+.app-shell .habit-icon-field legend{padding:0 5px;color:var(--muted);font-size:9px}
+.app-shell .icon-picker{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;max-height:150px;overflow-y:auto;padding:2px}
+.app-shell .icon-picker button{aspect-ratio:1;display:grid;place-items:center;padding:0;border:1px solid var(--border);border-radius:10px;background:var(--surface-soft);color:var(--muted);transition:transform .12s,background .12s,color .12s,border-color .12s}
+.app-shell .icon-picker button:hover,.app-shell .icon-picker button:focus-visible{transform:translateY(-2px);color:var(--text);background:color-mix(in srgb,var(--n1) 12%,var(--surface-soft));border-color:color-mix(in srgb,var(--n1) 45%,var(--border))}
+.app-shell .icon-picker button.selected{color:var(--n1);border-color:var(--n1);background:color-mix(in srgb,var(--n1) 14%,var(--surface-soft))}
+.app-shell .habit-color-field button{transition:transform .12s,border-color .12s}
+.app-shell .habit-color-field button:hover,.app-shell .habit-color-field button:focus-visible{transform:scale(1.15);border-color:var(--text)}
+@media(max-width:460px){.app-shell .icon-picker{grid-template-columns:repeat(6,1fr)}}
+
+/* ---------- phone + tablet layout refinement ---------- */
+.app-shell,.app-shell *{min-width:0}
+.app-shell img,.app-shell svg{flex-shrink:0}
+.app-shell .panel-heading>div,.app-shell .module-title-row>div,.app-shell .welcome-row>div{min-width:0}
+.app-shell .panel-heading h3,.app-shell .panel-heading p,.app-shell .subtitle{overflow-wrap:anywhere}
+.app-shell .macro-chart,.app-shell .burn-chart,.app-shell .weight-feature-chart{min-width:0}
+.app-shell .primary-btn,.app-shell .secondary-btn,.app-shell .planner-complete-btn,.app-shell .workout-completion,.app-shell .compact-action{line-height:1.35;white-space:normal;text-align:center}
+
+@media(max-width:1024px){
+  .app-shell .content-wrap{padding-left:clamp(20px,3.5vw,34px);padding-right:clamp(20px,3.5vw,34px)}
+  .app-shell .topbar{padding-left:clamp(20px,3.5vw,34px);padding-right:clamp(20px,3.5vw,34px)}
+  .app-shell .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .dashboard-feature-grid,.app-shell .dashboard-planner-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .history-layout{grid-template-columns:minmax(250px,.8fr) minmax(0,1.2fr)}
+}
+
+@media(max-width:900px){
+  .app-shell .sidebar{display:none}
+  .app-shell .sidebar.mobile-open{display:flex;position:fixed;inset:0 auto 0 0;width:min(310px,86vw);z-index:13;padding-top:20px;box-shadow:20px 0 70px rgba(0,0,0,.35);animation:drawer-in .2s ease-out}
+  .app-shell .sidebar.mobile-open .drawer-close{display:grid;place-items:center}
+  .app-shell .sidebar.mobile-open .brand{padding-bottom:25px}
+  .app-shell .drawer-scrim{display:block}
+  .app-shell .main-area{margin-left:0;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .app-shell .mobile-menu{display:grid;place-items:center;width:38px;height:38px;border:0;background:none;color:var(--muted);margin:0 8px 0 -7px}
+  .app-shell .mobile-nav{display:flex;position:fixed;z-index:8;bottom:0;left:0;right:0;height:calc(64px + env(safe-area-inset-bottom));padding:5px 10px calc(5px + env(safe-area-inset-bottom));justify-content:space-around;align-items:center;background:color-mix(in srgb,var(--surface) 94%,transparent);border-top:1px solid var(--border);backdrop-filter:blur(18px)}
+  .app-shell .mobile-nav button{width:18%;min-height:48px;background:none;border:0;color:var(--subtle);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+  .app-shell .mobile-nav button span{font-size:10px;line-height:1.15}
+  .app-shell .mobile-nav button.active{color:var(--text)}
+  .app-shell .mobile-nav button.active svg{color:var(--accent)}
+  .app-shell .mobile-nav .mobile-add{height:44px;width:44px;min-height:44px;border-radius:15px;background:var(--accent);color:#181411;box-shadow:0 5px 18px color-mix(in srgb,var(--accent) 24%,transparent);margin-top:-12px}
+  .app-shell .mobile-nav .mobile-add svg{color:inherit}
+  .app-shell .history-layout{grid-template-columns:1fr}
+  .app-shell .history-calendar{position:static}
+}
+
+@media(max-width:760px){
+  .app-shell .content-wrap{padding:clamp(18px,4vw,26px) clamp(14px,4vw,22px) 20px}
+  .app-shell .topbar{height:58px;padding:0 clamp(14px,4vw,22px)}
+  .app-shell .welcome-row{gap:12px;align-items:flex-start}
+  .app-shell .welcome-row h1,.app-shell .module-title-row h1{font-size:clamp(21px,5vw,26px);line-height:1.18}
+  .app-shell .welcome-row .subtitle{max-width:42ch;font-size:12px;line-height:1.5}
+  .app-shell .module-title-row{gap:12px}
+  .app-shell .module-title-row>.primary-btn{width:auto;height:auto;min-height:42px;padding:10px 13px;font-size:12px;white-space:nowrap}
+  .app-shell .primary-btn,.app-shell .secondary-btn,.app-shell .planner-complete-btn,.app-shell .workout-completion,.app-shell .compact-action{min-height:40px;padding:9px 12px;font-size:12px;gap:7px}
+  .app-shell .icon-btn,.app-shell .small-btn{width:40px;height:40px;min-width:40px}
+  .app-shell .text-btn,.app-shell .tiny-link,.app-shell .calendar-link,.app-shell .add-habit{min-height:36px;font-size:11px;line-height:1.35}
+  .app-shell .section-heading{gap:10px;align-items:center}
+  .app-shell .section-heading h2{font-size:16px}
+  .app-shell .stats-grid{gap:10px}
+  .app-shell .stat-card{min-height:140px;padding:12px}
+  .app-shell .stat-head{font-size:11px;gap:6px}
+  .app-shell .stat-value{font-size:clamp(20px,5vw,24px);line-height:1.2}
+  .app-shell .stat-sub{font-size:10px;line-height:1.4;overflow-wrap:anywhere}
+  .app-shell .macro-line{font-size:9px;white-space:normal;flex-wrap:wrap;align-items:center}
+  .app-shell .macro-line .tiny-link{font-size:10px}
+  .app-shell .dashboard-feature-grid,.app-shell .dashboard-planner-grid{grid-template-columns:1fr;gap:10px}
+  .app-shell .lower-grid{grid-template-columns:1fr}
+  .app-shell .dashboard-macro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .panel{padding:clamp(13px,3.5vw,17px)}
+  .app-shell .panel-heading{gap:10px;align-items:center}
+  .app-shell .panel-heading p{font-size:10px;line-height:1.4}
+  .app-shell .dashboard-foods>div{gap:5px;align-items:flex-start}
+  .app-shell .dashboard-foods span,.app-shell .dashboard-foods small{overflow-wrap:anywhere}
+  .app-shell .nutrition-summary{padding:15px;gap:12px}
+  .app-shell .macro-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:7px}
+  .app-shell .macro-cards span{min-width:0;padding:9px 7px;font-size:10px;overflow-wrap:anywhere}
+  .app-shell .macro-cards b{font-size:14px}
+  .app-shell .date-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .app-shell .date-toolbar label{display:flex;flex-wrap:wrap;gap:7px;align-items:center;font-size:11px}
+  .app-shell .date-toolbar input{max-width:100%;height:40px}
+  .app-shell .nutrition-inputs{grid-template-columns:1fr 1fr;gap:8px}
+  .app-shell .food-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:9px}
+  .app-shell .food-row>div{min-width:0}
+  .app-shell .food-row>strong{margin:0;white-space:nowrap}
+  .app-shell .food-row>.secondary-btn{grid-column:2/-1;justify-self:start;min-height:36px}
+  .app-shell .energy-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .app-shell .energy-summary-card{padding:12px}
+  .app-shell .energy-summary-card>b{font-size:clamp(16px,4vw,21px)}
+  .app-shell .energy-breakdown>div{gap:10px}
+  .app-shell .energy-breakdown>div span{min-width:0;overflow-wrap:anywhere}
+  .app-shell .energy-breakdown>div b{white-space:nowrap}
+  .app-shell .burn-entry-field input{width:100%;max-width:none;height:44px}
+  .app-shell .habit-bulk-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .habit-day-picker{gap:4px}
+  .app-shell .habit-day-picker button{min-height:40px;height:auto}
+  .app-shell .history-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .history-actions button{flex:1 1 130px}
+  .app-shell .calorie-day-row{grid-template-columns:1fr 1fr;gap:5px 10px}
+  .app-shell .calorie-day-row>*{font-size:10px}
+  .app-shell .exercise-card{flex-wrap:wrap;gap:9px}
+  .app-shell .exercise-main{flex:1 1 calc(100% - 55px);min-width:0}
+  .app-shell .exercise-preview{width:100%!important;height:auto!important;max-height:200px!important;flex:1 1 100%!important}
+  .app-shell .exercise-preview img{object-fit:contain!important}
+  .app-shell .exercise-card>.workout-completion{margin-left:0}
+  .app-shell .set-tracker{padding:8px 5px 12px}
+  .app-shell .set-input-row{flex-wrap:wrap;gap:8px}
+  .app-shell .set-input-row label{font-size:10px}
+  .app-shell .set-input-row input{width:75px;height:36px;font-size:12px}
+  .app-shell .planner-event{align-items:flex-start}
+  .app-shell .planner-event .event-info{min-width:calc(100% - 55px)}
+  .app-shell .planner-event .planner-complete-btn{margin-left:44px}
+  .app-shell .coach-result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-shell .dialog-actions{flex-wrap:wrap}
+  .app-shell .dialog-actions>*{flex:1 1 130px;justify-content:center}
+  .app-shell .history-record-row{min-width:0}
+  .app-shell .history-record-row>b{overflow-wrap:anywhere}
+}
+
+@media(max-width:420px){
+  .app-shell .content-wrap{padding-left:13px;padding-right:13px}
+  .app-shell .welcome-row{gap:8px}
+  .app-shell .welcome-row h1{font-size:21px}
+  .app-shell .welcome-row .subtitle{font-size:11px}
+  .app-shell .welcome-row>.primary-btn{width:40px;height:40px;min-height:40px;padding:0;font-size:0}
+  .app-shell .stats-grid{grid-template-columns:1fr 1fr;gap:7px}
+  .app-shell .stat-card{padding:10px;min-height:132px}
+  .app-shell .stat-head{font-size:10px}
+  .app-shell .stat-value{font-size:19px}
+  .app-shell .stat-sub{font-size:9px}
+  .app-shell .habit-row{gap:8px}
+  .app-shell .macro-cards{gap:5px}
+  .app-shell .macro-cards span{font-size:9px;padding:8px 5px}
+  .app-shell .macro-cards b{font-size:12px}
+  .app-shell .energy-summary-grid{grid-template-columns:1fr}
+  .app-shell .history-summary-grid{grid-template-columns:1fr 1fr}
+  .app-shell .history-summary-card{padding:10px}
+  .app-shell .history-summary-card>b{font-size:16px}
+  .app-shell .history-day{font-size:11px}
+  .app-shell .history-calendar-grid,.app-shell .history-weekdays{gap:2px}
+  .app-shell .nutrition-inputs{grid-template-columns:1fr}
+  .app-shell .mobile-nav{padding-left:4px;padding-right:4px}
+  .app-shell .mobile-nav button span{font-size:9px}
+  .app-shell .mobile-nav button{width:19%}
+}
+
+@media(max-width:350px){
+  .app-shell .stats-grid,.app-shell .dashboard-macro-grid{grid-template-columns:1fr}
+  .app-shell .macro-cards{grid-template-columns:1fr 1fr 1fr}
+  .app-shell .mobile-menu{margin-right:3px}
+  .app-shell .crumb{font-size:9px}
+  .app-shell .top-avatar{display:none}
+}
+
+/* ---------- 60-day face care guide ---------- */
+.app-shell .dashboard-face-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:17px;margin-top:14px;padding:17px 19px;background:linear-gradient(110deg,color-mix(in srgb,var(--n3) 9%,var(--g-bg)),var(--g-bg-soft));border-color:color-mix(in srgb,var(--n3) 24%,var(--g-line))}
+.app-shell .dashboard-face-art{width:72px;height:72px;display:grid;place-items:center;align-content:center;gap:3px;border:1px solid color-mix(in srgb,var(--n3) 34%,var(--g-line));border-radius:21px;color:var(--n3);background:color-mix(in srgb,var(--n3) 13%,var(--g-bg));transform:rotate(-3deg)}
+.app-shell .dashboard-face-art small{font-size:7px;line-height:1.2;text-align:center;letter-spacing:.1em}
+.app-shell .dashboard-face-copy h3{margin:6px 0 4px;font:650 15px Manrope;letter-spacing:-.025em}
+.app-shell .dashboard-face-copy p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.app-shell .dashboard-face-copy .bar-track{max-width:500px;margin-top:9px}
+.app-shell .dashboard-face-card>.secondary-btn{white-space:nowrap}
+.app-shell .face-routine-page{display:grid;gap:13px}
+.app-shell .face-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px;background:linear-gradient(115deg,color-mix(in srgb,var(--n3) 12%,var(--g-bg)),var(--g-bg-soft) 65%);border-color:color-mix(in srgb,var(--n3) 27%,var(--g-line));overflow:hidden}
+.app-shell .face-hero-mark{width:58px;height:58px;display:grid;place-items:center;border-radius:19px;color:var(--n3);background:color-mix(in srgb,var(--n3) 15%,var(--g-bg));border:1px solid color-mix(in srgb,var(--n3) 24%,var(--g-line))}
+.app-shell .face-hero-main h2{margin:5px 0;font:700 28px Manrope;letter-spacing:-.05em}
+.app-shell .face-hero-main h2 small{font:500 13px 'DM Sans';color:var(--muted);letter-spacing:0}
+.app-shell .face-hero-main p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.app-shell .face-hero-main .bar-track{max-width:460px;margin-top:10px}
+.app-shell .face-hero-note{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--n1) 23%,var(--g-line));border-radius:12px;color:var(--n1);background:color-mix(in srgb,var(--n1) 7%,var(--g-bg));font-size:9px;line-height:1.5}
+.app-shell .face-hero-note span{color:var(--muted)}
+.app-shell .face-hero-note b{color:var(--text)}
+.app-shell .face-date-panel{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;padding:12px 15px}
+.app-shell .face-date-panel .field-label{flex:1 1 180px;margin:0;font-size:9px}
+.app-shell .face-date-panel input{display:block;width:100%;height:38px;margin-top:5px;padding:0 9px;border:1px solid var(--g-line);border-radius:9px;background:var(--g-bg);color:var(--text);font:11px 'DM Sans'}
+.app-shell .face-date-panel>.tiny-link{margin-bottom:1px}
+.app-shell .face-routine-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-routine-panel{margin:0;padding:16px}
+.app-shell .face-routine-panel .panel-heading{align-items:center}
+.app-shell .face-routine-panel .panel-heading h3{margin:5px 0 3px;font-size:14px}
+.app-shell .face-routine-panel .panel-heading p{font-size:9px;line-height:1.4}
+.app-shell .face-routine-count{display:grid;place-items:center;min-width:40px;height:40px;padding:0 7px;border:1px solid var(--g-line);border-radius:13px;color:var(--n1);background:var(--g-bg-soft);font:650 11px Manrope}
+.app-shell .face-step-list{display:grid;gap:7px;margin-top:11px}
+.app-shell .face-step{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px;border:1px solid var(--g-line);border-radius:11px;text-align:left;color:var(--text);background:color-mix(in srgb,var(--g-bg-soft) 72%,transparent);transition:background .15s,border-color .15s,transform .15s}
+.app-shell .face-step:hover{border-color:color-mix(in srgb,var(--n1) 38%,var(--g-line));background:color-mix(in srgb,var(--n1) 6%,var(--g-bg-soft));transform:translateY(-1px)}
+.app-shell .face-step>.check-circle{flex:0 0 19px;margin-top:1px;width:19px;height:19px}
+.app-shell .face-step-copy{display:grid;gap:4px;min-width:0}
+.app-shell .face-step-copy strong{font-size:10px;line-height:1.4}
+.app-shell .face-step-copy small{color:var(--muted);font-size:9px;line-height:1.5}
+.app-shell .face-step.is-done .face-step-copy strong{color:var(--n1)}
+.app-shell .face-month-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-month-card{padding:17px}
+.app-shell .face-month-card.current{border-color:color-mix(in srgb,var(--n1) 42%,var(--g-line));box-shadow:0 0 0 1px color-mix(in srgb,var(--n1) 10%,transparent)}
+.app-shell .face-month-card h3{margin:7px 0;font:650 16px Manrope;letter-spacing:-.025em}
+.app-shell .face-month-card>p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}
+.app-shell .face-month-card ul{display:grid;gap:8px;margin:13px 0 0;padding-left:17px;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-month-card li::marker{color:var(--n1)}
+.app-shell .face-month-card li b{color:var(--text)}
+.app-shell .face-info-panel{padding:18px}
+.app-shell .face-info-panel .panel-heading>svg{color:var(--n3)}
+.app-shell .face-info-panel .panel-heading h3{font-size:15px;margin:5px 0}
+.app-shell .face-info-panel .panel-heading p{font-size:9px}
+.app-shell .face-benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.app-shell .face-benefit-grid article{display:grid;align-content:start;gap:7px;padding:12px;border:1px solid var(--g-line);border-radius:11px;background:var(--g-bg-soft)}
+.app-shell .face-benefit-grid article>svg{color:var(--n1)}
+.app-shell .face-benefit-grid article>b{font-size:10px}
+.app-shell .face-benefit-grid article>p{margin:0;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-safety-note{display:flex;align-items:flex-start;gap:11px;padding:14px 16px;border:1px solid color-mix(in srgb,#efb26e 28%,var(--g-line));border-radius:13px;color:#efb26e;background:color-mix(in srgb,#efb26e 7%,var(--g-bg-soft))}
+.app-shell .face-safety-note>svg{flex:0 0 auto;margin-top:1px}
+.app-shell .face-safety-note b{font-size:10px}
+.app-shell .face-safety-note p{margin:5px 0 0;color:var(--muted);font-size:9px;line-height:1.6}
+.app-shell .face-optional-note{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;border:1px solid color-mix(in srgb,var(--n2) 25%,var(--g-line));border-radius:11px;background:color-mix(in srgb,var(--n2) 6%,var(--g-bg-soft));color:var(--n2)}
+.app-shell .face-optional-note>svg{flex:0 0 auto;margin-top:1px}
+.app-shell .face-optional-note p{margin:0;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-optional-note b{color:var(--text)}
+.app-shell .face-routine-page>.module-disclaimer{margin:0;line-height:1.6}
+@media(max-width:900px){.app-shell .face-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.app-shell .dashboard-face-card{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:14px}.app-shell .dashboard-face-art{width:58px;height:58px;border-radius:17px}.app-shell .dashboard-face-copy h3{font-size:14px}.app-shell .dashboard-face-copy p{font-size:9px}.app-shell .dashboard-face-card>.secondary-btn{grid-column:1/-1;width:100%}.app-shell .face-hero{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:16px}.app-shell .face-hero-mark{width:48px;height:48px;border-radius:15px}.app-shell .face-hero-main h2{font-size:24px}.app-shell .face-hero-note{grid-column:1/-1;justify-content:center}.app-shell .face-routine-columns,.app-shell .face-month-grid{grid-template-columns:1fr}.app-shell .face-date-panel{align-items:stretch}.app-shell .face-date-panel .field-label{flex-basis:calc(50% - 8px)}.app-shell .face-date-panel>.tiny-link{width:100%;justify-content:center}}
+@media(max-width:420px){.app-shell .face-date-panel .field-label{flex-basis:100%}.app-shell .face-benefit-grid{grid-template-columns:1fr 1fr}.app-shell .face-benefit-grid article{padding:10px}.app-shell .face-hero-main p{font-size:9px}.app-shell .face-step{padding:9px}.app-shell .face-step-copy strong{font-size:10px}.app-shell .face-step-copy small{font-size:8px}}
+.app-shell .dashboard-face-card{grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:17px}
+.app-shell .dashboard-face-top{grid-column:1/-1;display:flex;align-items:center;gap:13px}
+.app-shell .dashboard-face-art{width:50px;height:50px;flex:0 0 50px;border-radius:16px}
+.app-shell .dashboard-face-copy{flex:1;min-width:0}
+.app-shell .dashboard-face-copy h3{margin:4px 0}
+.app-shell .face-dashboard-routines{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.app-shell .face-dashboard-routine{min-width:0;padding:11px;border:1px solid var(--g-line);border-radius:12px;background:var(--g-bg-soft)}
+.app-shell .face-dashboard-routine-title{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:7px;margin-bottom:4px;border-bottom:1px solid var(--g-line)}
+.app-shell .face-dashboard-routine-title b{font-size:11px}
+.app-shell .face-dashboard-routine-title small{color:var(--muted);font-size:9px;white-space:nowrap}
+.app-shell .face-dashboard-step{display:grid;grid-template-columns:20px minmax(0,1fr) 17px;align-items:center;gap:7px;width:100%;min-height:34px;padding:5px 2px;border:0;border-bottom:1px solid color-mix(in srgb,var(--g-line) 65%,transparent);text-align:left;background:transparent;color:var(--muted)}
+.app-shell .face-dashboard-step:last-child{border-bottom:0}
+.app-shell .face-dashboard-step>span{display:grid;place-items:center;width:18px;height:18px;border-radius:6px;background:color-mix(in srgb,var(--n3) 12%,var(--g-bg));color:var(--n3);font:600 9px Manrope}
+.app-shell .face-dashboard-step>strong{font-size:9px;font-weight:550;line-height:1.35}
+.app-shell .face-dashboard-step>.check-circle{width:16px;height:16px}
+.app-shell .face-dashboard-step.is-done>strong{color:var(--n1)}
+.app-shell .dashboard-face-open{grid-column:1/-1;justify-self:start}
+@media(max-width:760px){.app-shell .dashboard-face-card{grid-template-columns:1fr;padding:13px}.app-shell .dashboard-face-top,.app-shell .face-dashboard-routines,.app-shell .dashboard-face-open{grid-column:1}.app-shell .face-dashboard-routines{grid-template-columns:1fr}.app-shell .dashboard-face-open{width:100%;justify-content:center}}
+.app-shell .face-routine-page{gap:16px;font-size:14px}
+.app-shell .face-routine-page .eyebrow,.app-shell .dashboard-face-card .eyebrow{font-size:11px;letter-spacing:.1em}
+.app-shell .face-hero-main h2{font-size:30px}
+.app-shell .face-hero-main p{font-size:13px;line-height:1.6}
+.app-shell .face-hero-note{font-size:12px}
+.app-shell .face-week-panel,.app-shell .face-month-table-panel{padding:20px}
+.app-shell .face-week-panel .panel-heading h3,.app-shell .face-month-table-panel .panel-heading h3{font-size:18px;margin:6px 0}
+.app-shell .face-week-panel .panel-heading p,.app-shell .face-month-table-panel .panel-heading p{font-size:12px;line-height:1.5}
+.app-shell .face-table-scroll{width:100%;overflow-x:auto;border:1px solid var(--g-line);border-radius:12px;overscroll-behavior-x:contain}
+.app-shell .face-week-table,.app-shell .face-month-table{width:100%;border-collapse:collapse;text-align:left}
+.app-shell .face-week-table{min-width:850px}
+.app-shell .face-month-table{min-width:800px}
+.app-shell .face-week-table th,.app-shell .face-week-table td,.app-shell .face-month-table th,.app-shell .face-month-table td{padding:12px;border-bottom:1px solid var(--g-line);vertical-align:top;font-size:12px;line-height:1.5}
+.app-shell .face-week-table thead th,.app-shell .face-month-table thead th{position:sticky;top:0;z-index:1;color:var(--muted);background:var(--g-bg-soft);font-size:11px;font-weight:700;letter-spacing:.04em}
+.app-shell .face-week-table tbody tr:last-child th,.app-shell .face-week-table tbody tr:last-child td,.app-shell .face-month-table tbody tr:last-child th,.app-shell .face-month-table tbody tr:last-child td{border-bottom:0}
+.app-shell .face-week-table tbody th,.app-shell .face-month-table tbody th{width:120px;color:var(--text);font-size:13px;font-weight:700}
+.app-shell .face-week-table tbody th small,.app-shell .face-month-table tbody th small{display:block;margin-top:4px;color:var(--n1);font-size:11px;font-weight:600}
+.app-shell .face-week-table tbody tr.is-today{background:color-mix(in srgb,var(--n1) 7%,var(--g-bg))}
+.app-shell .face-month-table tbody tr.current{background:color-mix(in srgb,var(--n1) 7%,var(--g-bg))}
+.app-shell .face-week-table tbody tr.is-today>th{box-shadow:inset 3px 0 var(--n1)}
+.app-shell .face-table-steps{display:grid;gap:5px;min-width:340px;margin:0;padding:0;list-style:none;counter-reset:none}
+.app-shell .face-table-steps li{margin:0}
+.app-shell .face-table-check,.app-shell .face-table-static{display:grid;grid-template-columns:25px minmax(0,1fr) 18px;align-items:start;gap:8px;width:100%;padding:7px 6px;border:1px solid transparent;border-radius:9px;text-align:left;color:var(--text);background:transparent}
+.app-shell .face-table-check{cursor:pointer}
+.app-shell .face-table-check:hover{border-color:color-mix(in srgb,var(--n1) 30%,var(--g-line));background:color-mix(in srgb,var(--n1) 6%,var(--g-bg-soft))}
+.app-shell .face-table-number{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;color:var(--n2);background:color-mix(in srgb,var(--n2) 12%,var(--g-bg));font-size:11px;font-weight:700}
+.app-shell .face-table-static{grid-template-columns:25px minmax(0,1fr);align-items:center;padding:5px 4px}
+.app-shell .face-table-static b{font-size:12px;font-weight:600;line-height:1.4}
+.app-shell .face-table-step-copy{display:grid;gap:3px;min-width:0}
+.app-shell .face-table-step-copy b{font-size:12px;line-height:1.4}
+.app-shell .face-table-step-copy small{color:var(--muted);font-size:11px;line-height:1.45}
+.app-shell .face-table-check>.check-circle{width:18px;height:18px}
+.app-shell .face-table-check.is-done .face-table-step-copy b{color:var(--n1)}
+.app-shell .face-month-table td{min-width:190px;color:var(--muted);font-size:12px}
+.app-shell .face-info-panel .panel-heading h3{font-size:18px}
+.app-shell .face-info-panel .panel-heading p{font-size:12px}
+.app-shell .face-benefit-grid article{padding:15px}
+.app-shell .face-benefit-grid article>b{font-size:13px}
+.app-shell .face-benefit-grid article>p,.app-shell .face-safety-note p,.app-shell .face-optional-note p{font-size:12px;line-height:1.6}
+.app-shell .face-safety-note b,.app-shell .face-optional-note b{font-size:13px}
+.app-shell .dashboard-face-copy h3{font-size:17px}
+.app-shell .dashboard-face-copy p{font-size:12px}
+.app-shell .face-dashboard-routine-title b{font-size:13px}
+.app-shell .face-dashboard-routine-title small{font-size:11px}
+.app-shell .face-dashboard-step{grid-template-columns:23px minmax(0,1fr) 18px;min-height:40px;gap:8px}
+.app-shell .face-dashboard-step>span{width:21px;height:21px;font-size:11px}
+.app-shell .face-dashboard-step>strong{font-size:12px;line-height:1.45}
+.app-shell .face-dashboard-step>.check-circle{width:18px;height:18px}
+.app-shell .dashboard-face-open{font-size:12px}
+.app-shell .face-care-zones .panel-heading h3{margin:6px 0;font:650 18px Manrope}
+.app-shell .face-care-zones .panel-heading p{font-size:12px;line-height:1.5}
+.app-shell .face-zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-zone-grid article{padding:15px;border:1px solid var(--g-line);border-radius:12px;background:var(--g-bg-soft)}
+.app-shell .face-zone-grid article>b{font-size:14px}
+.app-shell .face-zone-grid article>p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:760px){.app-shell .face-week-table,.app-shell .face-month-table{min-width:820px}.app-shell .face-week-panel,.app-shell .face-month-table-panel{padding:15px}.app-shell .face-benefit-grid article{padding:12px}.app-shell .face-benefit-grid article>p,.app-shell .face-safety-note p,.app-shell .face-optional-note p{font-size:12px}}
+@media(max-width:620px){.app-shell .face-zone-grid{grid-template-columns:1fr}}
+
+/* Workout page readability and weekday layout */
+.dashboard-feature-grid{grid-template-columns:1fr}
+
+.workout-planner .panel-heading h3{font-size:18px}.workout-planner .panel-heading p{font-size:13px;line-height:1.5}.workout-planner .weekday-strip{grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.workout-planner .weekday{min-height:64px;padding:8px 4px}.workout-planner .weekday small{font-size:11px;letter-spacing:.04em}.workout-planner .weekday b{font:600 14px 'DM Sans'}.workout-planner .exercise-main>b{font-size:15px}.workout-planner .exercise-main>small{font-size:12px;line-height:1.5}.workout-planner .set-tracker-title{font-size:11px}.workout-planner .set-input-row>b{font-size:12px}.workout-planner .set-input-row label{font-size:11px}.workout-planner .set-input-row input{font-size:12px}.workout-planner .primary-btn,.workout-planner .secondary-btn{font-size:12px}.workout-planner .exercise-preview{width:210px!important;height:155px!important;flex-basis:210px!important}
+@media(max-width:760px){.workout-planner .weekday-strip{gap:4px}.workout-planner .weekday{min-height:55px}.workout-planner .weekday small{font-size:10px}.workout-planner .weekday b{font-size:12px}.workout-planner .exercise-preview{width:170px!important;height:130px!important;flex-basis:170px!important}.workout-planner .exercise-card{flex-wrap:wrap}.workout-planner .workout-completion{font-size:11px}}
+.face-month-switch{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.face-month-switch button{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:7px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-soft);color:var(--muted);font:600 12px 'DM Sans';white-space:nowrap}.face-month-switch button.selected{border-color:color-mix(in srgb,var(--accent) 55%,var(--border));background:color-mix(in srgb,var(--accent) 13%,var(--surface));color:var(--accent)}.face-month-switch button small{font-size:10px;color:var(--lime)}.face-hero-note{min-width:200px}.dashboard-face-top{align-items:center}.dashboard-face-top>.face-month-switch{margin-left:auto}@media(max-width:760px){.dashboard-face-top{flex-wrap:wrap}.dashboard-face-top>.face-month-switch{margin:8px 0 0;width:100%}.face-hero-note{min-width:0;flex-wrap:wrap}}
+.app-shell .dashboard-feature-grid{grid-template-columns:1fr}
+
+/* Dashboard energy and workout summaries */
+.dashboard-energy-chart{height:132px;margin:12px 0 5px;padding:10px 7px 3px;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}
+.dashboard-chart-label{display:flex;justify-content:space-between;gap:10px;padding:0 5px 4px;color:var(--text);font-size:11px;font-weight:650}
+.dashboard-chart-label small{color:var(--muted);font-size:10px;font-weight:400}
+.dashboard-workout{margin:14px 0 0}
+.dashboard-workout-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px;margin-top:12px}
+.dashboard-workout-item{display:flex;align-items:center;gap:10px;min-width:0;padding:12px;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}
+.dashboard-workout-info{display:grid;gap:4px;min-width:0;flex:1}
+.dashboard-workout-info strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.dashboard-workout-info>span{color:var(--muted);font-size:12px}
+.dashboard-workout-info>span i{font-style:normal;color:var(--subtle)}
+.workout-focus-chip{display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:5px 8px;border:1px solid color-mix(in srgb,var(--violet) 35%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--violet) 10%,var(--surface));color:var(--violet);font-size:11px;font-weight:650;line-height:1.2}
+.workout-focus-chip.muted{color:var(--muted);border-color:var(--border);background:var(--surface-soft);font-weight:450}
+.workout-day-heading{align-items:flex-start}
+.workout-day-copy{display:grid;gap:5px}
+.workout-focus-tags{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:5px}
+.workout-focus-tags>small{margin-right:3px;color:var(--muted);font-size:11px}
+.workout-planner .exercise-card{gap:14px;padding:16px 12px;border:1px solid var(--border);border-radius:14px;background:var(--surface-soft)}
+.workout-planner .exercise-number{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent);font:700 13px Manrope}
+.workout-planner .exercise-main{display:grid;align-content:center;justify-items:start;gap:8px;min-width:190px;flex:1}
+.workout-planner .exercise-main>b{font:700 18px Manrope;line-height:1.3;color:var(--text)}
+.workout-targets,.exercise-targets{display:flex;flex-wrap:wrap;gap:7px}
+.exercise-targets>span{padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--muted);font-size:12px}
+.exercise-targets strong{color:var(--text);font-size:14px}
+@media(max-width:760px){.dashboard-energy-chart{height:126px}.dashboard-workout-list{grid-template-columns:1fr}.dashboard-workout-info strong{font-size:14px}.workout-day-heading{gap:12px}.workout-planner .exercise-card{padding:13px 10px}.workout-planner .exercise-main{min-width:150px}.workout-planner .exercise-main>b{font-size:17px}.exercise-targets>span{font-size:11px}}
+
+
+
+/* ===== Workout page v2 ===== */
+.wk{display:grid;gap:16px}
+.wk .panel{padding:20px}
+.wk-week-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px}
+.wk-week-head h3{margin:6px 0 0;font:700 20px Manrope,sans-serif;letter-spacing:-.03em}
+.wk-tabs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
+.wk-tab{position:relative;display:grid;justify-items:center;gap:5px;padding:14px 4px 12px;border:1px solid var(--border);border-radius:14px;background:var(--surface-soft);color:var(--muted);transition:transform .15s,border-color .15s,background .15s}
+.wk-tab:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 40%,var(--border))}
+.wk-tab b{font:700 17px Manrope,sans-serif;color:var(--text)}
+.wk-tab span{font-size:13px}
+.wk-tab i{width:20px;height:4px;border-radius:9px;background:var(--c,var(--accent))}
+.wk-tab i.empty{background:var(--border)}
+.wk-tab em{position:absolute;top:-8px;font:700 9px 'DM Sans';font-style:normal;letter-spacing:.1em;padding:3px 7px;border-radius:99px;background:var(--accent);color:#06231c}
+.wk-tab.selected{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 13%,var(--surface));box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent)}
+.wk-tab.selected b,.wk-tab.selected span{color:var(--accent)}
+
+.wk-day-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.wk-day-title h2{margin:8px 0 10px;font:700 30px Manrope,sans-serif;letter-spacing:-.05em}
+.wk-tags{display:flex;flex-wrap:wrap;gap:7px}
+.wk-chip{--c:var(--accent);display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:6px 11px;border:1px solid color-mix(in srgb,var(--c) 45%,var(--border));border-radius:99px;background:color-mix(in srgb,var(--c) 12%,transparent);color:var(--c);font:600 13px 'DM Sans';line-height:1.2}
+.wk-chip.muted{color:var(--muted);border-color:var(--border);background:var(--surface-soft);font-weight:500}
+.wk-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}
+.wk-stats>div{padding:13px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft)}
+.wk-stats small{display:block;font-size:10px;letter-spacing:.09em;color:var(--muted)}
+.wk-stats b{display:block;margin-top:6px;font:700 24px Manrope,sans-serif}
+.wk-stats b span{font:500 13px 'DM Sans';color:var(--muted)}
+
+.wk-list{display:grid;gap:16px;margin-top:6px}
+.wk-card{display:grid;gap:14px;padding:18px;border:1px solid var(--border);border-radius:18px;background:var(--surface-soft)}
+.wk-card.is-done{border-color:color-mix(in srgb,var(--lime) 45%,var(--border));background:color-mix(in srgb,var(--lime) 5%,var(--surface-soft))}
+.wk-card-head{display:flex;align-items:flex-start;gap:13px}
+.wk-num{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:12px;background:color-mix(in srgb,var(--accent) 15%,var(--surface));color:var(--accent);font:700 15px Manrope,sans-serif}
+.wk-title{flex:1;min-width:0}
+.wk-title h4{margin:0 0 8px;font:700 20px Manrope,sans-serif;letter-spacing:-.03em;line-height:1.25;overflow-wrap:anywhere}
+.wk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.wk-target{font-size:14px;color:var(--muted)}
+.wk-target b{color:var(--text);font-size:15px}
+.wk-icons{display:flex;gap:6px}
+.wk-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--muted)}
+.wk-icon:hover{color:var(--text);border-color:var(--accent)}
+.wk-icon.danger:hover{color:#ef6a5e;border-color:#ef6a5e}
+.wk-icon.sm{width:30px;height:30px;border-radius:8px}
+.wk-progress{display:flex;align-items:center;gap:12px}
+.wk-progress .bar-track{flex:1;margin:0}
+.wk-progress small{font-size:12px;color:var(--muted);white-space:nowrap}
+
+.wk-demo-block{display:grid;gap:8px}
+.wk-demo-toggle{justify-self:start;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--muted);font-size:13px}
+.wk-demo{position:relative;display:block;width:100%;aspect-ratio:16/10;max-height:400px;padding:0;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--background);cursor:zoom-in}
+.wk-demo img{width:100%;height:100%;object-fit:contain;display:block}
+.wk-demo span{position:absolute;right:10px;bottom:10px;padding:5px 10px;border-radius:99px;background:rgba(0,0,0,.6);color:#fff;font-size:12px}
+.wk-demo.static{cursor:default;margin:6px 0 12px}
+.wk-guide-link{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-size:14px;text-decoration:none}
+.wk-guide-link:hover{text-decoration:underline}
+
+.wk-sets{display:grid;gap:8px}
+.wk-set-head,.wk-set{display:grid;grid-template-columns:76px 1fr 1fr 84px;gap:10px;align-items:center}
+.wk-set-head span{font-size:11px;letter-spacing:.1em;color:var(--subtle)}
+.wk-set{padding:8px 10px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.wk-set.is-done{border-color:color-mix(in srgb,var(--lime) 40%,var(--border));background:color-mix(in srgb,var(--lime) 7%,var(--surface))}
+.wk-set-n{display:flex;align-items:center;gap:6px;font:700 15px Manrope,sans-serif}
+.wk-set-n em{font:600 10px 'DM Sans';font-style:normal;padding:2px 6px;border-radius:99px;background:color-mix(in srgb,var(--violet) 18%,transparent);color:var(--violet)}
+.wk-set input{width:100%;height:44px;padding:0 12px;border:1px solid var(--border);border-radius:10px;background:var(--background);color:var(--text);font-size:16px}
+.wk-set input:focus{outline:none;border-color:var(--accent)}
+.wk-set-end{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.wk-set-end .check-circle{width:28px;height:28px;cursor:pointer;background:transparent}
+.wk-set-end .check-circle.checked{background:linear-gradient(135deg,var(--lime),var(--accent))}
+.wk-card-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.wk-card-foot .secondary-btn{min-height:42px;padding:9px 14px;font-size:14px}
+.wk-card-foot .workout-completion{flex:1 1 200px;justify-content:center}
+
+.wk-dialog{width:min(580px,calc(100% - 24px))}
+.wk-dialog .field-label{font-size:13px}
+.wk-dialog .field-label input{height:44px;font-size:14px}
+.wk-chip-picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.wk-chip.pick{cursor:pointer;padding:8px 13px;font-size:14px;transition:transform .12s,background .12s}
+.wk-chip.pick:hover{transform:translateY(-2px)}
+.wk-chip.pick.selected{background:var(--c);color:#06231c;border-color:var(--c);box-shadow:0 4px 14px color-mix(in srgb,var(--c) 35%,transparent)}
+.wk-chip.pick.custom{--c:var(--violet);border-style:dashed}
+.wk-custom-input{margin-top:10px}
+
+.wk-lightbox{position:fixed;z-index:12;inset:0;margin:auto;width:min(1000px,calc(100% - 24px));height:max-content;max-height:calc(100dvh - 24px);display:grid;gap:10px;padding:14px;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:0 30px 100px rgba(0,0,0,.5)}
+.wk-lightbox-bar{display:flex;justify-content:space-between;align-items:center}
+.wk-lightbox img{width:100%;max-height:calc(100dvh - 110px);object-fit:contain;border-radius:12px;background:var(--background)}
+
+@media(max-width:760px){
+  .wk .panel{padding:14px}
+  .wk-tabs{gap:5px}
+  .wk-tab{padding:11px 2px 9px;border-radius:11px}
+  .wk-tab b{font-size:14px}.wk-tab span{font-size:11px}
+  .wk-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wk-day-title h2{font-size:25px}
+  .wk-card{padding:13px}
+  .wk-title h4{font-size:18px}
+  .wk-set-head,.wk-set{grid-template-columns:62px 1fr 1fr 74px;gap:7px}
+  .wk-demo{aspect-ratio:4/3}
+}
+
