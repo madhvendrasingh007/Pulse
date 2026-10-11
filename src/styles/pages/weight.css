@@ -1,0 +1,17 @@
+.weight-card{position:relative}.weight-feature{display:flex;align-items:center;justify-content:space-between;padding:22px;margin-bottom:13px}.weight-feature h2{font:700 38px Manrope;letter-spacing:-.06em;margin:10px 0 4px}.weight-feature h2 small{font:500 14px 'DM Sans';color:var(--muted)}.weight-feature p{font-size:10px;margin:0 0 10px}.weight-feature>div:first-child>small{color:var(--muted);font-size:9px}.weight-feature-chart{width:48%;height:130px}
+@media(max-width:760px){.weight-feature{padding:16px}}
+@media(max-width:760px){.weight-feature h2{font-size:30px}}
+@media(max-width:760px){.weight-feature-chart{width:43%;height:100px}}
+.weight-bars{gap:5px}.weight-bars span{font-size:8px;color:var(--subtle);align-self:center}.weight-log-row{display:flex;align-items:center;gap:10px;padding:11px 2px;border-top:1px solid var(--border)}.weight-log-row>div{flex:1}.weight-log-row b, .weight-log-row small{display:block}.weight-log-row b{font-size:11px}.weight-log-row small{font-size:9px;color:var(--muted);margin-top:3px}
+.app-shell .weight-feature{
+  background:linear-gradient(145deg,var(--g-bg-soft),transparent 60%),var(--g-bg);
+  border:1px solid var(--g-line);
+  border-radius:18px;
+  box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi);
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .app-shell .weight-feature{
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+}
+.app-shell .weight-bars i.today{background:linear-gradient(180deg,var(--n2),var(--n1));box-shadow:0 0 12px color-mix(in srgb,var(--n2) var(--glow),transparent)}
+.app-shell .weight-feature-chart{min-width:0}

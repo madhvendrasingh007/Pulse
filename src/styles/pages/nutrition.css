@@ -1,0 +1,131 @@
+.macro-line{display:flex;gap:8px;margin-top:9px;white-space:nowrap;font-size:8px;color:var(--muted)}.macro-line span{display:flex;align-items:center;gap:3px}.macro-line b{font-weight:600;color:var(--text)}.macro-dot{width:5px;height:5px;border-radius:50%;display:inline-block}.nutrition-summary{padding:21px 23px;border:1px solid var(--border);border-radius:13px;background:linear-gradient(115deg,var(--surface),color-mix(in srgb,var(--accent) 5%,var(--surface)));display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.nutrition-summary>div:first-child>span{font-size:10px;color:var(--muted)}.nutrition-summary strong{display:block;font:700 30px Manrope;letter-spacing:-.05em;margin:5px 0}.nutrition-summary strong small{font:500 12px 'DM Sans';color:var(--muted);letter-spacing:0}.nutrition-summary p{font-size:9px;color:var(--muted);margin:0}.macro-cards{display:flex;gap:8px}.macro-cards span{display:flex;flex-direction:column;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:9px;color:var(--muted);font-size:9px}.macro-cards b{font-size:15px;color:var(--text)}.food-row{display:flex;align-items:center;gap:10px;padding:12px 2px;border-top:1px solid var(--border)}.food-bullet{height:30px;width:30px;border-radius:9px;background:color-mix(in srgb,var(--accent) 11%,transparent);color:var(--accent);display:grid;place-items:center}.food-row>div{flex:1}.food-row b{display:block;font-size:10px}.food-row small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.food-row>strong{font-size:11px}.food-row>strong small{display:inline}.nutrition-inputs{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}
+@media(max-width:760px){.macro-line{gap:5px;font-size:7px}}
+@media(max-width:760px){.macro-line span{gap:2px}}
+@media(max-width:760px){.nutrition-summary{padding:16px;align-items:flex-start;gap:14px}}
+@media(max-width:760px){.nutrition-summary strong{font-size:24px}}
+@media(max-width:760px){.macro-cards{gap:5px;flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:760px){.macro-cards span{padding:8px;font-size:8px}}
+@media(max-width:760px){.macro-cards b{font-size:12px}}
+@media(max-width:390px){.macro-line{font-size:6px}}
+.food-row .secondary-btn{padding:6px 9px}.macro-recommendation{padding:12px;border:1px solid color-mix(in srgb,var(--lime) 20%,var(--border));border-radius:9px;background:color-mix(in srgb,var(--lime) 5%,var(--surface))}.macro-recommendation strong, .macro-recommendation span, .macro-recommendation small{display:block}.macro-recommendation strong{font-size:10px}.macro-recommendation span{font-size:10px;margin-top:5px}.macro-recommendation small{font-size:8px;color:var(--muted);margin-top:6px;line-height:1.55}.macro-chart{height:240px;width:100%}
+@media(max-width:620px){.nutrition-summary{align-items:flex-start;flex-direction:column;gap:14px}}
+@media(max-width:620px){.macro-cards{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.macro-cards span{padding:9px}}
+@media(max-width:620px){.food-row{flex-wrap:wrap}}
+@media(max-width:620px){.food-row>div{min-width:calc(100% - 45px)}}
+@media(max-width:620px){.food-row>strong{margin-left:40px}}
+@media(max-width:620px){.macro-chart{height:210px}}
+.app-shell .macro-line{font-size:9.5px}
+.app-shell .nutrition-summary{
+  background:linear-gradient(145deg,var(--g-bg-soft),transparent 60%),var(--g-bg);
+  border:1px solid var(--g-line);
+  border-radius:18px;
+  box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi);
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .app-shell .nutrition-summary{
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+}
+.app-shell .macro-chart{min-width:0}
+
+@media(max-width:760px){
+  .app-shell .macro-line{font-size:9px;white-space:normal;flex-wrap:wrap;align-items:center}
+}
+
+@media(max-width:760px){
+  .app-shell .macro-line .tiny-link{font-size:10px}
+}
+
+@media(max-width:760px){
+  .app-shell .nutrition-summary{padding:15px;gap:12px}
+}
+
+@media(max-width:760px){
+  .app-shell .macro-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:7px}
+}
+
+@media(max-width:760px){
+  .app-shell .macro-cards span{min-width:0;padding:9px 7px;font-size:10px;overflow-wrap:anywhere}
+}
+
+@media(max-width:760px){
+  .app-shell .macro-cards b{font-size:14px}
+}
+
+@media(max-width:760px){
+  .app-shell .nutrition-inputs{grid-template-columns:1fr 1fr;gap:8px}
+}
+
+@media(max-width:760px){
+  .app-shell .food-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:9px}
+}
+
+@media(max-width:760px){
+  .app-shell .food-row>div{min-width:0}
+}
+
+@media(max-width:760px){
+  .app-shell .food-row>strong{margin:0;white-space:nowrap}
+}
+
+@media(max-width:760px){
+  .app-shell .food-row>.secondary-btn{grid-column:2/-1;justify-self:start;min-height:36px}
+}
+
+@media(max-width:420px){
+  .app-shell .macro-cards{gap:5px}
+}
+
+@media(max-width:420px){
+  .app-shell .macro-cards span{font-size:9px;padding:8px 5px}
+}
+
+@media(max-width:420px){
+  .app-shell .macro-cards b{font-size:12px}
+}
+
+@media(max-width:420px){
+  .app-shell .nutrition-inputs{grid-template-columns:1fr}
+}
+
+@media(max-width:350px){
+  .app-shell .macro-cards{grid-template-columns:1fr 1fr 1fr}
+}
+.app-shell .nutrition-page{display:grid;gap:10px}
+.app-shell .nutrition-page .nutrition-summary{margin:0;padding:14px 17px}
+.app-shell .nutrition-page .nutrition-summary strong{font-size:25px;margin:2px 0}
+.app-shell .nutrition-main-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:start}
+.app-shell .nutrition-main-grid>.panel{margin:0;padding:14px}
+.app-shell .nutrition-page .macro-chart{height:205px}
+.app-shell .nutrition-food-panel .panel-heading{align-items:center}
+.app-shell .nutrition-food-panel .panel-heading h3{font-size:14px}
+.app-shell .nutrition-food-panel .food-row{padding:8px 0}
+.app-shell .nutrition-copy-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.app-shell .nutrition-copy-card{display:grid;gap:5px;min-width:0;padding:10px;text-align:left;border:1px solid var(--g-line);border-radius:11px;background:var(--g-bg-soft);color:var(--text);cursor:pointer}
+.app-shell .nutrition-copy-card:hover{border-color:var(--n1);background:color-mix(in srgb,var(--n1) 9%,var(--surface))}
+.app-shell .nutrition-copy-card>span{display:grid;gap:2px;min-width:0}
+.app-shell .nutrition-copy-card b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-shell .nutrition-copy-card strong{font-size:11px;color:var(--n1)}
+.app-shell .nutrition-copy-card small{font-size:9px;color:var(--muted);line-height:1.35}
+.app-shell .nutrition-copy-card>small{white-space:nowrap}
+@media(max-width:760px){
+  .app-shell .nutrition-main-grid{grid-template-columns:1fr;gap:8px}
+  .app-shell .nutrition-page .nutrition-summary{padding:12px;gap:9px}
+  .app-shell .nutrition-page .nutrition-summary strong{font-size:22px}
+  .app-shell .nutrition-main-grid>.panel{padding:11px;margin:0}
+  .app-shell .nutrition-page .macro-chart{height:185px}
+  .app-shell .nutrition-page .panel-heading h3{font-size:13px}
+  .app-shell .nutrition-page .panel-heading p{font-size:9px}
+  .app-shell .nutrition-copy-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .app-shell .nutrition-copy-card{padding:8px}
+  .app-shell .nutrition-copy-card b{font-size:10px}
+  .app-shell .nutrition-copy-card>small{font-size:8px}
+  .app-shell .nutrition-food-panel .food-row .secondary-btn{min-height:30px;height:30px;font-size:9px}
+  .app-shell .nutrition-food-panel .food-row .delete-btn{height:30px;min-height:30px}
+  .app-shell .food-dialog .nutrition-inputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .app-shell .food-dialog .nutrition-inputs .field-label{font-size:10px;margin:6px 0}
+  .app-shell .food-dialog .nutrition-inputs input{height:35px}
+}
+@media(max-width:420px){
+  .app-shell .nutrition-copy-grid{grid-template-columns:1fr 1fr}
+}

@@ -1,0 +1,146 @@
+/* ---------- 60-day face care guide ---------- */
+.app-shell .dashboard-face-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:17px;margin-top:14px;padding:17px 19px;background:linear-gradient(110deg,color-mix(in srgb,var(--n3) 9%,var(--g-bg)),var(--g-bg-soft));border-color:color-mix(in srgb,var(--n3) 24%,var(--g-line))}
+.app-shell .dashboard-face-art{width:72px;height:72px;display:grid;place-items:center;align-content:center;gap:3px;border:1px solid color-mix(in srgb,var(--n3) 34%,var(--g-line));border-radius:21px;color:var(--n3);background:color-mix(in srgb,var(--n3) 13%,var(--g-bg));transform:rotate(-3deg)}
+.app-shell .dashboard-face-art small{font-size:7px;line-height:1.2;text-align:center;letter-spacing:.1em}
+.app-shell .dashboard-face-copy h3{margin:6px 0 4px;font:650 15px Manrope;letter-spacing:-.025em}
+.app-shell .dashboard-face-copy p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.app-shell .dashboard-face-copy .bar-track{max-width:500px;margin-top:9px}
+.app-shell .dashboard-face-card>.secondary-btn{white-space:nowrap}
+.app-shell .face-routine-page{display:grid;gap:13px}
+.app-shell .face-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px;background:linear-gradient(115deg,color-mix(in srgb,var(--n3) 12%,var(--g-bg)),var(--g-bg-soft) 65%);border-color:color-mix(in srgb,var(--n3) 27%,var(--g-line));overflow:hidden}
+.app-shell .face-hero-mark{width:58px;height:58px;display:grid;place-items:center;border-radius:19px;color:var(--n3);background:color-mix(in srgb,var(--n3) 15%,var(--g-bg));border:1px solid color-mix(in srgb,var(--n3) 24%,var(--g-line))}
+.app-shell .face-hero-main h2{margin:5px 0;font:700 28px Manrope;letter-spacing:-.05em}
+.app-shell .face-hero-main h2 small{font:500 13px 'DM Sans';color:var(--muted);letter-spacing:0}
+.app-shell .face-hero-main p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.app-shell .face-hero-main .bar-track{max-width:460px;margin-top:10px}
+.app-shell .face-hero-note{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--n1) 23%,var(--g-line));border-radius:12px;color:var(--n1);background:color-mix(in srgb,var(--n1) 7%,var(--g-bg));font-size:9px;line-height:1.5}
+.app-shell .face-hero-note span{color:var(--muted)}
+.app-shell .face-hero-note b{color:var(--text)}
+.app-shell .face-date-panel{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;padding:12px 15px}
+.app-shell .face-date-panel .field-label{flex:1 1 180px;margin:0;font-size:9px}
+.app-shell .face-date-panel input{display:block;width:100%;height:38px;margin-top:5px;padding:0 9px;border:1px solid var(--g-line);border-radius:9px;background:var(--g-bg);color:var(--text);font:11px 'DM Sans'}
+.app-shell .face-date-panel>.tiny-link{margin-bottom:1px}
+.app-shell .face-routine-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-routine-panel{margin:0;padding:16px}
+.app-shell .face-routine-panel .panel-heading{align-items:center}
+.app-shell .face-routine-panel .panel-heading h3{margin:5px 0 3px;font-size:14px}
+.app-shell .face-routine-panel .panel-heading p{font-size:9px;line-height:1.4}
+.app-shell .face-routine-count{display:grid;place-items:center;min-width:40px;height:40px;padding:0 7px;border:1px solid var(--g-line);border-radius:13px;color:var(--n1);background:var(--g-bg-soft);font:650 11px Manrope}
+.app-shell .face-step-list{display:grid;gap:7px;margin-top:11px}
+.app-shell .face-step{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px;border:1px solid var(--g-line);border-radius:11px;text-align:left;color:var(--text);background:color-mix(in srgb,var(--g-bg-soft) 72%,transparent);transition:background .15s,border-color .15s,transform .15s}
+.app-shell .face-step:hover{border-color:color-mix(in srgb,var(--n1) 38%,var(--g-line));background:color-mix(in srgb,var(--n1) 6%,var(--g-bg-soft));transform:translateY(-1px)}
+.app-shell .face-step>.check-circle{flex:0 0 19px;margin-top:1px;width:19px;height:19px}
+.app-shell .face-step-copy{display:grid;gap:4px;min-width:0}
+.app-shell .face-step-copy strong{font-size:10px;line-height:1.4}
+.app-shell .face-step-copy small{color:var(--muted);font-size:9px;line-height:1.5}
+.app-shell .face-step.is-done .face-step-copy strong{color:var(--n1)}
+.app-shell .face-month-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-month-card{padding:17px}
+.app-shell .face-month-card.current{border-color:color-mix(in srgb,var(--n1) 42%,var(--g-line));box-shadow:0 0 0 1px color-mix(in srgb,var(--n1) 10%,transparent)}
+.app-shell .face-month-card h3{margin:7px 0;font:650 16px Manrope;letter-spacing:-.025em}
+.app-shell .face-month-card>p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}
+.app-shell .face-month-card ul{display:grid;gap:8px;margin:13px 0 0;padding-left:17px;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-month-card li::marker{color:var(--n1)}
+.app-shell .face-month-card li b{color:var(--text)}
+.app-shell .face-info-panel{padding:18px}
+.app-shell .face-info-panel .panel-heading>svg{color:var(--n3)}
+.app-shell .face-info-panel .panel-heading h3{font-size:15px;margin:5px 0}
+.app-shell .face-info-panel .panel-heading p{font-size:9px}
+.app-shell .face-benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.app-shell .face-benefit-grid article{display:grid;align-content:start;gap:7px;padding:12px;border:1px solid var(--g-line);border-radius:11px;background:var(--g-bg-soft)}
+.app-shell .face-benefit-grid article>svg{color:var(--n1)}
+.app-shell .face-benefit-grid article>b{font-size:10px}
+.app-shell .face-benefit-grid article>p{margin:0;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-safety-note{display:flex;align-items:flex-start;gap:11px;padding:14px 16px;border:1px solid color-mix(in srgb,#efb26e 28%,var(--g-line));border-radius:13px;color:#efb26e;background:color-mix(in srgb,#efb26e 7%,var(--g-bg-soft))}
+.app-shell .face-safety-note>svg{flex:0 0 auto;margin-top:1px}
+.app-shell .face-safety-note b{font-size:10px}
+.app-shell .face-safety-note p{margin:5px 0 0;color:var(--muted);font-size:9px;line-height:1.6}
+.app-shell .face-optional-note{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;border:1px solid color-mix(in srgb,var(--n2) 25%,var(--g-line));border-radius:11px;background:color-mix(in srgb,var(--n2) 6%,var(--g-bg-soft));color:var(--n2)}
+.app-shell .face-optional-note>svg{flex:0 0 auto;margin-top:1px}
+.app-shell .face-optional-note p{margin:0;color:var(--muted);font-size:9px;line-height:1.55}
+.app-shell .face-optional-note b{color:var(--text)}
+.app-shell .face-routine-page>.module-disclaimer{margin:0;line-height:1.6}
+@media(max-width:900px){.app-shell .face-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.app-shell .dashboard-face-card{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:14px}.app-shell .dashboard-face-art{width:58px;height:58px;border-radius:17px}.app-shell .dashboard-face-copy h3{font-size:14px}.app-shell .dashboard-face-copy p{font-size:9px}.app-shell .dashboard-face-card>.secondary-btn{grid-column:1/-1;width:100%}.app-shell .face-hero{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:16px}.app-shell .face-hero-mark{width:48px;height:48px;border-radius:15px}.app-shell .face-hero-main h2{font-size:24px}.app-shell .face-hero-note{grid-column:1/-1;justify-content:center}.app-shell .face-routine-columns,.app-shell .face-month-grid{grid-template-columns:1fr}.app-shell .face-date-panel{align-items:stretch}.app-shell .face-date-panel .field-label{flex-basis:calc(50% - 8px)}.app-shell .face-date-panel>.tiny-link{width:100%;justify-content:center}}
+@media(max-width:420px){.app-shell .face-date-panel .field-label{flex-basis:100%}.app-shell .face-benefit-grid{grid-template-columns:1fr 1fr}.app-shell .face-benefit-grid article{padding:10px}.app-shell .face-hero-main p{font-size:9px}.app-shell .face-step{padding:9px}.app-shell .face-step-copy strong{font-size:10px}.app-shell .face-step-copy small{font-size:8px}}
+.app-shell .dashboard-face-card{grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:17px}
+.app-shell .dashboard-face-top{grid-column:1/-1;display:flex;align-items:center;gap:13px}
+.app-shell .dashboard-face-art{width:50px;height:50px;flex:0 0 50px;border-radius:16px}
+.app-shell .dashboard-face-copy{flex:1;min-width:0}
+.app-shell .dashboard-face-copy h3{margin:4px 0}
+.app-shell .face-dashboard-routines{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.app-shell .face-dashboard-routine{min-width:0;padding:11px;border:1px solid var(--g-line);border-radius:12px;background:var(--g-bg-soft)}
+.app-shell .face-dashboard-routine-title{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:7px;margin-bottom:4px;border-bottom:1px solid var(--g-line)}
+.app-shell .face-dashboard-routine-title b{font-size:11px}
+.app-shell .face-dashboard-routine-title small{color:var(--muted);font-size:9px;white-space:nowrap}
+.app-shell .face-dashboard-step{display:grid;grid-template-columns:20px minmax(0,1fr) 17px;align-items:center;gap:7px;width:100%;min-height:34px;padding:5px 2px;border:0;border-bottom:1px solid color-mix(in srgb,var(--g-line) 65%,transparent);text-align:left;background:transparent;color:var(--muted)}
+.app-shell .face-dashboard-step:last-child{border-bottom:0}
+.app-shell .face-dashboard-step>span{display:grid;place-items:center;width:18px;height:18px;border-radius:6px;background:color-mix(in srgb,var(--n3) 12%,var(--g-bg));color:var(--n3);font:600 9px Manrope}
+.app-shell .face-dashboard-step>strong{font-size:9px;font-weight:550;line-height:1.35}
+.app-shell .face-dashboard-step>.check-circle{width:16px;height:16px}
+.app-shell .face-dashboard-step.is-done>strong{color:var(--n1)}
+.app-shell .dashboard-face-open{grid-column:1/-1;justify-self:start}
+@media(max-width:760px){.app-shell .dashboard-face-card{grid-template-columns:1fr;padding:13px}.app-shell .dashboard-face-top,.app-shell .face-dashboard-routines,.app-shell .dashboard-face-open{grid-column:1}.app-shell .face-dashboard-routines{grid-template-columns:1fr}.app-shell .dashboard-face-open{width:100%;justify-content:center}}
+.app-shell .face-routine-page{gap:16px;font-size:14px}
+.app-shell .face-routine-page .eyebrow,.app-shell .dashboard-face-card .eyebrow{font-size:11px;letter-spacing:.1em}
+.app-shell .face-hero-main h2{font-size:30px}
+.app-shell .face-hero-main p{font-size:13px;line-height:1.6}
+.app-shell .face-hero-note{font-size:12px}
+.app-shell .face-week-panel,.app-shell .face-month-table-panel{padding:20px}
+.app-shell .face-week-panel .panel-heading h3,.app-shell .face-month-table-panel .panel-heading h3{font-size:18px;margin:6px 0}
+.app-shell .face-week-panel .panel-heading p,.app-shell .face-month-table-panel .panel-heading p{font-size:12px;line-height:1.5}
+.app-shell .face-table-scroll{width:100%;overflow-x:auto;border:1px solid var(--g-line);border-radius:12px;overscroll-behavior-x:contain}
+.app-shell .face-week-table,.app-shell .face-month-table{width:100%;border-collapse:collapse;text-align:left}
+.app-shell .face-week-table{min-width:850px}
+.app-shell .face-month-table{min-width:800px}
+.app-shell .face-week-table th,.app-shell .face-week-table td,.app-shell .face-month-table th,.app-shell .face-month-table td{padding:12px;border-bottom:1px solid var(--g-line);vertical-align:top;font-size:12px;line-height:1.5}
+.app-shell .face-week-table thead th,.app-shell .face-month-table thead th{position:sticky;top:0;z-index:1;color:var(--muted);background:var(--g-bg-soft);font-size:11px;font-weight:700;letter-spacing:.04em}
+.app-shell .face-week-table tbody tr:last-child th,.app-shell .face-week-table tbody tr:last-child td,.app-shell .face-month-table tbody tr:last-child th,.app-shell .face-month-table tbody tr:last-child td{border-bottom:0}
+.app-shell .face-week-table tbody th,.app-shell .face-month-table tbody th{width:120px;color:var(--text);font-size:13px;font-weight:700}
+.app-shell .face-week-table tbody th small,.app-shell .face-month-table tbody th small{display:block;margin-top:4px;color:var(--n1);font-size:11px;font-weight:600}
+.app-shell .face-week-table tbody tr.is-today{background:color-mix(in srgb,var(--n1) 7%,var(--g-bg))}
+.app-shell .face-month-table tbody tr.current{background:color-mix(in srgb,var(--n1) 7%,var(--g-bg))}
+.app-shell .face-week-table tbody tr.is-today>th{box-shadow:inset 3px 0 var(--n1)}
+.app-shell .face-table-steps{display:grid;gap:5px;min-width:340px;margin:0;padding:0;list-style:none;counter-reset:none}
+.app-shell .face-table-steps li{margin:0}
+.app-shell .face-table-check,.app-shell .face-table-static{display:grid;grid-template-columns:25px minmax(0,1fr) 18px;align-items:start;gap:8px;width:100%;padding:7px 6px;border:1px solid transparent;border-radius:9px;text-align:left;color:var(--text);background:transparent}
+.app-shell .face-table-check{cursor:pointer}
+.app-shell .face-table-check:hover{border-color:color-mix(in srgb,var(--n1) 30%,var(--g-line));background:color-mix(in srgb,var(--n1) 6%,var(--g-bg-soft))}
+.app-shell .face-table-number{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;color:var(--n2);background:color-mix(in srgb,var(--n2) 12%,var(--g-bg));font-size:11px;font-weight:700}
+.app-shell .face-table-static{grid-template-columns:25px minmax(0,1fr);align-items:center;padding:5px 4px}
+.app-shell .face-table-static b{font-size:12px;font-weight:600;line-height:1.4}
+.app-shell .face-table-step-copy{display:grid;gap:3px;min-width:0}
+.app-shell .face-table-step-copy b{font-size:12px;line-height:1.4}
+.app-shell .face-table-step-copy small{color:var(--muted);font-size:11px;line-height:1.45}
+.app-shell .face-table-check>.check-circle{width:18px;height:18px}
+.app-shell .face-table-check.is-done .face-table-step-copy b{color:var(--n1)}
+.app-shell .face-month-table td{min-width:190px;color:var(--muted);font-size:12px}
+.app-shell .face-info-panel .panel-heading h3{font-size:18px}
+.app-shell .face-info-panel .panel-heading p{font-size:12px}
+.app-shell .face-benefit-grid article{padding:15px}
+.app-shell .face-benefit-grid article>b{font-size:13px}
+.app-shell .face-benefit-grid article>p,.app-shell .face-safety-note p,.app-shell .face-optional-note p{font-size:12px;line-height:1.6}
+.app-shell .face-safety-note b,.app-shell .face-optional-note b{font-size:13px}
+.app-shell .dashboard-face-copy h3{font-size:17px}
+.app-shell .dashboard-face-copy p{font-size:12px}
+.app-shell .face-dashboard-routine-title b{font-size:13px}
+.app-shell .face-dashboard-routine-title small{font-size:11px}
+.app-shell .face-dashboard-step{grid-template-columns:23px minmax(0,1fr) 18px;min-height:40px;gap:8px}
+.app-shell .face-dashboard-step>span{width:21px;height:21px;font-size:11px}
+.app-shell .face-dashboard-step>strong{font-size:12px;line-height:1.45}
+.app-shell .face-dashboard-step>.check-circle{width:18px;height:18px}
+.app-shell .dashboard-face-open{font-size:12px}
+.app-shell .face-care-zones .panel-heading h3{margin:6px 0;font:650 18px Manrope}
+.app-shell .face-care-zones .panel-heading p{font-size:12px;line-height:1.5}
+.app-shell .face-zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-shell .face-zone-grid article{padding:15px;border:1px solid var(--g-line);border-radius:12px;background:var(--g-bg-soft)}
+.app-shell .face-zone-grid article>b{font-size:14px}
+.app-shell .face-zone-grid article>p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:760px){.app-shell .face-week-table,.app-shell .face-month-table{min-width:820px}.app-shell .face-week-panel,.app-shell .face-month-table-panel{padding:15px}.app-shell .face-benefit-grid article{padding:12px}.app-shell .face-benefit-grid article>p,.app-shell .face-safety-note p,.app-shell .face-optional-note p{font-size:12px}}
+@media(max-width:620px){.app-shell .face-zone-grid{grid-template-columns:1fr}}
+
+/* Nutrition removal and editable face routine controls */
+.app-shell .face-routine-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.app-shell .face-routine-editor{width:100%;min-width:260px;min-height:190px;padding:11px;border:1px solid var(--g-line);border-radius:10px;background:var(--g-bg-soft);color:var(--text);font:500 12px/1.6 'DM Sans',sans-serif;resize:vertical}
+.app-shell .food-row .delete-btn{flex:0 0 36px}
+@media(max-width:760px){.app-shell .face-routine-actions{align-items:flex-end;flex-direction:column;gap:7px}.app-shell .face-routine-editor{min-width:230px;min-height:160px}.app-shell .food-row .delete-btn{min-height:36px}}

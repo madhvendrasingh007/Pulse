@@ -1,0 +1,10 @@
+.settings-stack{display:grid;gap:10px}.setting-row{display:flex;align-items:center;justify-content:space-between;padding:17px}.setting-row b, .setting-row small{display:block}.setting-row b{font-size:10px}.setting-row small{font-size:9px;color:var(--muted);margin-top:4px}.theme-select, .pref-tag, .privacy-tag{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:9px;background:var(--surface-raised);border:1px solid var(--border);border-radius:8px;padding:8px 10px}.pref-tag{color:var(--lime)}.privacy-tag{color:var(--blue)}
+@media(max-width:760px){.setting-row{align-items:flex-start;gap:10px}}
+@media(max-width:760px){.theme-select, .pref-tag, .privacy-tag{font-size:8px;padding:7px}}.settings-goal-grid input, .activity-factor-setting input{min-width:0;height:36px;padding:0 9px;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--text);font-size:10px}.settings-targets{padding:18px}.settings-targets .panel-heading{margin-bottom:13px}.settings-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.settings-goal-grid label, .activity-factor-setting{display:grid;gap:7px;color:var(--muted);font-size:10px}.settings-goal-grid label>span{display:flex;align-items:center;gap:6px}.settings-goal-grid input{width:100%;height:40px}.settings-goal-grid small, .activity-factor-setting small{white-space:nowrap;color:var(--muted);font-size:8px}.activity-factor-setting input{display:block;width:170px;height:40px}@media(max-width:620px){.settings-goal-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.settings-goal-grid label>span{align-items:flex-start;flex-direction:column}}@media(max-width:620px){.settings-goal-grid small{white-space:normal}}
+.app-shell .setting-row{
+  background:linear-gradient(145deg,var(--g-bg-soft),transparent 60%),var(--g-bg);
+  border:1px solid var(--g-line);
+  border-radius:18px;
+  box-shadow:var(--g-shadow),inset 0 1px 0 var(--g-hi);
+}
+.app-shell .theme-select, .app-shell .pref-tag, .app-shell .privacy-tag{background:var(--g-bg-soft);border-color:var(--g-line)}

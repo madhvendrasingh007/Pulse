@@ -1,5 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import "@/styles/theme.css";
+import "@/styles/pages/dashboard.css";
+import "@/styles/pages/habits.css";
+import "@/styles/pages/nutrition.css";
+import "@/styles/pages/face-care.css";
+import "@/styles/pages/calorie-burn.css";
+import "@/styles/pages/workouts.css";
+import "@/styles/pages/weight.css";
+import "@/styles/pages/planner.css";
+import "@/styles/pages/history.css";
+import "@/styles/pages/ai-coach.css";
+import "@/styles/pages/settings.css";
+import "@/styles/pages/responsive.css";
+import "@/styles/pages/workout-mobile.css";
 
 export const metadata: Metadata = {
   title: "PULSE — Your personal life OS",

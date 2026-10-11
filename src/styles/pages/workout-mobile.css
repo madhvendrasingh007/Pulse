@@ -1,0 +1,33 @@
+/* Final workout-density pass */
+.app-shell .wk-session-pill{display:inline-flex;width:max-content;max-width:100%;margin:0 0 5px;padding:4px 8px;border:1px solid color-mix(in srgb,var(--n1) 30%,var(--border));border-radius:99px;background:color-mix(in srgb,var(--n1) 8%,transparent);color:var(--n1);font-size:9px;font-weight:700;letter-spacing:.06em}
+@media(max-width:760px){
+  .app-shell .wk-week,.app-shell .wk-day{padding:10px;margin-bottom:8px}
+  .app-shell .wk-week-head{margin-bottom:6px}
+  .app-shell .wk-week-head h3{font-size:13px}
+  .app-shell .wk-day-head{gap:7px;margin-bottom:7px}
+  .app-shell .wk-day-title h2{font-size:19px;margin:3px 0}
+  .app-shell .wk-tags{gap:4px;margin-top:4px}
+  .app-shell .wk-chip{padding:4px 7px;font-size:10px}
+  .app-shell .wk-day-actions{flex:0 0 100%;justify-content:flex-start}
+  .app-shell .wk-stats>div{padding:7px 9px}
+  .app-shell .wk-card{gap:7px;padding:9px}
+  .app-shell .wk-progress{gap:7px}
+  .app-shell .wk-progress small{font-size:9px}
+  .app-shell .wk-sets{gap:5px}
+  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:36px minmax(0,1fr) minmax(0,1fr) 46px;gap:4px}
+  .app-shell .wk-set-head span{font-size:7px;letter-spacing:.04em}
+  .app-shell .wk-set{padding:4px;border-radius:8px}
+  .app-shell .wk-set input{height:32px;border-radius:7px;font-size:13px}
+  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:22px;height:22px}
+  .app-shell .wk-card-foot .secondary-btn{min-height:34px;padding:6px 8px;font-size:10px}
+  .app-shell .wk-map-reference{margin-top:8px}
+  .app-shell .wk-reference-grid{gap:8px}
+  .app-shell .wk-reference-row{padding:5px 0}
+}
+@media(max-width:420px){
+  .app-shell .wk-day-actions{flex:1 1 auto}
+  .app-shell .wk-day-actions>.primary-btn,.app-shell .wk-day-actions>.wk-map-add{font-size:9px;padding:6px 7px}
+  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:33px minmax(0,1fr) minmax(0,1fr) 42px}
+  .app-shell .wk-set input{height:31px;padding:0 4px;font-size:12px}
+  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:21px;height:21px}
+}
