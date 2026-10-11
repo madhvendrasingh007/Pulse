@@ -754,3 +754,10 @@
   .wk-demo{aspect-ratio:4/3}
 }
 
+
+
+/* Nutrition removal and editable face routine controls */
+.app-shell .face-routine-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.app-shell .face-routine-editor{width:100%;min-width:260px;min-height:190px;padding:11px;border:1px solid var(--g-line);border-radius:10px;background:var(--g-bg-soft);color:var(--text);font:500 12px/1.6 'DM Sans',sans-serif;resize:vertical}
+.app-shell .food-row .delete-btn{flex:0 0 36px}
+@media(max-width:760px){.app-shell .face-routine-actions{align-items:flex-end;flex-direction:column;gap:7px}.app-shell .face-routine-editor{min-width:230px;min-height:160px}.app-shell .food-row .delete-btn{min-height:36px}}
