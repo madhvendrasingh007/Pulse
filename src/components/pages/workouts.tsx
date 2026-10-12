@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { ArrowRight, Check, ChevronDown, Dumbbell, Pencil, Plus, X, Trash2 } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Dumbbell, Pencil, Plus, X, Trash2, Archive, RotateCcw } from "lucide-react";
 
 
 
@@ -10,7 +10,7 @@ import { ArrowRight, Check, ChevronDown, Dumbbell, Pencil, Plus, X, Trash2 } fro
 
 
 import { dayNames, weekKeys, localDay } from "@/lib/pulse/shared";
-import type { WeeklyExercise } from "@/lib/pulse/shared";
+import type { WeeklyExercise, WorkoutHistoryEntry } from "@/lib/pulse/shared";
 import { Empty } from "@/components/ui/empty-state";
 
 const MUSCLE_GROUPS=["General","Chest","Upper chest","Mid-back","Lats","Shoulders","Front delts","Side delts","Rear delts","Upper back","Traps","Arms","Biceps","Brachialis","Forearms","Triceps","Quads","Hamstrings","Glutes","Calves","Abs","Core","Lower back","Hip flexors","Cardio","Full body","Push","Pull"];
@@ -59,7 +59,7 @@ const wkIsImg=(u:string)=>/\.(gif|png|jpe?g|webp)(\?.*)?$/i.test(u);
 const wkIsVideo=(u:string)=>/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(u);
 const wkRows=(x:WeeklyExercise)=>Array.from({length:Math.max(x.sets,x.actualSets.length)},(_,i)=>x.actualSets[i]??{reps:"",weight:""} as {reps:string;weight:string;done?:boolean});
 
-export function WeeklyWorkoutPlanner({addRequest,plans,setPlans}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>}){
+export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHistory}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>}){
   const todayKey=weekKeys[new Date().getDay()];
   const workoutDays=["mon","tue","wed","thu","fri","sat","sun"] as const;
   const [day,setDay]=useState<string>(todayKey);
@@ -102,11 +102,21 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans}:{addRequest:num
   const volume=allRows.filter(s=>s.done).reduce((a,s)=>a+(Number(s.reps)||0)*(Number(s.weight)||0),0);
   const focusList=[...new Set(items.map(i=>i.focus??"General"))];
   const exercisesDone=items.filter(x=>x.completedDates?.includes(today)).length;
+  const hasPlan=Object.values(plans).some(dayItems=>dayItems.length>0);
+  const saveSnapshot=(label?:string)=>{
+    if(!hasPlan)return;
+    const savedAt=new Date().toISOString();
+    const suggested=`Workout plan · ${new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}`;
+    setHistory(all=>[{id:crypto.randomUUID(),savedAt,label:label?.trim()||suggested,plan:JSON.parse(JSON.stringify(plans)) as Record<string,WeeklyExercise[]>},...all]);
+  };
+  const savePlan=()=>{const label=window.prompt("Name this workout snapshot (optional):","");if(label===null)return;saveSnapshot(label);};
+  const resetPlan=()=>{if(!hasPlan){setPlans({});return;}if(!window.confirm("Save this workout plan to History, then reset the weekly plan?"))return;saveSnapshot("Weekly plan archived before reset · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans({});};
 
   return <div className="wk">
     <section className="panel wk-week">
       <div className="wk-week-head"><div><span className="eyebrow">WEEKLY SPLIT</span><h3>Pick a day</h3></div><span className="demo-tag">REPEATS EVERY WEEK</span></div>
       <div className="wk-tabs" role="tablist">{workoutDays.map(key=>{const i=weekKeys.indexOf(key);const list=plans[key]??[];const first=list[0]?.focus;return <button key={key} role="tab" aria-selected={day===key} aria-label={dayNames[i]} className={`wk-tab ${day===key?"selected":""} ${key===todayKey?"is-today":""}`} onClick={()=>setDay(key)}><b>{dayNames[i].slice(0,3)}</b><span>{list.length?`${list.length} ex`:"Rest"}</span>{first?<i style={wkChip(first)}/>:<i className="empty"/>}{key===todayKey&&<em>TODAY</em>}</button>})}</div>
+      <div className="wk-archive-actions"><div><b>{history.length} saved {history.length===1?"snapshot":"snapshots"}</b><small>Save a version before making a new weekly plan.</small></div><div><button type="button" className="secondary-btn" onClick={savePlan} disabled={!hasPlan}><Archive size={14}/> Save to history</button><button type="button" className="secondary-btn danger" onClick={resetPlan}><RotateCcw size={14}/> Reset plan</button></div></div>
     </section>
 
     <section className="panel wk-day">

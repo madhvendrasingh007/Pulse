@@ -8,7 +8,10 @@ export type Habit = { id: string; title: string; detail: string; iconKey: string
 export type FoodDraft={name:string;amount:string;calories:string;protein:string;carbs:string;fats:string};
 export type WeightLog = { id: string; date: string; weight: number };
 export type CalorieDay = { date:string; consumed:number; exercise:number; deficit:number; totalBurn:number; protein:number; carbs:number };
-export type WeeklyExercise={id:string;name:string;sets:number;reps:string;mediaUrl:string;focus?:string;secondaryMuscles?:string;actualSets:{reps:string;weight:string;done?:boolean}[];completedDates?:string[]};export type FaceStep={id:string;label:string;why:string;time:string};export type FaceRoutineState={startDate:string;completed:Record<string,string[]>;custom?:Record<string,Record<string,{morning:FaceStep[];night:FaceStep[]}>>};
+export type WeeklyExercise={id:string;name:string;sets:number;reps:string;mediaUrl:string;focus?:string;secondaryMuscles?:string;actualSets:{reps:string;weight:string;done?:boolean}[];completedDates?:string[]};
+export type WorkoutHistoryEntry={id:string;savedAt:string;label:string;plan:Record<string,WeeklyExercise[]>};
+export type PageHistoryEntry={id:string;savedAt:string;page:Page;label:string;snapshot:unknown};
+export type FaceStep={id:string;label:string;why:string;time:string};export type FaceRoutineState={startDate:string;completed:Record<string,string[]>;custom?:Record<string,Record<string,{morning:FaceStep[];night:FaceStep[]}>>};
 export const eventDay=(date:string)=>String(date).slice(0,10);
 export const localDay = (date = new Date()) => { const d = new Date(date.getTime() - date.getTimezoneOffset() * 60000); return d.toISOString().slice(0, 10); };
 export const nav: { name: Page; icon: LucideIcon }[] = [

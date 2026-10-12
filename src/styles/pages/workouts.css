@@ -223,3 +223,8 @@
   .app-shell .wk-video{max-height:175px;aspect-ratio:16/9}
   .app-shell .wk-card.has-media .wk-demo{max-height:165px;aspect-ratio:16/9}
 }
+
+.app-shell .wk-archive-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding-top:11px;border-top:1px solid var(--border)}
+.app-shell .wk-archive-actions>div:first-child{display:grid;gap:3px}.app-shell .wk-archive-actions>div:first-child b{font-size:11px}.app-shell .wk-archive-actions>div:first-child small{font-size:9px;color:var(--muted)}
+.app-shell .wk-archive-actions>div:last-child{display:flex;gap:7px;flex-wrap:wrap}.app-shell .wk-archive-actions .secondary-btn{min-height:34px;padding:7px 10px;font-size:10px}.app-shell .wk-archive-actions .danger{color:var(--danger,#ff7474);border-color:color-mix(in srgb,var(--danger,#ff7474) 35%,var(--border))}
+@media(max-width:600px){.app-shell .wk-archive-actions{align-items:flex-start;flex-direction:column}.app-shell .wk-archive-actions>div:last-child{width:100%}.app-shell .wk-archive-actions .secondary-btn{flex:1}}
