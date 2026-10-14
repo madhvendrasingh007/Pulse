@@ -59,7 +59,7 @@ const wkIsImg=(u:string)=>/\.(gif|png|jpe?g|webp)(\?.*)?$/i.test(u);
 const wkIsVideo=(u:string)=>/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(u);
 const wkRows=(x:WeeklyExercise)=>Array.from({length:Math.max(x.sets,x.actualSets.length)},(_,i)=>x.actualSets[i]??{reps:"",weight:""} as {reps:string;weight:string;done?:boolean});
 
-export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHistory}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>}){
+export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHistory,onComplete}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>;onComplete:(exercise:WeeklyExercise,date:string)=>void}){
   const todayKey=weekKeys[new Date().getDay()];
   const workoutDays=["mon","tue","wed","thu","fri","sat","sun"] as const;
   const [day,setDay]=useState<string>(todayKey);
@@ -95,7 +95,7 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
   const mappedForDay=MAPPED_EXERCISES[day]??[];
   const missingMapped=mappedForDay.filter(suggestion=>!items.some(item=>item.name.trim().toLowerCase()===suggestion.name.toLowerCase()));
   const addMappedDay=()=>{if(!missingMapped.length)return;const mapped:WeeklyExercise[]=missingMapped.map(suggestion=>({id:crypto.randomUUID(),name:suggestion.name,sets:3,reps:suggestion.reps,mediaUrl:"",focus:suggestion.focus,secondaryMuscles:suggestion.secondary,actualSets:Array.from({length:3},()=>({reps:"",weight:""})),completedDates:[]}));setPlans(all=>({...all,[day]:[...(all[day]??[]),...mapped]}))};
-  const toggleComplete=(item:WeeklyExercise)=>{if(!isToday)return;patch(item.id,x=>({...x,completedDates:x.completedDates?.includes(today)?x.completedDates.filter(d=>d!==today):[...(x.completedDates??[]),today]}))};
+  const toggleComplete=(item:WeeklyExercise)=>{if(!isToday)return;const wasDone=item.completedDates?.includes(today)??false;if(!wasDone)onComplete(item,today);patch(item.id,x=>({...x,completedDates:wasDone?x.completedDates?.filter(d=>d!==today):[...(x.completedDates??[]),today]}))};
 
   const allRows=items.flatMap(wkRows);
   const setsDone=allRows.filter(s=>s.done).length;
