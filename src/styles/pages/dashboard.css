@@ -95,6 +95,9 @@
 .app-shell .dashboard-macro{padding:12px 13px;border:1px solid var(--g-line);border-radius:14px;background:var(--g-bg-soft)}
 .app-shell .dashboard-macro>b{font-size:17px}
 .app-shell .dashboard-balance b{font-size:16px}
+.app-shell .dashboard-balance{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px}
+.app-shell .dashboard-balance>div{min-width:0}
+@media(max-width:420px){.app-shell .dashboard-balance{column-gap:10px}.app-shell .dashboard-balance b{font-size:13px}}
 .app-shell .dashboard-foods span svg{color:var(--n5)}
 .app-shell .insight-strip{border-color:color-mix(in srgb,var(--n3) 32%,var(--g-line))}
 @media(max-width:760px){

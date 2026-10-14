@@ -108,6 +108,16 @@
 .app-shell .nutrition-copy-card strong{font-size:11px;color:var(--n1)}
 .app-shell .nutrition-copy-card small{font-size:9px;color:var(--muted);line-height:1.35}
 .app-shell .nutrition-copy-card>small{white-space:nowrap}
+.app-shell .nutrition-copy-item{display:grid;gap:6px;min-width:0;padding:7px;border:1px solid var(--g-line);border-radius:13px;background:color-mix(in srgb,var(--g-bg-soft) 70%,transparent)}
+.app-shell .nutrition-copy-item .nutrition-copy-card{width:100%;border:0;background:transparent;padding:4px}
+.app-shell .nutrition-copy-actions{display:flex;gap:5px;flex-wrap:wrap}
+.app-shell .nutrition-copy-actions button{min-height:28px;padding:5px 8px;font-size:9px}
+.app-shell .quick-dish-editor{margin-top:12px;padding:13px;border:1px solid var(--g-line);border-radius:13px;background:var(--g-bg-soft)}
+.app-shell .quick-dish-editor h4{margin:0 0 9px;font-size:13px}
+.app-shell .quick-dish-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.app-shell .quick-dish-fields label{display:grid;gap:4px;font-size:9px;color:var(--muted)}
+.app-shell .quick-dish-fields input{min-width:0;width:100%;height:34px;padding:0 8px;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--text)}
+.app-shell .quick-dish-editor-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:10px}
 @media(max-width:760px){
   .app-shell .nutrition-main-grid{grid-template-columns:1fr;gap:8px}
   .app-shell .nutrition-page .nutrition-summary{padding:12px;gap:9px}
@@ -120,6 +130,7 @@
   .app-shell .nutrition-copy-card{padding:8px}
   .app-shell .nutrition-copy-card b{font-size:10px}
   .app-shell .nutrition-copy-card>small{font-size:8px}
+  .app-shell .quick-dish-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
   .app-shell .nutrition-food-panel .food-row .secondary-btn{min-height:30px;height:30px;font-size:9px}
   .app-shell .nutrition-food-panel .food-row .delete-btn{height:30px;min-height:30px}
   .app-shell .food-dialog .nutrition-inputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
