@@ -10,7 +10,7 @@ import { ArrowRight, Check, ChevronDown, Dumbbell, Pencil, Plus, X, Trash2, Arch
 
 
 import { dayNames, weekKeys, localDay } from "@/lib/pulse/shared";
-import type { WeeklyExercise, WorkoutHistoryEntry } from "@/lib/pulse/shared";
+import type { WeeklyExercise, WorkoutHistoryEntry, WorkoutCompletionEntry, WorkoutWeekArchiveEntry } from "@/lib/pulse/shared";
 import { Empty } from "@/components/ui/empty-state";
 
 const MUSCLE_GROUPS=["General","Chest","Upper chest","Mid-back","Lats","Shoulders","Front delts","Side delts","Rear delts","Upper back","Traps","Arms","Biceps","Brachialis","Forearms","Triceps","Quads","Hamstrings","Glutes","Calves","Abs","Core","Lower back","Hip flexors","Cardio","Full body","Push","Pull"];
@@ -77,8 +77,10 @@ const wkChip=(s:string)=>({"--c":`hsl(${wkHue(s)} 70% 62%)`}) as React.CSSProper
 const wkIsImg=(u:string)=>/\.(gif|png|jpe?g|webp)(\?.*)?$/i.test(u);
 const wkIsVideo=(u:string)=>/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(u);
 const wkRows=(x:WeeklyExercise)=>Array.from({length:Math.max(x.sets,x.actualSets.length)},(_,i)=>x.actualSets[i]??{reps:"",weight:""} as {reps:string;weight:string;done?:boolean});
+const mondayKey=(key:string)=>{const d=new Date(`${key}T12:00:00`);d.setDate(d.getDate()-((d.getDay()+6)%7));return localDay(d)};
+const shiftDate=(key:string,days:number)=>{const d=new Date(`${key}T12:00:00`);d.setDate(d.getDate()+days);return localDay(d)};
 
-export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,history,setHistory,onComplete}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;plansReady:boolean;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>;onComplete:(exercise:WeeklyExercise,date:string)=>void}){
+export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,history,setHistory,completions,weekHistory,setWeekHistory,onComplete,onProgress}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;plansReady:boolean;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>;completions:WorkoutCompletionEntry[];weekHistory:WorkoutWeekArchiveEntry[];setWeekHistory:React.Dispatch<React.SetStateAction<WorkoutWeekArchiveEntry[]>>;onComplete:(exercise:WeeklyExercise,date:string)=>void;onProgress:(exercise:WeeklyExercise,date:string)=>void}){
   const todayKey=weekKeys[new Date().getDay()];
   const workoutDays=["mon","tue","wed","thu","fri","sat","sun"] as const;
   const [day,setDay]=useState<string>(todayKey);
@@ -89,6 +91,7 @@ export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,histo
   const [draft,setDraft]=useState(empty);
   const [hiddenDemo,setHiddenDemo]=useState<Record<string,boolean>>({});
   const [zoom,setZoom]=useState<{url:string;name:string}|null>(null);
+  const [selectedWeek,setSelectedWeek]=useState("");
   const items=plans[day]??[];
   const dayIndex=weekKeys.indexOf(day as typeof weekKeys[number]);
   const isToday=day===todayKey;
@@ -107,14 +110,14 @@ export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,histo
     setDialog(false);
   };
   const patch=(id:string,fn:(x:WeeklyExercise)=>WeeklyExercise)=>setPlans(all=>({...all,[day]:(all[day]??[]).map(x=>x.id===id?fn(x):x)}));
-  const updateSet=(item:WeeklyExercise,i:number,change:Partial<{reps:string;weight:string;done:boolean}>)=>patch(item.id,x=>{const list=wkRows(x);list[i]={...list[i],...change};return{...x,actualSets:list}});
-  const addSet=(item:WeeklyExercise)=>patch(item.id,x=>{const list=wkRows(x);const last=list[list.length-1];return{...x,actualSets:[...list,{reps:last?.reps??"",weight:last?.weight??"",done:false}]}});
-  const removeSet=(item:WeeklyExercise,i:number)=>patch(item.id,x=>({...x,actualSets:wkRows(x).filter((_,idx)=>idx!==i)}));
+  const updateSet=(item:WeeklyExercise,i:number,change:Partial<{reps:string;weight:string;done:boolean}>)=>{const list=wkRows(item);list[i]={...list[i],...change};const updated={...item,actualSets:list};patch(item.id,()=>updated);onProgress(updated,today)};
+  const addSet=(item:WeeklyExercise)=>{const list=wkRows(item);const last=list[list.length-1];const updated={...item,actualSets:[...list,{reps:last?.reps??"",weight:last?.weight??"",done:false}]};patch(item.id,()=>updated);onProgress(updated,today)};
+  const removeSet=(item:WeeklyExercise,i:number)=>{const updated={...item,actualSets:wkRows(item).filter((_,idx)=>idx!==i)};patch(item.id,()=>updated);onProgress(updated,today)};
   const remove=(id:string)=>setPlans(all=>({...all,[day]:(all[day]??[]).filter(x=>x.id!==id)}));
   const mappedForDay=MAPPED_EXERCISES[day]??[];
   const missingMapped=mappedForDay.filter(suggestion=>!items.some(item=>item.name.trim().toLowerCase()===suggestion.name.toLowerCase()));
   const addMappedDay=()=>{if(!missingMapped.length)return;const mapped:WeeklyExercise[]=missingMapped.map(suggestion=>({id:crypto.randomUUID(),name:suggestion.name,sets:suggestion.sets,reps:suggestion.reps,rest:suggestion.rest,notes:suggestion.notes,mediaUrl:"",focus:suggestion.focus,secondaryMuscles:suggestion.secondary,actualSets:Array.from({length:suggestion.sets},()=>({reps:"",weight:""})),completedDates:[]}));setPlans(all=>({...all,[day]:[...(all[day]??[]),...mapped]}))};
-  const toggleComplete=(item:WeeklyExercise)=>{if(!isToday)return;const wasDone=item.completedDates?.includes(today)??false;if(!wasDone)onComplete(item,today);patch(item.id,x=>({...x,completedDates:wasDone?x.completedDates?.filter(d=>d!==today):[...(x.completedDates??[]),today]}))};
+  const toggleComplete=(item:WeeklyExercise)=>{if(!isToday)return;const wasDone=item.completedDates?.includes(today)??false;const actualSets=wkRows(item).map(set=>({...set,done:!wasDone}));const updated={...item,actualSets,completedDates:wasDone?item.completedDates?.filter(d=>d!==today):[...(item.completedDates??[]),today]};if(!wasDone)onComplete({...updated,actualSets},today);patch(item.id,()=>updated)};
 
   const allRows=items.flatMap(wkRows);
   const setsDone=allRows.filter(s=>s.done).length;
@@ -130,16 +133,22 @@ export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,histo
     setHistory(all=>[{id:crypto.randomUUID(),savedAt,label:label?.trim()||suggested,plan:JSON.parse(JSON.stringify(plans)) as Record<string,WeeklyExercise[]>},...all]);
   };
   useEffect(()=>{if(!plansReady)return;const source="gym-plan-6-day-v1";if(localStorage.getItem("pulse-workout-template")===source)return;if(hasPlan)saveSnapshot("Previous workout plan archived before applying Gym Plan · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans(buildWorkbookPlan());localStorage.setItem("pulse-workout-template",source);window.dispatchEvent(new Event("pulse-local-write"))},[plansReady]);
+  useEffect(()=>{if(!plansReady||localStorage.getItem("pulse-workout-template")!=="gym-plan-6-day-v1")return;const current=mondayKey(today);const active=localStorage.getItem("pulse-active-workout-week");if(!active){localStorage.setItem("pulse-active-workout-week",current);return}if(active>=current)return;const archiveEntries:WorkoutWeekArchiveEntry[]=[];for(let start=active;start<current;start=shiftDate(start,7)){const end=shiftDate(start,6);archiveEntries.push({id:`week-${start}`,startDate:start,endDate:end,savedAt:new Date().toISOString(),plan:JSON.parse(JSON.stringify(plans)) as Record<string,WeeklyExercise[]>,completions:completions.filter(entry=>entry.date>=start&&entry.date<=end)})}setWeekHistory(existing=>[...archiveEntries.filter(entry=>!existing.some(saved=>saved.startDate===entry.startDate)),...existing].sort((a,b)=>b.startDate.localeCompare(a.startDate)));setPlans(existing=>Object.fromEntries(Object.entries(existing).map(([key,items])=>[key,items.map(item=>({...item,actualSets:item.actualSets.map(set=>({reps:"",weight:"",done:false}))}))])));localStorage.setItem("pulse-active-workout-week",current);window.dispatchEvent(new Event("pulse-local-write"))},[plansReady,today]);
   const savePlan=()=>{const label=window.prompt("Name this workout snapshot (optional):","");if(label===null)return;saveSnapshot(label);};
   const resetPlan=()=>{if(!hasPlan){setPlans({});return;}if(!window.confirm("Save this workout plan to History, then reset the weekly plan?"))return;saveSnapshot("Weekly plan archived before reset · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans({});};
   const applyWorkbookPlan=()=>{if(hasPlan&&!window.confirm("Save your current plan to History and replace it with the 6-day plan from Gym_Plan_6_Day.xlsx?"))return;if(hasPlan)saveSnapshot("Plan archived before applying 6-day gym plan · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans(buildWorkbookPlan())};
+  const thisWeekStart=mondayKey(today);const thisWeekEnd=shiftDate(thisWeekStart,6);const chosenArchive=weekHistory.find(entry=>entry.id===selectedWeek);const reportStart=chosenArchive?.startDate??thisWeekStart;const reportEnd=chosenArchive?.endDate??thisWeekEnd;const reportPlan=chosenArchive?.plan??plans;const reportLogs=chosenArchive?.completions??completions.filter(entry=>entry.date>=reportStart&&entry.date<=reportEnd);
+  const downloadWeekPdf=()=>{document.title=`Pulse-workout-${reportStart}`;window.print();window.setTimeout(()=>{document.title="PULSE"},1000)};
 
   return <div className="wk">
     <section className="panel wk-week">
       <div className="wk-week-head"><div><span className="eyebrow">WEEKLY SPLIT</span><h3>Pick a day</h3></div><span className="demo-tag">6 TRAINING DAYS · 134 WORKING SETS</span></div>
       <div className="wk-tabs" role="tablist">{workoutDays.map(key=>{const i=weekKeys.indexOf(key);const list=plans[key]??[];const first=list[0]?.focus;return <button key={key} role="tab" aria-selected={day===key} aria-label={dayNames[i]} className={`wk-tab ${day===key?"selected":""} ${key===todayKey?"is-today":""}`} onClick={()=>setDay(key)}><b>{dayNames[i].slice(0,3)}</b><span>{list.length?`${list.length} ex`:"Rest"}</span>{first?<i style={wkChip(first)}/>:<i className="empty"/>}{key===todayKey&&<em>TODAY</em>}</button>})}</div>
       <div className="wk-archive-actions"><div><b>{history.length} saved {history.length===1?"snapshot":"snapshots"}</b><small>Save a version before making a new weekly plan.</small></div><div><button type="button" className="secondary-btn" onClick={applyWorkbookPlan}><RotateCcw size={14}/> Apply 6-day plan</button><button type="button" className="secondary-btn" onClick={savePlan} disabled={!hasPlan}><Archive size={14}/> Save to history</button><button type="button" className="secondary-btn danger" onClick={resetPlan}><RotateCcw size={14}/> Reset plan</button></div></div>
+      <div className="wk-week-history"><label>Past/current week<select value={selectedWeek} onChange={event=>setSelectedWeek(event.target.value)}><option value="">Current week · {thisWeekStart} to {thisWeekEnd}</option>{weekHistory.map(entry=><option value={entry.id} key={entry.id}>{entry.startDate} – {entry.endDate}</option>)}</select></label><button type="button" className="secondary-btn" onClick={downloadWeekPdf}>Download week PDF</button><small>Print dialog opens; choose “Save as PDF” to download a file.</small></div>
     </section>
+
+    <section className="wk-print-report" aria-hidden="true"><h1>PULSE · Workout week</h1><p>{reportStart} to {reportEnd}{chosenArchive?" · Archived":" · Current week"}</p><p>Weekly target: 6 sessions · 134 working sets · Sunday recovery.</p>{["mon","tue","wed","thu","fri","sat","sun"].map(key=>{const dayEntries=reportPlan[key]??[];if(!dayEntries.length)return null;const weekday=weekKeys.indexOf(key as typeof weekKeys[number]);return <section key={key}><h2>{dayNames[weekday]} · {WORKOUT_SESSIONS[key]}</h2>{dayEntries.map(item=>{const logs=reportLogs.filter(entry=>entry.workoutId===item.id&&entry.date>=reportStart&&entry.date<=reportEnd);return <article key={item.id}><b>{item.name}</b><span>{item.focus??"General"} · {item.sets>0?`${item.sets} sets × `:""}{item.reps}{item.rest?` · Rest ${item.rest}`:""}</span>{item.notes&&<small>{item.notes}</small>}{logs.length?logs.map(log=><div key={log.id}>{log.date} · {log.completed?"Completed":"In progress"} · {(log.actualSets??[]).map((set,i)=>`Set ${i+1}: ${set.reps||"—"} reps × ${set.weight||"—"} kg${set.done?" ✓":""}`).join("; ")}</div>):<small>Not logged this week</small>}</article>})}</section>})}</section>
 
     <section className="panel wk-day">
       <div className="wk-day-head">

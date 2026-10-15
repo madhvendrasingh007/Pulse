@@ -11,7 +11,8 @@ export type CalorieDay = { date:string; consumed:number; exercise:number; defici
 export type WeeklyExercise={id:string;name:string;sets:number;reps:string;rest?:string;notes?:string;mediaUrl:string;focus?:string;secondaryMuscles?:string;actualSets:{reps:string;weight:string;done?:boolean}[];completedDates?:string[]};
 export type WorkoutHistoryEntry={id:string;savedAt:string;label:string;plan:Record<string,WeeklyExercise[]>};
 export type PageHistoryEntry={id:string;savedAt:string;page:Page;label:string;snapshot:unknown};
-export type WorkoutCompletionEntry={id:string;workoutId:string;date:string;name:string;focus:string;sets:number;reps:string;recordedAt:string};
+export type WorkoutCompletionEntry={id:string;workoutId:string;date:string;name:string;focus:string;sets:number;reps:string;rest?:string;actualSets?:{reps:string;weight:string;done?:boolean}[];completed?:boolean;recordedAt:string};
+export type WorkoutWeekArchiveEntry={id:string;startDate:string;endDate:string;savedAt:string;plan:Record<string,WeeklyExercise[]>;completions:WorkoutCompletionEntry[]};
 export type FaceStep={id:string;label:string;why:string;time:string};export type FaceRoutineState={startDate:string;completed:Record<string,string[]>;custom?:Record<string,Record<string,{morning:FaceStep[];night:FaceStep[]}>>};
 export const eventDay=(date:string)=>String(date).slice(0,10);
 export const localDay = (date = new Date()) => { const d = new Date(date.getTime() - date.getTimezoneOffset() * 60000); return d.toISOString().slice(0, 10); };

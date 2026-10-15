@@ -55,6 +55,30 @@
   .app-shell .history-calendar-grid, .app-shell .history-weekdays{gap:2px}
 }
 
+.app-shell .history-workout-log{display:grid;gap:4px;padding:8px 0;border-bottom:1px solid var(--border)}
+.app-shell .history-workout-log:last-child{border-bottom:0}
+.app-shell .history-workout-log>small,.app-shell .history-legacy-note{padding-left:38px;color:var(--muted);font-size:9px}
+.app-shell .history-set-list,.app-shell .history-week-entries{display:grid;gap:5px;padding-left:38px}
+.app-shell .history-set-list>span,.app-shell .history-week-entries .history-workout-log>span{font-size:9px;color:var(--muted)}
+.app-shell .history-set-list>.is-done{color:var(--lime)}
+.app-shell .history-week-entries{padding:10px 0 0}
+.app-shell .history-week-entries .history-workout-log{padding:9px 10px;border:1px solid var(--border);border-radius:10px;background:var(--surface-soft)}
+.app-shell .history-week-entries .history-workout-log>small,.app-shell .history-week-entries .history-workout-log>span{padding-left:0}
+.app-shell .history-monthly-detail{position:relative;overflow:visible}
+.app-shell .history-month-hover-day{z-index:0}
+.app-shell .history-month-hover-day:hover,.app-shell .history-month-hover-day:focus-visible{z-index:5}
+.app-shell .history-day-tooltip{position:absolute;z-index:20;top:calc(100% + 7px);left:50%;width:240px;display:grid;gap:5px;padding:10px 11px;text-align:left;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-3px);transition:opacity .12s ease,transform .12s ease; background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 35px #0005;font-size:9px;color:var(--text)}
+.app-shell .history-day-tooltip>b{font:700 11px Manrope}
+.app-shell .history-day-tooltip>small{font-size:9px;line-height:1.45;color:var(--muted)}
+.app-shell .history-day-tooltip strong{color:var(--text)}
+.app-shell .history-day-tooltip small>span{display:block;margin-top:3px}
+.app-shell .history-month-hover-day:hover .history-day-tooltip,.app-shell .history-month-hover-day:focus-visible .history-day-tooltip{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.app-shell .history-month-hover-day:nth-child(7n + 1) .history-day-tooltip{left:0;transform:translate(0,-3px)}
+.app-shell .history-month-hover-day:nth-child(7n + 1):hover .history-day-tooltip,.app-shell .history-month-hover-day:nth-child(7n + 1):focus-visible .history-day-tooltip{transform:translate(0,0)}
+.app-shell .history-month-hover-day:nth-child(7n) .history-day-tooltip{left:auto;right:0;transform:translate(0,-3px)}
+.app-shell .history-month-hover-day:nth-child(7n):hover .history-day-tooltip,.app-shell .history-month-hover-day:nth-child(7n):focus-visible .history-day-tooltip{transform:translate(0,0)}
+@media(max-width:760px){.app-shell .history-day-tooltip{display:none}.app-shell .history-month-hover-day:focus-visible{outline:2px solid var(--accent);outline-offset:1px}}
+
 .app-shell .workout-snapshots{padding:14px 16px}.app-shell .workout-snapshots .panel-heading h3{display:flex;align-items:center;gap:7px}.app-shell .workout-snapshot{border-top:1px solid var(--border);padding:10px 0}.app-shell .workout-snapshot>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}.app-shell .workout-snapshot>summary::-webkit-details-marker{display:none}.app-shell .workout-snapshot>summary>span{display:grid;gap:3px;min-width:0}.app-shell .workout-snapshot>summary b{font-size:11px}.app-shell .workout-snapshot>summary small{font-size:9px;color:var(--muted)}.app-shell .workout-snapshot-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.app-shell .workout-snapshot-days>section{padding:10px;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}.app-shell .workout-snapshot-days h4{margin:0 0 6px;font-size:10px;color:var(--accent)}.app-shell .workout-snapshot-exercise{display:grid;gap:2px;padding:6px 0;border-top:1px solid var(--border);font-size:10px}.app-shell .workout-snapshot-exercise span,.app-shell .workout-snapshot-exercise small{color:var(--muted);font-size:9px;line-height:1.35}
 @media(max-width:620px){.app-shell .workout-snapshot-days{grid-template-columns:1fr}.app-shell .workout-snapshot>summary> b{white-space:nowrap}}
 

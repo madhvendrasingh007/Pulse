@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import { connectMongo } from "@/lib/db/mongoose";
 import { PulseState } from "@/models/pulse-state";
 
-const allowedKeys = new Set(["pulse-habits", "pulse-weight-logs", "pulse-energy-profile", "pulse-exercise-burns", "pulse-calorie-targets", "pulse-nutrition-goals", "pulse-activity-factor", "pulse-events", "pulse-weekly-workouts", "pulse-workout-history", "pulse-workout-completions", "pulse-page-history", "pulse-food-logs", "pulse-quick-dish-edits", "pulse-workout-template", "pulse-face-routine", "pulse-theme"]);
+const allowedKeys = new Set(["pulse-habits", "pulse-weight-logs", "pulse-energy-profile", "pulse-exercise-burns", "pulse-calorie-targets", "pulse-nutrition-goals", "pulse-activity-factor", "pulse-events", "pulse-weekly-workouts", "pulse-workout-history", "pulse-workout-completions", "pulse-workout-week-history", "pulse-active-workout-week", "pulse-page-history", "pulse-food-logs", "pulse-quick-dish-edits", "pulse-workout-template", "pulse-face-routine", "pulse-theme"]);
 const dataSchema = z.record(z.string(), z.unknown()).refine((record) => Object.keys(record).every((key) => allowedKeys.has(key)), "Unsupported PULSE data field");
 const putSchema = z.object({ data: dataSchema, revision: z.string().datetime().nullable() });
 
