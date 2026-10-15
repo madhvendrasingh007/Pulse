@@ -14,59 +14,78 @@ import type { WeeklyExercise, WorkoutHistoryEntry } from "@/lib/pulse/shared";
 import { Empty } from "@/components/ui/empty-state";
 
 const MUSCLE_GROUPS=["General","Chest","Upper chest","Mid-back","Lats","Shoulders","Front delts","Side delts","Rear delts","Upper back","Traps","Arms","Biceps","Brachialis","Forearms","Triceps","Quads","Hamstrings","Glutes","Calves","Abs","Core","Lower back","Hip flexors","Cardio","Full body","Push","Pull"];
-const MAPPED_EXERCISES:Record<string,{session:string;name:string;focus:string;secondary:string;reps:string}[]>={
+type PlannedMove={session:string;name:string;sets:number;reps:string;rest:string;focus:string;secondary:string;notes?:string};
+const WORKOUT_SESSIONS:Record<string,string>={mon:"Push",tue:"Pull",wed:"Treadmill Cardio",thu:"Upper Power + Arms",fri:"Legs A (Quad Focus)",sat:"Legs B + Shoulders + Abs",sun:"Rest / Long Walk"};
+const MAPPED_EXERCISES:Record<string,PlannedMove[]>={
   mon:[
-    {session:"Upper A",name:"Barbell bench press",focus:"Chest",secondary:"Front delts, triceps",reps:"8–12"},
-    {session:"Upper A",name:"Barbell or cable row",focus:"Mid-back (lats, rhomboids)",secondary:"Biceps, rear delts",reps:"8–12"},
-    {session:"Upper A",name:"Overhead dumbbell press",focus:"Shoulders (front/side delts)",secondary:"Triceps, upper chest",reps:"8–12"},
-    {session:"Upper A",name:"Lat pulldown",focus:"Lats",secondary:"Biceps, rear delts",reps:"8–12"},
-    {session:"Upper A",name:"Lateral raises",focus:"Side delts",secondary:"Traps",reps:"12–15"},
-    {session:"Upper A",name:"Cable triceps pushdown",focus:"Triceps",secondary:"—",reps:"10–15"},
-    {session:"Upper A",name:"Dumbbell curl",focus:"Biceps",secondary:"Forearms",reps:"10–15"},
+    {session:"Push",name:"Incline DB Press",sets:4,reps:"8–10",rest:"2–3 min",focus:"Chest",secondary:"Front delts, triceps"},
+    {session:"Push",name:"Flat Machine/Barbell Chest Press",sets:4,reps:"8–10",rest:"2–3 min",focus:"Chest",secondary:"Front delts, triceps"},
+    {session:"Push",name:"Cable Chest Fly (low to high)",sets:3,reps:"12–15",rest:"60–90 sec",focus:"Chest",secondary:"Front delts"},
+    {session:"Push",name:"Seated DB Shoulder Press",sets:3,reps:"8–10",rest:"2 min",focus:"Front delts",secondary:"Side delts, triceps"},
+    {session:"Push",name:"DB Lateral Raise",sets:4,reps:"12–15",rest:"60 sec",focus:"Side delts",secondary:"Upper back"},
+    {session:"Push",name:"Overhead Rope Extension",sets:3,reps:"10–12",rest:"60–90 sec",focus:"Triceps",secondary:""},
+    {session:"Push",name:"Tricep Pushdown",sets:3,reps:"12–15",rest:"60 sec",focus:"Triceps",secondary:""},
   ],
   tue:[
-    {session:"Lower A",name:"Barbell back squat",focus:"Quads, glutes",secondary:"Hamstrings, core, lower back",reps:"6–10"},
-    {session:"Lower A",name:"Romanian deadlift",focus:"Hamstrings, glutes",secondary:"Lower back, forearms",reps:"8–12"},
-    {session:"Lower A",name:"Leg press",focus:"Quads",secondary:"Glutes, hamstrings",reps:"10–15"},
-    {session:"Lower A",name:"Leg curl",focus:"Hamstrings",secondary:"Calves",reps:"10–15"},
-    {session:"Lower A",name:"Standing calf raise",focus:"Calves (gastrocnemius)",secondary:"—",reps:"12–20"},
-    {session:"Lower A",name:"Hanging knee raise or cable crunch",focus:"Abs (lower abs / rectus abdominis)",secondary:"Hip flexors",reps:"10–15"},
+    {session:"Pull",name:"Lat Pulldown (wide grip)",sets:4,reps:"8–10",rest:"2 min",focus:"Lats",secondary:"Biceps, upper back"},
+    {session:"Pull",name:"Chest-Supported Row",sets:4,reps:"8–10",rest:"2 min",focus:"Upper back",secondary:"Lats, rear delts, biceps"},
+    {session:"Pull",name:"Seated Cable Row",sets:3,reps:"10–12",rest:"90 sec",focus:"Upper back",secondary:"Lats, biceps, rear delts"},
+    {session:"Pull",name:"Straight-Arm Pulldown",sets:3,reps:"12–15",rest:"60–90 sec",focus:"Lats",secondary:"Triceps"},
+    {session:"Pull",name:"Rear Delt Fly",sets:3,reps:"12–15",rest:"60 sec",focus:"Rear delts",secondary:"Upper back"},
+    {session:"Pull",name:"Barbell/EZ Bar Curl",sets:3,reps:"8–10",rest:"90 sec",focus:"Biceps",secondary:"Forearms"},
+    {session:"Pull",name:"Hammer Curl",sets:3,reps:"10–12",rest:"60 sec",focus:"Biceps",secondary:"Forearms"},
   ],
+  wed:[{session:"Treadmill Cardio",name:"Treadmill interval session",sets:0,reps:"About 40 min",rest:"—",focus:"Cardio",secondary:"Quads, glutes, calves",notes:"5 min easy warm-up · 6 rounds of 2 min hard at 8–10% incline and 2 min easy · 5–10 min cool-down."}],
   thu:[
-    {session:"Upper B",name:"Incline dumbbell press",focus:"Upper chest",secondary:"Front delts, triceps",reps:"8–12"},
-    {session:"Upper B",name:"Pull-ups / assisted / pulldown",focus:"Lats",secondary:"Biceps, upper back, core",reps:"6–12"},
-    {session:"Upper B",name:"Seated cable row",focus:"Mid-back",secondary:"Lats, biceps, rear delts",reps:"8–12"},
-    {session:"Upper B",name:"Dumbbell shoulder press",focus:"Shoulders",secondary:"Triceps, upper traps",reps:"8–12"},
-    {session:"Upper B",name:"Cable fly",focus:"Chest (inner/overall)",secondary:"Front delts",reps:"10–15"},
-    {session:"Upper B",name:"Face pull",focus:"Rear delts, upper back",secondary:"Rotator cuff, traps",reps:"12–15"},
-    {session:"Upper B",name:"Overhead triceps extension",focus:"Triceps (long head)",secondary:"—",reps:"10–15"},
-    {session:"Upper B",name:"Hammer curl",focus:"Biceps, brachialis",secondary:"Forearms",reps:"10–15"},
+    {session:"Upper Power + Arms",name:"Flat DB Press",sets:4,reps:"6–8",rest:"2–3 min",focus:"Chest",secondary:"Front delts, triceps"},
+    {session:"Upper Power + Arms",name:"Pull-ups / Neutral-Grip Pulldown",sets:4,reps:"6–10",rest:"2–3 min",focus:"Lats",secondary:"Biceps, upper back"},
+    {session:"Upper Power + Arms",name:"One-Arm DB Row",sets:3,reps:"10–12",rest:"90 sec",focus:"Upper back",secondary:"Lats, biceps, rear delts"},
+    {session:"Upper Power + Arms",name:"Face Pull",sets:3,reps:"12–15",rest:"60 sec",focus:"Rear delts",secondary:"Upper back"},
+    {session:"Upper Power + Arms",name:"Machine Shoulder Press",sets:3,reps:"8–10",rest:"2 min",focus:"Front delts",secondary:"Side delts, triceps"},
+    {session:"Upper Power + Arms",name:"Incline DB Curl",sets:3,reps:"10–12",rest:"60–90 sec",focus:"Biceps",secondary:"Forearms"},
+    {session:"Upper Power + Arms",name:"Skull Crushers",sets:3,reps:"10–12",rest:"90 sec",focus:"Triceps",secondary:""},
+    {session:"Upper Power + Arms",name:"Cable Bicep Curl",sets:3,reps:"12–15",rest:"60 sec",focus:"Biceps",secondary:"Forearms"},
+    {session:"Upper Power + Arms",name:"Machine Dip / Close-Grip Pushdown",sets:3,reps:"8–10",rest:"90 sec",focus:"Triceps",secondary:"Chest, front delts"},
   ],
   fri:[
-    {session:"Lower B",name:"Conventional or trap-bar deadlift",focus:"Hamstrings, glutes, lower back",secondary:"Quads, traps, forearms, core",reps:"5–8"},
-    {session:"Lower B",name:"Bulgarian split squat",focus:"Quads, glutes",secondary:"Hamstrings, core (balance)",reps:"8–12 each side"},
-    {session:"Lower B",name:"Hip thrust",focus:"Glutes",secondary:"Hamstrings",reps:"8–12"},
-    {session:"Lower B",name:"Leg extension",focus:"Quads",secondary:"—",reps:"10–15"},
-    {session:"Lower B",name:"Seated calf raise",focus:"Calves (soleus)",secondary:"—",reps:"12–20"},
-    {session:"Lower B",name:"Plank",focus:"Core (abs, obliques)",secondary:"Shoulders, glutes",reps:"30–60 sec"},
+    {session:"Legs A (Quad Focus)",name:"Back or Hack Squat",sets:4,reps:"6–8",rest:"2–3 min",focus:"Quads",secondary:"Glutes, abs, lower back"},
+    {session:"Legs A (Quad Focus)",name:"Leg Press",sets:4,reps:"10–12",rest:"2 min",focus:"Quads",secondary:"Glutes"},
+    {session:"Legs A (Quad Focus)",name:"Bulgarian Split Squat (per leg)",sets:3,reps:"10",rest:"90 sec",focus:"Quads",secondary:"Glutes"},
+    {session:"Legs A (Quad Focus)",name:"Leg Extension",sets:3,reps:"12–15",rest:"60 sec",focus:"Quads",secondary:""},
+    {session:"Legs A (Quad Focus)",name:"Hip Thrust / Glute Bridge",sets:3,reps:"10–12",rest:"90 sec",focus:"Glutes",secondary:"Hamstrings, quads"},
+    {session:"Legs A (Quad Focus)",name:"Lying/Seated Hamstring Curl",sets:3,reps:"10–12",rest:"90 sec",focus:"Hamstrings",secondary:"Calves"},
+    {session:"Legs A (Quad Focus)",name:"Standing Calf Raise",sets:4,reps:"12–15",rest:"60 sec",focus:"Calves",secondary:""},
+    {session:"Legs A (Quad Focus)",name:"Hanging Leg Raise",sets:3,reps:"12",rest:"60 sec",focus:"Abs",secondary:"Forearms"},
+  ],
+  sat:[
+    {session:"Legs B + Shoulders + Abs",name:"Romanian Deadlift",sets:4,reps:"8–10",rest:"2–3 min",focus:"Hamstrings",secondary:"Glutes, lower back, forearms"},
+    {session:"Legs B + Shoulders + Abs",name:"Front or Hack Squat",sets:3,reps:"8",rest:"2 min",focus:"Quads",secondary:"Glutes, abs"},
+    {session:"Legs B + Shoulders + Abs",name:"Hamstring Curl",sets:3,reps:"10–12",rest:"90 sec",focus:"Hamstrings",secondary:"Calves"},
+    {session:"Legs B + Shoulders + Abs",name:"Walking Lunges (per leg)",sets:3,reps:"12",rest:"90 sec",focus:"Glutes",secondary:"Quads, hamstrings"},
+    {session:"Legs B + Shoulders + Abs",name:"Seated Calf Raise",sets:4,reps:"15",rest:"60 sec",focus:"Calves",secondary:""},
+    {session:"Legs B + Shoulders + Abs",name:"DB Shoulder Press",sets:4,reps:"8–10",rest:"2 min",focus:"Front delts",secondary:"Side delts, triceps"},
+    {session:"Legs B + Shoulders + Abs",name:"Lateral Raise",sets:4,reps:"12–15",rest:"60 sec",focus:"Side delts",secondary:"Upper back"},
+    {session:"Legs B + Shoulders + Abs",name:"Cable Crunch",sets:3,reps:"15",rest:"60 sec",focus:"Abs",secondary:""},
+    {session:"Legs B + Shoulders + Abs",name:"Plank",sets:3,reps:"45–60 sec",rest:"60 sec",focus:"Abs",secondary:"Front delts, glutes"},
   ],
 };
 const CARDIO_MUSCLE_MAP=[{name:"Incline walk",muscles:"Glutes, hamstrings, calves; heart and lungs"},{name:"Rowing machine",muscles:"Back, legs, arms; full-body endurance"},{name:"Stationary bike",muscles:"Quads, glutes, calves; low impact"},{name:"Cross-trainer",muscles:"Legs and arms; low-impact full body"},{name:"Battle ropes / ski erg",muscles:"Shoulders, back, core, arms"},{name:"Jump rope",muscles:"Calves, shoulders, coordination"}];
-const MUSCLE_FREQUENCY_MAP=[{muscle:"Chest",days:"Mon, Thu",exercises:"Bench press, incline press, cable fly"},{muscle:"Back · lats and mid-back",days:"Mon, Thu",exercises:"Rows, pulldown, pull-ups"},{muscle:"Shoulders",days:"Mon, Thu",exercises:"Overhead press, lateral raise, shoulder press"},{muscle:"Rear delts / upper back",days:"Mon, Thu",exercises:"Face pull, rows"},{muscle:"Biceps",days:"Mon, Thu",exercises:"Curl, hammer curl, plus back work"},{muscle:"Triceps",days:"Mon, Thu",exercises:"Pushdown, overhead extension, plus pressing"},{muscle:"Quads",days:"Tue, Fri",exercises:"Squat, leg press, split squat, leg extension"},{muscle:"Hamstrings",days:"Tue, Fri",exercises:"Romanian deadlift, leg curl, deadlift"},{muscle:"Glutes",days:"Tue, Fri",exercises:"Squat, hip thrust, split squat, deadlift"},{muscle:"Calves",days:"Tue, Fri",exercises:"Standing and seated calf raise"},{muscle:"Abs / core",days:"Tue, Fri · optional Sat",exercises:"Knee raise, cable crunch, plank"}];
+const MUSCLE_VOLUME=[{muscle:"Chest",direct:15,indirect:3,days:2},{muscle:"Lats",direct:11,indirect:10,days:2},{muscle:"Upper back",direct:10,indirect:22,days:2},{muscle:"Front delts",direct:10,indirect:21,days:3},{muscle:"Side delts",direct:8,indirect:10,days:2},{muscle:"Rear delts",direct:6,indirect:10,days:2},{muscle:"Biceps",direct:12,indirect:18,days:2},{muscle:"Triceps",direct:12,indirect:25,days:2},{muscle:"Forearms",direct:0,indirect:19,days:0},{muscle:"Quads",direct:17,indirect:6,days:2},{muscle:"Hamstrings",direct:10,indirect:6,days:2},{muscle:"Glutes",direct:6,indirect:21,days:2},{muscle:"Calves",direct:8,indirect:6,days:2},{muscle:"Abs",direct:9,indirect:7,days:2},{muscle:"Lower back",direct:0,indirect:8,days:0}];
+const TRAINING_RULES=["Warm up with 5 min easy cardio and 1–2 light ramp-up sets before your first lift.","Keep most sets 1–2 reps short of failure; the last isolation set may go to failure, with one drop set at about 25% lighter.","For the first 1–2 heavy compound lifts, do one heavy top set followed by back-off sets about 10% lighter.","When every set reaches the top of its rep range, add the smallest available weight jump next time.","Take a deload week every 6–8 weeks by reducing working sets about 40%.","If you miss a workout, skip it instead of doubling up. Priority: Legs A → Pull → Push → Upper → Legs B.","Aim for 8,000–10,000 steps daily, including rest days."];
 const wkHue=(s:string)=>[...s].reduce((a,c)=>a+c.charCodeAt(0)*7,0)%360;
 const wkChip=(s:string)=>({"--c":`hsl(${wkHue(s)} 70% 62%)`}) as React.CSSProperties;
 const wkIsImg=(u:string)=>/\.(gif|png|jpe?g|webp)(\?.*)?$/i.test(u);
 const wkIsVideo=(u:string)=>/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(u);
 const wkRows=(x:WeeklyExercise)=>Array.from({length:Math.max(x.sets,x.actualSets.length)},(_,i)=>x.actualSets[i]??{reps:"",weight:""} as {reps:string;weight:string;done?:boolean});
 
-export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHistory,onComplete}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>;onComplete:(exercise:WeeklyExercise,date:string)=>void}){
+export function WeeklyWorkoutPlanner({addRequest,plans,plansReady,setPlans,history,setHistory,onComplete}:{addRequest:number;plans:Record<string,WeeklyExercise[]>;plansReady:boolean;setPlans:React.Dispatch<React.SetStateAction<Record<string,WeeklyExercise[]>>>;history:WorkoutHistoryEntry[];setHistory:React.Dispatch<React.SetStateAction<WorkoutHistoryEntry[]>>;onComplete:(exercise:WeeklyExercise,date:string)=>void}){
   const todayKey=weekKeys[new Date().getDay()];
   const workoutDays=["mon","tue","wed","thu","fri","sat","sun"] as const;
   const [day,setDay]=useState<string>(todayKey);
   const [dialog,setDialog]=useState(false);
   const [editing,setEditing]=useState<string|null>(null);
   const [customMode,setCustomMode]=useState(false);
-  const empty={name:"",sets:3,reps:"8–12",mediaUrl:"",focus:"Chest",secondary:""};
+  const empty={name:"",sets:3,reps:"8–12",rest:"",notes:"",mediaUrl:"",focus:"Chest",secondary:""};
   const [draft,setDraft]=useState(empty);
   const [hiddenDemo,setHiddenDemo]=useState<Record<string,boolean>>({});
   const [zoom,setZoom]=useState<{url:string;name:string}|null>(null);
@@ -76,14 +95,14 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
   const today=localDay();
   const openNew=()=>{setEditing(null);setDraft(empty);setCustomMode(false);setDialog(true)};
   useEffect(()=>{if(addRequest>0)openNew()},[addRequest]);
-  const openEdit=(item:WeeklyExercise)=>{const focus=item.focus??"General";setEditing(item.id);setDraft({name:item.name,sets:item.sets,reps:item.reps,mediaUrl:item.mediaUrl,focus,secondary:item.secondaryMuscles??""});setCustomMode(!MUSCLE_GROUPS.includes(focus));setDialog(true)};
+  const openEdit=(item:WeeklyExercise)=>{const focus=item.focus??"General";setEditing(item.id);setDraft({name:item.name,sets:item.sets,reps:item.reps,rest:item.rest??"",notes:item.notes??"",mediaUrl:item.mediaUrl,focus,secondary:item.secondaryMuscles??""});setCustomMode(!MUSCLE_GROUPS.includes(focus));setDialog(true)};
   const save=()=>{
     if(!draft.name.trim())return;
     const old=items.find(x=>x.id===editing);
     const sets=Math.max(1,Math.min(20,Number(draft.sets)||1));
     const actualSets=[...(old?.actualSets??[])];
     while(actualSets.length<sets)actualSets.push({reps:"",weight:""});
-    const entry:WeeklyExercise={id:editing??crypto.randomUUID(),name:draft.name.trim(),sets,reps:draft.reps.trim()||"8–12",mediaUrl:draft.mediaUrl.trim(),focus:draft.focus.trim()||"General",secondaryMuscles:draft.secondary.trim(),actualSets,completedDates:old?.completedDates??[]};
+    const entry:WeeklyExercise={id:editing??crypto.randomUUID(),name:draft.name.trim(),sets,reps:draft.reps.trim()||"8–12",rest:draft.rest.trim(),notes:draft.notes.trim(),mediaUrl:draft.mediaUrl.trim(),focus:draft.focus.trim()||"General",secondaryMuscles:draft.secondary.trim(),actualSets,completedDates:old?.completedDates??[]};
     setPlans(all=>({...all,[day]:editing?(all[day]??[]).map(x=>x.id===editing?entry:x):[...(all[day]??[]),entry]}));
     setDialog(false);
   };
@@ -94,7 +113,7 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
   const remove=(id:string)=>setPlans(all=>({...all,[day]:(all[day]??[]).filter(x=>x.id!==id)}));
   const mappedForDay=MAPPED_EXERCISES[day]??[];
   const missingMapped=mappedForDay.filter(suggestion=>!items.some(item=>item.name.trim().toLowerCase()===suggestion.name.toLowerCase()));
-  const addMappedDay=()=>{if(!missingMapped.length)return;const mapped:WeeklyExercise[]=missingMapped.map(suggestion=>({id:crypto.randomUUID(),name:suggestion.name,sets:3,reps:suggestion.reps,mediaUrl:"",focus:suggestion.focus,secondaryMuscles:suggestion.secondary,actualSets:Array.from({length:3},()=>({reps:"",weight:""})),completedDates:[]}));setPlans(all=>({...all,[day]:[...(all[day]??[]),...mapped]}))};
+  const addMappedDay=()=>{if(!missingMapped.length)return;const mapped:WeeklyExercise[]=missingMapped.map(suggestion=>({id:crypto.randomUUID(),name:suggestion.name,sets:suggestion.sets,reps:suggestion.reps,rest:suggestion.rest,notes:suggestion.notes,mediaUrl:"",focus:suggestion.focus,secondaryMuscles:suggestion.secondary,actualSets:Array.from({length:suggestion.sets},()=>({reps:"",weight:""})),completedDates:[]}));setPlans(all=>({...all,[day]:[...(all[day]??[]),...mapped]}))};
   const toggleComplete=(item:WeeklyExercise)=>{if(!isToday)return;const wasDone=item.completedDates?.includes(today)??false;if(!wasDone)onComplete(item,today);patch(item.id,x=>({...x,completedDates:wasDone?x.completedDates?.filter(d=>d!==today):[...(x.completedDates??[]),today]}))};
 
   const allRows=items.flatMap(wkRows);
@@ -103,37 +122,40 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
   const focusList=[...new Set(items.map(i=>i.focus??"General"))];
   const exercisesDone=items.filter(x=>x.completedDates?.includes(today)).length;
   const hasPlan=Object.values(plans).some(dayItems=>dayItems.length>0);
+  const buildWorkbookPlan=()=>Object.fromEntries(Object.entries(MAPPED_EXERCISES).map(([key,moves])=>[key,moves.map(move=>({id:crypto.randomUUID(),name:move.name,sets:move.sets,reps:move.reps,rest:move.rest,notes:move.notes,mediaUrl:"",focus:move.focus,secondaryMuscles:move.secondary,actualSets:Array.from({length:move.sets},()=>({reps:"",weight:""})),completedDates:[]}))])) as Record<string,WeeklyExercise[]>;
   const saveSnapshot=(label?:string)=>{
     if(!hasPlan)return;
     const savedAt=new Date().toISOString();
     const suggested=`Workout plan · ${new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}`;
     setHistory(all=>[{id:crypto.randomUUID(),savedAt,label:label?.trim()||suggested,plan:JSON.parse(JSON.stringify(plans)) as Record<string,WeeklyExercise[]>},...all]);
   };
+  useEffect(()=>{if(!plansReady)return;const source="gym-plan-6-day-v1";if(localStorage.getItem("pulse-workout-template")===source)return;if(hasPlan)saveSnapshot("Previous workout plan archived before applying Gym Plan · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans(buildWorkbookPlan());localStorage.setItem("pulse-workout-template",source);window.dispatchEvent(new Event("pulse-local-write"))},[plansReady]);
   const savePlan=()=>{const label=window.prompt("Name this workout snapshot (optional):","");if(label===null)return;saveSnapshot(label);};
   const resetPlan=()=>{if(!hasPlan){setPlans({});return;}if(!window.confirm("Save this workout plan to History, then reset the weekly plan?"))return;saveSnapshot("Weekly plan archived before reset · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans({});};
+  const applyWorkbookPlan=()=>{if(hasPlan&&!window.confirm("Save your current plan to History and replace it with the 6-day plan from Gym_Plan_6_Day.xlsx?"))return;if(hasPlan)saveSnapshot("Plan archived before applying 6-day gym plan · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}));setPlans(buildWorkbookPlan())};
 
   return <div className="wk">
     <section className="panel wk-week">
-      <div className="wk-week-head"><div><span className="eyebrow">WEEKLY SPLIT</span><h3>Pick a day</h3></div><span className="demo-tag">REPEATS EVERY WEEK</span></div>
+      <div className="wk-week-head"><div><span className="eyebrow">WEEKLY SPLIT</span><h3>Pick a day</h3></div><span className="demo-tag">6 TRAINING DAYS · 134 WORKING SETS</span></div>
       <div className="wk-tabs" role="tablist">{workoutDays.map(key=>{const i=weekKeys.indexOf(key);const list=plans[key]??[];const first=list[0]?.focus;return <button key={key} role="tab" aria-selected={day===key} aria-label={dayNames[i]} className={`wk-tab ${day===key?"selected":""} ${key===todayKey?"is-today":""}`} onClick={()=>setDay(key)}><b>{dayNames[i].slice(0,3)}</b><span>{list.length?`${list.length} ex`:"Rest"}</span>{first?<i style={wkChip(first)}/>:<i className="empty"/>}{key===todayKey&&<em>TODAY</em>}</button>})}</div>
-      <div className="wk-archive-actions"><div><b>{history.length} saved {history.length===1?"snapshot":"snapshots"}</b><small>Save a version before making a new weekly plan.</small></div><div><button type="button" className="secondary-btn" onClick={savePlan} disabled={!hasPlan}><Archive size={14}/> Save to history</button><button type="button" className="secondary-btn danger" onClick={resetPlan}><RotateCcw size={14}/> Reset plan</button></div></div>
+      <div className="wk-archive-actions"><div><b>{history.length} saved {history.length===1?"snapshot":"snapshots"}</b><small>Save a version before making a new weekly plan.</small></div><div><button type="button" className="secondary-btn" onClick={applyWorkbookPlan}><RotateCcw size={14}/> Apply 6-day plan</button><button type="button" className="secondary-btn" onClick={savePlan} disabled={!hasPlan}><Archive size={14}/> Save to history</button><button type="button" className="secondary-btn danger" onClick={resetPlan}><RotateCcw size={14}/> Reset plan</button></div></div>
     </section>
 
     <section className="panel wk-day">
       <div className="wk-day-head">
-        <div className="wk-day-title"><span className="eyebrow">{isToday?"TODAY · ":""}{dayNames[dayIndex].toUpperCase()}</span><h2>{dayNames[dayIndex]}</h2>{mappedForDay.length>0&&<span className="wk-session-pill">{mappedForDay[0].session} · MUSCLE MAP</span>}<div className="wk-tags">{focusList.length?focusList.map(f=><span className="wk-chip" style={wkChip(f)} key={f}>{f}</span>):<span className="wk-chip muted">No muscle focus yet</span>}</div></div>
+        <div className="wk-day-title"><span className="eyebrow">{isToday?"TODAY · ":""}{dayNames[dayIndex].toUpperCase()}</span><h2>{dayNames[dayIndex]}</h2><span className="wk-session-pill">{WORKOUT_SESSIONS[day]}</span><div className="wk-tags">{focusList.length?focusList.map(f=><span className="wk-chip" style={wkChip(f)} key={f}>{f}</span>):<span className="wk-chip muted">No muscle focus yet</span>}</div></div>
         <div className="wk-day-actions">{mappedForDay.length>0&&<button className="secondary-btn wk-map-add" title="Adds mapped exercises that are not already in this day plan" onClick={addMappedDay} disabled={!missingMapped.length}><Plus size={14}/>{missingMapped.length?`Add ${mappedForDay[0].session} map (${missingMapped.length})`:"Map added"}</button>}<button className="primary-btn" onClick={openNew}><Plus size={16}/> Add exercise</button></div>
       </div>
       {items.length>0&&<div className="wk-stats"><div><small>EXERCISES</small><b>{items.length}</b></div><div><small>SETS DONE</small><b>{setsDone}<span>/{allRows.length}</span></b></div><div><small>VOLUME</small><b>{Math.round(volume).toLocaleString()}<span> kg</span></b></div><div><small>COMPLETED{isToday?"":" (TODAY ONLY)"}</small><b>{isToday?exercisesDone:0}<span>/{items.length}</span></b></div></div>}
-      {items.length===0?<Empty message={`Add exercises for ${dayNames[dayIndex]}. They stay in your weekly template.`} icon={Dumbbell}/>:<div className="wk-list">{items.map((item,index)=>{
+      {items.length===0?<Empty message={`${day==="sun"?"Recovery day · optional easy long walk. Keep up your daily steps.":`Add exercises for ${dayNames[dayIndex]}. They stay in your weekly template.`}`} icon={Dumbbell}/>:<div className="wk-list">{items.map((item,index)=>{
         const rows=wkRows(item);const done=rows.filter(s=>s.done).length;const focus=item.focus??"General";const isDone=item.completedDates?.includes(today);const hasImg=wkIsImg(item.mediaUrl);const demoHidden=hiddenDemo[item.id];
         return <article className={`wk-card ${isDone?"is-done":""} ${item.mediaUrl?"has-media":""}`} key={item.id}>
           <header className="wk-card-head">
             <span className="wk-num">{index+1}</span>
-            <div className="wk-title"><h4>{item.name}</h4><div className="wk-meta"><span className="wk-chip" style={wkChip(focus)}>{focus}</span><span className="wk-target"><b>{item.sets}</b> sets × <b>{item.reps}</b> reps</span></div>{item.secondaryMuscles&&<small className="wk-secondary">Also works: {item.secondaryMuscles}</small>}</div>
+            <div className="wk-title"><h4>{item.name}</h4><div className="wk-meta"><span className="wk-chip" style={wkChip(focus)}>{focus}</span><span className="wk-target">{item.sets>0?<><b>{item.sets}</b> sets × </>:null}<b>{item.reps}</b>{item.focus==="Cardio"?"":" reps"}{item.rest&&item.rest!=="—"&&<> · Rest <b>{item.rest}</b></>}</span></div>{item.secondaryMuscles&&<small className="wk-secondary">Also works: {item.secondaryMuscles}</small>}{item.notes&&<small className="wk-exercise-note">{item.notes}</small>}</div>
             <div className="wk-icons"><button className="wk-icon" aria-label={`Edit ${item.name}`} onClick={()=>openEdit(item)}><Pencil size={16}/></button><button className="wk-icon danger" aria-label={`Remove ${item.name}`} onClick={()=>remove(item.id)}><Trash2 size={16}/></button></div>
           </header>
-          <div className="wk-progress"><div className="bar-track"><div className="bar-fill lime-fill" style={{width:`${Math.min(100,done/Math.max(1,rows.length)*100)}%`}}/></div><small>{done}/{rows.length} sets done</small></div>
+          {rows.length>0&&<div className="wk-progress"><div className="bar-track"><div className="bar-fill lime-fill" style={{width:`${Math.min(100,done/Math.max(1,rows.length)*100)}%`}}/></div><small>{done}/{rows.length} sets done</small></div>}
           {item.mediaUrl&&(hasImg?<div className="wk-demo-block"><button type="button" className="wk-demo-toggle" onClick={()=>setHiddenDemo(s=>({...s,[item.id]:!s[item.id]}))}>{demoHidden?"Show demo":"Hide demo"} <ChevronDown size={14} style={{transform:demoHidden?"none":"rotate(180deg)"}}/></button>{!demoHidden&&<button type="button" className="wk-demo" onClick={()=>setZoom({url:item.mediaUrl,name:item.name})} aria-label={`Enlarge ${item.name} demo`}><img src={item.mediaUrl} alt={`${item.name} demo`} loading="lazy"/><span>Tap to enlarge</span></button>}</div>:wkIsVideo(item.mediaUrl)?<div className="wk-demo-block"><video className="wk-video" src={item.mediaUrl} controls playsInline preload="metadata" aria-label={`${item.name} exercise demo`}/></div>:<a href={item.mediaUrl} target="_blank" rel="noreferrer" className="wk-guide-link"><ArrowRight size={15}/> Open exercise guide</a>)}
           <div className="wk-sets">
             <div className="wk-set-head"><span>SET</span><span>REPS</span><span>KG</span><span>DONE</span></div>
@@ -141,7 +163,7 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
           </div>
           <footer className="wk-card-foot"><button className="secondary-btn" onClick={()=>addSet(item)}><Plus size={14}/> Add set</button><button className={`secondary-btn workout-completion ${isDone?"is-complete":""}`} disabled={!isToday} onClick={()=>toggleComplete(item)}>{isDone?<><Check size={14}/> Completed</>:isToday?"Mark exercise complete":"Open on this day to complete"}</button></footer>
         </article>})}</div>}
-      <details className="wk-map-reference"><summary>Muscle frequency and cardio reference</summary><div className="wk-reference-grid"><section><h3>Weekly muscle frequency</h3>{MUSCLE_FREQUENCY_MAP.map(row=><div className="wk-reference-row" key={row.muscle}><b>{row.muscle}</b><span>{row.days}</span><small>{row.exercises}</small></div>)}</section><section><h3>Cardio and muscles worked</h3>{CARDIO_MUSCLE_MAP.map(row=><div className="wk-reference-row" key={row.name}><b>{row.name}</b><small>{row.muscles}</small></div>)}</section></div></details>
+      <details className="wk-map-reference"><summary>Program guide · training rules, muscle volume and progress log</summary><div className="wk-reference-grid"><section><h3>Training rules</h3>{TRAINING_RULES.map((rule,index)=><div className="wk-reference-row" key={rule}><b>{index+1}. {rule}</b></div>)}<div className="wk-reference-row"><b>Weekly nutrition guide</b><small>Starting point: about 2,200–2,400 kcal and 150–170 g protein daily. Adjust after two weeks using your weekly average weight.</small></div><div className="wk-reference-row"><b>Weight trend</b><small>Target loss is about 0.5–0.9 kg per week. Faster than about 1 kg weekly may affect muscle retention and training performance.</small></div></section><section><h3>Weekly muscle volume</h3>{MUSCLE_VOLUME.map(row=><div className="wk-reference-row" key={row.muscle}><b>{row.muscle}</b><span>{row.days} days</span><small>{row.direct} direct sets · {row.indirect} indirect sets per week</small></div>)}</section><section><h3>Weekly progress log</h3><div className="wk-reference-row"><b>Track each week</b><small>Weekly average body weight, change from last week, waist, average daily steps, sessions completed out of 6, and notes.</small></div><div className="wk-reference-row"><b>Target weight range</b><span>78–82 kg</span><small>Use the Weight page for dated weigh-ins and review the trend here weekly.</small></div><div className="wk-reference-row"><b>Workout frequency</b><span>6 sessions</span><small>Wednesday is cardio; Sunday is rest or an easy long walk.</small></div><h3>Cardio and muscles worked</h3>{CARDIO_MUSCLE_MAP.map(row=><div className="wk-reference-row" key={row.name}><b>{row.name}</b><small>{row.muscles}</small></div>)}</section></div></details>
     </section>
     <p className="module-disclaimer">Planned sets are a target — add as many extra sets as you actually do. Everything saves in this browser and syncs to your private store.</p>
 
@@ -152,7 +174,7 @@ export function WeeklyWorkoutPlanner({addRequest,plans,setPlans,history,setHisto
       <label className="field-label">Exercise name<input autoFocus value={draft.name} placeholder="e.g. Dumbbell chest press" onChange={e=>setDraft({...draft,name:e.target.value})}/></label>
       <label className="field-label">Secondary muscles <span className="optional-label">optional</span><input value={draft.secondary} placeholder="e.g. Front delts, triceps" onChange={e=>setDraft({...draft,secondary:e.target.value})}/></label>
       <div className="field-label">Muscle group<div className="wk-chip-picker" role="radiogroup" aria-label="Muscle group">{MUSCLE_GROUPS.map(g=><button type="button" role="radio" aria-checked={!customMode&&draft.focus===g} key={g} style={wkChip(g)} className={`wk-chip pick ${!customMode&&draft.focus===g?"selected":""}`} onClick={()=>{setCustomMode(false);setDraft({...draft,focus:g})}}>{g}</button>)}<button type="button" role="radio" aria-checked={customMode} className={`wk-chip pick custom ${customMode?"selected":""}`} onClick={()=>{setCustomMode(true);if(MUSCLE_GROUPS.includes(draft.focus))setDraft({...draft,focus:""})}}>Custom…</button></div>{customMode&&<input className="wk-custom-input" value={draft.focus} placeholder="e.g. Shoulder + Chest" onChange={e=>setDraft({...draft,focus:e.target.value})}/>}</div>
-      <div className="nutrition-inputs"><label className="field-label">Planned sets<input type="number" min="1" max="20" value={draft.sets} onChange={e=>setDraft({...draft,sets:Math.max(1,Number(e.target.value))})}/></label><label className="field-label">Target reps<input value={draft.reps} onChange={e=>setDraft({...draft,reps:e.target.value})}/></label></div>
+      <div className="nutrition-inputs wk-target-inputs"><label className="field-label">Planned sets<input type="number" min="1" max="20" value={draft.sets} onChange={e=>setDraft({...draft,sets:Math.max(1,Number(e.target.value))})}/></label><label className="field-label">Target reps / time<input value={draft.reps} onChange={e=>setDraft({...draft,reps:e.target.value})}/></label><label className="field-label">Rest between sets<input value={draft.rest} placeholder="e.g. 90 sec" onChange={e=>setDraft({...draft,rest:e.target.value})}/></label></div><label className="field-label">Exercise notes <span className="optional-label">optional</span><textarea rows={2} value={draft.notes} placeholder="Warm-up, interval structure, or cue" onChange={e=>setDraft({...draft,notes:e.target.value})}/></label>
       <label className="field-label">Demo GIF / image / video URL <span className="optional-label">optional</span><input type="url" value={draft.mediaUrl} placeholder="https://…" onChange={e=>setDraft({...draft,mediaUrl:e.target.value})}/></label>
       {wkIsImg(draft.mediaUrl)&&<div className="wk-demo static"><img src={draft.mediaUrl} alt="Demo preview"/></div>}
       <div className="dialog-actions"><button className="secondary-btn" onClick={()=>setDialog(false)}>Cancel</button><button className="primary-btn" disabled={!draft.name.trim()} onClick={save}>Save exercise <ArrowRight size={15}/></button></div>

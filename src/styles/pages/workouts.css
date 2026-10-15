@@ -198,6 +198,10 @@
 .app-shell .wk-map-reference{margin-top:14px;padding:12px 14px;border:1px solid var(--border);border-radius:13px;background:var(--surface-soft)}
 .app-shell .wk-map-reference>summary{cursor:pointer;font:650 13px Manrope;color:var(--text)}
 .app-shell .wk-reference-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:13px}
+.app-shell .wk-reference-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.app-shell .wk-target-inputs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.app-shell .wk-dialog textarea{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:9px;background:var(--background);color:var(--text);font:inherit;resize:vertical}
+.app-shell .wk-exercise-note{display:block;margin-top:7px;padding:8px 10px;border-left:2px solid var(--n1);border-radius:0 8px 8px 0;background:color-mix(in srgb,var(--n1) 7%,var(--surface));color:var(--muted);font-size:11px;line-height:1.5}
 .app-shell .wk-reference-grid h3{margin:0 0 8px;font:650 12px Manrope}
 .app-shell .wk-reference-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px;padding:8px 0;border-top:1px solid var(--border);font-size:11px}
 .app-shell .wk-reference-row>b{font-weight:650}
@@ -219,6 +223,7 @@
   .app-shell .wk-map-reference{margin-top:10px;padding:10px 11px}
   .app-shell .wk-map-reference>summary{font-size:12px}
   .app-shell .wk-reference-grid{grid-template-columns:1fr;gap:10px}
+  .app-shell .wk-target-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .app-shell .wk-reference-row{padding:6px 0;font-size:10px}
   .app-shell .wk-video{max-height:175px;aspect-ratio:16/9}
   .app-shell .wk-card.has-media .wk-demo{max-height:165px;aspect-ratio:16/9}
