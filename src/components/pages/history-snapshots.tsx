@@ -33,6 +33,8 @@ function SnapshotDetails({ entry }: { entry: PageHistoryEntry }) {
 
 const pageOrder = ["Dashboard","Habits","Nutrition","Face Care","Calorie Burn","Weight","Planner","Settings"] as const;
 
-export function SavedPageHistory({ entries }: { entries: PageHistoryEntry[] }) {
-  return <div className="history-snapshot-groups">{pageOrder.map(page=>{const saved=entries.filter(entry=>entry.page===page);if(!saved.length)return null;return <section className="panel history-record-list page-history-group" key={page}><div className="panel-heading"><div><h3><Archive size={15}/> {page} history</h3><p>{saved.length} saved {saved.length===1?"version":"versions"} · each one stays after reset.</p></div></div>{saved.map(entry=><details className="page-snapshot" key={entry.id}><summary><span><b>{entry.label}</b><small>{new Date(entry.savedAt).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"})}</small></span></summary><SnapshotDetails entry={entry}/></details>)}</section>})}</div>;
+export function SavedPageHistory({ entries, date }: { entries: PageHistoryEntry[]; date: string }) {
+  const datedEntries=entries.filter(entry=>(entry.date??new Date(entry.savedAt).toISOString().slice(0,10))===date);
+  if(!datedEntries.length)return null;
+  return <div className="history-snapshot-groups">{pageOrder.map(page=>{const saved=datedEntries.filter(entry=>entry.page===page);if(!saved.length)return null;return <section className="panel history-record-list page-history-group" key={page}><div className="panel-heading"><div><h3><Archive size={15}/> {page} saved details</h3><p>{saved.length} saved version for {date}.</p></div></div>{saved.map(entry=><details className="page-snapshot" key={entry.id}><summary><span><b>{entry.label}</b><small>{new Date(entry.savedAt).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"})}</small></span></summary><SnapshotDetails entry={entry}/></details>)}</section>})}</div>;
 }
