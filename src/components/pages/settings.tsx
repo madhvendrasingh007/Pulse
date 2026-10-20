@@ -12,7 +12,7 @@ const PULSE_DATA_KEYS = [
   "pulse-theme", "pulse-dashboard-theme", "pulse-style",
 ];
 
-export function SettingsPage({nutritionGoals,setNutritionGoals,activityFactor,setActivityFactor}:{nutritionGoals:typeof import("@/lib/pulse/shared").defaultGoals;setNutritionGoals:React.Dispatch<React.SetStateAction<typeof import("@/lib/pulse/shared").defaultGoals>>;activityFactor:number;setActivityFactor:React.Dispatch<React.SetStateAction<number>>}) {
+export function SettingsPage({nutritionGoals,setNutritionGoals,activityFactor,setActivityFactor}:{nutritionGoals:typeof import("@/lib/pulse/shared").defaultGoals;setNutritionGoals:React.Dispatch<React.SetStateAction<typeof import("@/lib/pulse/shared").defaultGoals>>;activityFactor:number;setActivityFactor:React.Dispatch<React.SetStateAction<number>>;theme?:"light"|"dark";setTheme?:(theme:"light"|"dark")=>void}) {
   const [resetBusy, setResetBusy] = useState(false);
   const [resetError, setResetError] = useState("");
 
