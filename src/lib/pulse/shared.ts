@@ -2,6 +2,21 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { Activity, AlarmClock, Apple, Bath, BedDouble, Bike, BookMarked, BookOpen, Brain, Check, CigaretteOff, CircleCheck, CircleDot, Clock3, CloudSun, Coffee, CupSoda, Droplet, Droplets, Dumbbell, Flame, Flower, Flower2, Footprints, GlassWater, HandHeart, Heart, HeartPulse, Home, Leaf, Lightbulb, Moon, Mountain, MoveUp, Music, NotebookPen, PersonStanding, Pill, RefreshCcw, Salad, Settings, ShieldCheck, Smile, Snowflake, Sparkles, Sprout, Star, StretchHorizontal, Sun, Sunrise, Target, Thermometer, Timer, Trees, TrendingUp, Utensils, Waves, Weight, Wind, Zap, CalendarDays } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+/** Creates stable local record IDs, including on mobile browsers without randomUUID(). */
+export function createLocalId(): string {
+  const cryptoApi = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
+  if (typeof cryptoApi?.randomUUID === "function") return cryptoApi.randomUUID();
+  if (typeof cryptoApi?.getRandomValues === "function") {
+    const bytes = cryptoApi.getRandomValues(new Uint8Array(16));
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = [...bytes].map(byte => byte.toString(16).padStart(2, "0")).join("");
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  }
+  return `pulse-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
 export type Page = "Dashboard" | "Habits" | "Workouts" | "Nutrition" | "Face Care" | "Calorie Burn" | "Weight" | "Planner" | "History" | "Insights" | "AI Coach" | "Settings";
 export type Food = { id: string; date: string; name: string; amount: string; calories: number; protein: number; carbs: number; fats: number };
 export type Habit = { id: string; title: string; detail: string; iconKey: string; color: string; days?: number[]; completions?: Record<string,boolean>; done?: boolean; archived?:boolean };

@@ -1,33 +1,97 @@
-/* Final workout-density pass */
-.app-shell .wk-session-pill{display:inline-flex;width:max-content;max-width:100%;margin:0 0 5px;padding:4px 8px;border:1px solid color-mix(in srgb,var(--n1) 30%,var(--border));border-radius:99px;background:color-mix(in srgb,var(--n1) 8%,transparent);color:var(--n1);font-size:9px;font-weight:700;letter-spacing:.06em}
+/* FILE NAME : workout-mobile.css */
+/* Final mobile pass for the workout page. Load this AFTER workouts.css. */
+
 @media(max-width:760px){
-  .app-shell .wk-week,.app-shell .wk-day{padding:10px;margin-bottom:8px}
-  .app-shell .wk-week-head{margin-bottom:6px}
-  .app-shell .wk-week-head h3{font-size:13px}
-  .app-shell .wk-day-head{gap:7px;margin-bottom:7px}
-  .app-shell .wk-day-title h2{font-size:19px;margin:3px 0}
-  .app-shell .wk-tags{gap:4px;margin-top:4px}
-  .app-shell .wk-chip{padding:4px 7px;font-size:10px}
-  .app-shell .wk-day-actions{flex:0 0 100%;justify-content:flex-start}
-  .app-shell .wk-stats>div{padding:7px 9px}
-  .app-shell .wk-card{gap:7px;padding:9px}
-  .app-shell .wk-progress{gap:7px}
-  .app-shell .wk-progress small{font-size:9px}
-  .app-shell .wk-sets{gap:5px}
-  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:36px minmax(0,1fr) minmax(0,1fr) 46px;gap:4px}
-  .app-shell .wk-set-head span{font-size:7px;letter-spacing:.04em}
-  .app-shell .wk-set{padding:4px;border-radius:8px}
-  .app-shell .wk-set input{height:32px;border-radius:7px;font-size:13px}
-  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:22px;height:22px}
-  .app-shell .wk-card-foot .secondary-btn{min-height:34px;padding:6px 8px;font-size:10px}
-  .app-shell .wk-map-reference{margin-top:8px}
-  .app-shell .wk-reference-grid{gap:8px}
-  .app-shell .wk-reference-row{padding:5px 0}
+  .wk{gap:12px}
+  .wk-panel{padding:12px}
+
+  /* Week picker */
+  .wk-week-head{margin-bottom:12px}
+  .wk-week-head h3{font-size:19px}
+  .wk-week-head p{font-size:12.5px}
+  .wk-tag{font-size:11.5px;padding:5px 10px}
+  .wk-tabs{gap:4px}
+  .wk-tab b{font-size:17px}
+  .wk-tab i{margin-top:5px}
+  .wk-tab.selected i{width:26px}
+
+  /* Plan tools */
+  .wk-tools{margin-top:12px;border-radius:14px}
+  .wk-tools>summary,.wk-map-reference>summary{padding:12px 13px}
+  .wk-tools-body{padding:2px 13px 13px}
+  .wk-tools-actions{width:100%}
+  .wk-tools-actions .wk-btn{flex:1 1 140px}
+  .wk-history .wk-btn{width:100%}
+
+  /* Day hero */
+  .wk-hero{padding:14px;gap:14px;margin-bottom:12px;border-radius:18px}
+  .wk-day-title h2{margin-bottom:8px}
+  .wk-stats{gap:8px;margin-bottom:12px}
+  .wk-stats>div{padding:10px 12px;border-radius:12px}
+
+  /* Cards */
+  .wk-list{gap:10px}
+  .wk-card{gap:12px;padding:13px;border-radius:18px}
+  .wk-card-head{gap:11px}
+  .wk-num{flex-basis:34px;height:34px;border-radius:11px;font-size:14px}
+  .wk-icons{flex-direction:column;gap:2px}
+  .wk-icon{width:36px;height:36px}
+  .wk-icon.sm{width:28px;height:28px}
+  .wk-demo{max-height:210px;border-radius:13px}
+  .wk-video{max-height:200px;aspect-ratio:16/9}
+
+  /* Set rows: big touch targets, 16px inputs so iOS never zooms */
+  .wk-set-head,.wk-set{grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 62px;gap:7px}
+  .wk-set-head{padding:0 8px}
+  .wk-set{padding:7px 8px;border-radius:12px}
+  .wk-set input{height:42px;padding:0 9px;border-radius:10px}
+  .wk-check{width:30px;height:30px}
+
+  .wk-card-foot{gap:8px}
+  .wk-card-foot .wk-btn{flex:1 1 140px;min-height:42px}
+  .wk-map-reference{border-radius:14px}
+  .wk-reference-grid{padding:4px 13px 14px}
+
+  /* Dialog + lightbox */
+  .wk-dialog{padding:15px;border-radius:20px}
+  .wk-dialog .field-label{margin:9px 0}
+  .wk-dialog .field-label input{height:42px}
+  .wk-chip-picker{gap:6px}
+  .wk-chip.pick{padding:7px 11px;font-size:13px}
+  .wk-lightbox{padding:10px;border-radius:16px}
 }
+
 @media(max-width:420px){
-  .app-shell .wk-day-actions{flex:1 1 auto}
-  .app-shell .wk-day-actions>.primary-btn,.app-shell .wk-day-actions>.wk-map-add{font-size:9px;padding:6px 7px}
-  .app-shell .wk-set-head,.app-shell .wk-set{grid-template-columns:33px minmax(0,1fr) minmax(0,1fr) 42px}
-  .app-shell .wk-set input{height:31px;padding:0 4px;font-size:12px}
-  .app-shell .wk-set-end .check-circle,.app-shell .wk-icon.sm{width:21px;height:21px}
+  .wk-panel{padding:10px;border-radius:18px}
+  .wk-tab-name{font-size:11.5px}
+  .wk-tab b{font-size:15px}
+  .wk-tab-sub{display:none}
+  .wk-tab{padding:9px 2px 10px}
+
+  .wk-hero{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:12px}
+  .wk-ring{width:76px}
+  .wk-ring-label b{font-size:21px}
+  .wk-day-title h2{font-size:24px}
+  .wk-chip{font-size:11.5px;padding:4px 9px}
+
+  .wk-card{padding:11px}
+  .wk-title h4{font-size:16.5px}
+  .wk-target,.wk-target b{font-size:13px}
+
+  .wk-set-head,.wk-set{grid-template-columns:36px minmax(0,1fr) minmax(0,1fr) 54px;gap:5px}
+  .wk-set input{height:40px;padding:0 6px}
+  .wk-set-n{font-size:14px}
+  .wk-set-n em{display:none}
+  .wk-check{width:28px;height:28px}
+  .wk-set-end{gap:4px}
+  .wk-icon.sm{width:26px;height:26px}
+
+  .wk-target-inputs{grid-template-columns:1fr}
+}
+
+/* Landscape phones: keep the hero compact */
+@media(max-height:480px) and (orientation:landscape){
+  .wk-ring{width:70px}
+  .wk-hero{padding:10px 14px}
+  .wk-lightbox img{max-height:calc(100dvh - 80px)}
 }

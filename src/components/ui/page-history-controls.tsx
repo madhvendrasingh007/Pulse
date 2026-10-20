@@ -3,6 +3,7 @@
 import { Archive, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import type React from "react";
+import { createLocalId } from "@/lib/pulse/shared";
 import type { Page, PageHistoryEntry } from "@/lib/pulse/shared";
 
 export function PageHistoryControls({ page, snapshot, setHistory, onReset }: {
@@ -13,7 +14,7 @@ export function PageHistoryControls({ page, snapshot, setHistory, onReset }: {
 }) {
   const [savedNotice, setSavedNotice] = useState("");
   const save = (label = `${page} · ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}`) => {
-    setHistory(all => [{ id: crypto.randomUUID(), savedAt: new Date().toISOString(), page, label, snapshot: JSON.parse(JSON.stringify(snapshot)) }, ...all]);
+    setHistory(all => [{ id: createLocalId(), savedAt: new Date().toISOString(), page, label, snapshot: JSON.parse(JSON.stringify(snapshot)) }, ...all]);
     setSavedNotice("Saved in History. This version stays there after reset.");
   };
   const reset = () => {

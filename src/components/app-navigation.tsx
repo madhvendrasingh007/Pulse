@@ -4,7 +4,7 @@ import "./pulse-nav.css";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { CSSProperties, Dispatch, MouseEvent as ReactMouseEvent, SetStateAction } from "react";
 import { flushSync } from "react-dom";
-import { Activity, ArrowRight, BarChart3, CalendarDays, Check, ChevronsLeft, Circle, CircleHelp, Flame, Flower2, LayoutDashboard, Menu, Plus, TrendingUp, X } from "lucide-react";
+import { Activity, Apple, ArrowRight, BarChart3, CalendarDays, Check, ChevronsLeft, Circle, Dumbbell, Flame, Flower2, History as HistoryIcon, LayoutDashboard, Menu, X } from "lucide-react";
 import { nav } from "@/lib/pulse/shared";
 import type { Page } from "@/lib/pulse/shared";
 import { DEFAULT_THEME, isPulseTheme, PULSE_STYLES, PULSE_THEMES, themeForMode, themeMode, type PulseStyle, type PulseTheme, type ThemeMode } from "@/lib/pulse/themes";
@@ -162,13 +162,29 @@ export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMen
 
   useEffect(() => {
     let frame = 0;
+    let lastY = window.scrollY;
+    let direction = 0;
+    let travel = 0;
     const update = () => {
       if (frame) return;
       frame = requestAnimationFrame(() => {
         const y = window.scrollY;
         const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
         barRef.current?.classList.toggle("is-scrolled", y > 8);
+        if (window.innerWidth <= 760) {
+          const delta = y - lastY;
+          const nextDirection = Math.sign(delta);
+          if (nextDirection && nextDirection !== direction) { direction = nextDirection; travel = 0; }
+          travel += Math.abs(delta);
+          const barHasFocus = barRef.current?.matches(":focus-within");
+          if (y < 72 || barHasFocus) barRef.current?.classList.remove("is-hidden");
+          else if (travel > 8) {
+            barRef.current?.classList.toggle("is-hidden", direction > 0);
+            travel = 0;
+          }
+        } else barRef.current?.classList.remove("is-hidden");
         if (progressRef.current) progressRef.current.style.transform = `scaleX(${Math.min(1, y / max)})`;
+        lastY = y;
         frame = 0;
       });
     };
@@ -265,31 +281,37 @@ export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMen
 }
 
 /* =====================================================================
-   MOBILE BOTTOM BAR  (4 main tabs + quick add · swipe or tap menu for the rest)
+   MOBILE BOTTOM BAR  (primary daily routes)
    ===================================================================== */
-export function AppMobileNav({ page, setPage, onQuickAdd }: { page: Page; setPage: (page: Page) => void; onQuickAdd: () => void }) {
+export function AppMobileNav({ page, setPage }: { page: Page; setPage: (page: Page) => void }) {
+  const navRef = useRef<HTMLElement>(null);
   const tabs = [
-    { name: "Dashboard" as Page, icon: Activity, label: "Home" },
+    { name: "Dashboard" as Page, icon: LayoutDashboard, label: "Home" },
+    { name: "Workouts" as Page, icon: Dumbbell, label: "Workout" },
+    { name: "Nutrition" as Page, icon: Apple, label: "Nutrition" },
+    { name: "Calorie Burn" as Page, icon: Flame, label: "Burn" },
     { name: "Planner" as Page, icon: CalendarDays, label: "Planner" },
-    { name: "Insights" as Page, icon: TrendingUp, label: "Insights" },
-    { name: "Settings" as Page, icon: CircleHelp, label: "Profile" },
+    { name: "History" as Page, icon: HistoryIcon, label: "History" },
   ];
-  // five equal slots: tab, tab, [+], tab, tab
-  const slots = [0, 1, 3, 4];
   const active = tabs.findIndex(tab => tab.name === page);
+  useEffect(() => {
+    const navElement = navRef.current;
+    const activeTab = navElement?.querySelector<HTMLElement>(".mn-tab.active");
+    if (!navElement || !activeTab) return;
+    const left = activeTab.offsetLeft - (navElement.clientWidth - activeTab.offsetWidth) / 2;
+    navElement.scrollTo({ left, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }, [page]);
   const buzz = () => { try { navigator.vibrate?.(8); } catch { /* optional */ } };
   const tabButton = (tab: (typeof tabs)[number]) => {
     const Icon = tab.icon;
     return <button key={tab.name} type="button" aria-label={tab.label} aria-current={page === tab.name ? "page" : undefined}
       className={`mn-tab${page === tab.name ? " active" : ""}`} onClick={() => { buzz(); setPage(tab.name); }}>
-      <Icon size={22} strokeWidth={page === tab.name ? 2.4 : 1.9}/>
+      <Icon size={20} strokeWidth={page === tab.name ? 2.5 : 1.8}/><span>{tab.label}</span>
     </button>;
   };
-  return <nav className="mobile-nav" aria-label="Quick navigation" data-has-active={active >= 0} style={{ "--mi": active >= 0 ? slots[active] : 0 } as CSSProperties}>
+  return <nav ref={navRef} className="mobile-nav" aria-label="Quick navigation" data-has-active={active >= 0} style={{ "--mi": active >= 0 ? active : 0 } as CSSProperties}>
     <span className="mn-glider" aria-hidden="true"><i/></span>
-    {tabButton(tabs[0])}{tabButton(tabs[1])}
-    <button type="button" className="mn-add" aria-label="Quick add" onClick={() => { buzz(); onQuickAdd(); }}><Plus size={22} strokeWidth={2.4}/></button>
-    {tabButton(tabs[2])}{tabButton(tabs[3])}
+    {tabs.map(tabButton)}
   </nav>;
 }
 

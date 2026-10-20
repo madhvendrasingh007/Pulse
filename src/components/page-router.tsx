@@ -37,6 +37,6 @@ export function PageRouter({page,setPage,setTheme,theme,foods,setFoods,foodLibra
     {page==="Planner"?<PlannerManager events={events} setEvents={setEvents} addRequest={plannerAddRequest}/>:null}{page==="History"?<CalendarHistory data={historyData} date={selectedDate} setDate={setSelectedDate} setPage={setPage} profile={profile} activityFactor={activityFactor}/>:null}
     {page==="Insights"?<InsightsPage averageCalories={averageCalories} bmr={calculateEnergy(profile,0,0,activityFactor).bmr} deficit={energy.deficit}/>:null}
     {page==="AI Coach"?<><CoachAssistant context={coachContext} onApprove={onCoachAction}/><CoachCalculator profile={profile} activityFactor={activityFactor} date={selectedDate} caloriesConsumed={nutrition.calories} onApply={onUseCoach} goWorkouts={()=>setPage("Workouts")}/></>:null}
-    {page==="Settings"?<SettingsPage nutritionGoals={nutritionGoals} setNutritionGoals={setNutritionGoals} activityFactor={activityFactor} setActivityFactor={setActivityFactor} theme={theme} setTheme={setTheme}/>:null}
+    {page==="Settings"?<SettingsPage nutritionGoals={nutritionGoals} setNutritionGoals={setNutritionGoals} activityFactor={activityFactor} setActivityFactor={setActivityFactor}/>:null}
     </div>;
 }
