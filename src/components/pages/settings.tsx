@@ -9,7 +9,7 @@ const PULSE_DATA_KEYS = [
   "pulse-weekly-workouts", "pulse-workout-history", "pulse-workout-completions",
   "pulse-workout-week-history", "pulse-active-workout-week", "pulse-workout-template",
   "pulse-page-history", "pulse-food-logs", "pulse-quick-dish-edits", "pulse-face-routine",
-  "pulse-theme", "pulse-dashboard-theme", "pulse-style",
+  "pulse-theme", "pulse-color-theme", "pulse-dashboard-theme", "pulse-style",
 ];
 
 export function SettingsPage({nutritionGoals,setNutritionGoals,activityFactor,setActivityFactor}:{nutritionGoals:typeof import("@/lib/pulse/shared").defaultGoals;setNutritionGoals:React.Dispatch<React.SetStateAction<typeof import("@/lib/pulse/shared").defaultGoals>>;activityFactor:number;setActivityFactor:React.Dispatch<React.SetStateAction<number>>;theme?:"light"|"dark";setTheme?:(theme:"light"|"dark")=>void}) {

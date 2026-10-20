@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* Whole-site theme tokens. Keep these in sync with src/lib/pulse/themes.ts. */
+:root[data-theme="obsidian"]{color-scheme:dark;--background:#0c0d0f;--surface:#17191c;--surface-raised:#202226;--surface-soft:#17191c;--text:#e8e9ea;--muted:#8b8f94;--subtle:#8b8f94;--border:rgba(255,255,255,.09);--accent:#8fb9a8;--lime:#8fb9a8;--blue:#5d8a79;--violet:#8fb9a8;--shadow:0 12px 32px rgba(0,0,0,.2);--chart-series-1:#8fb9a8;--chart-series-2:#5d8a79;--chart-series-3:#9db7a4}
+:root[data-theme="gold"]{color-scheme:dark;--background:#121110;--surface:#1b1917;--surface-raised:#24211d;--surface-soft:#1b1917;--text:#e9e4d8;--muted:#8f897b;--subtle:#8f897b;--border:rgba(184,164,122,.12);--accent:#b8a47a;--lime:#b8a47a;--blue:#7d6f50;--violet:#b8a47a;--shadow:0 12px 32px rgba(0,0,0,.2);--chart-series-1:#b8a47a;--chart-series-2:#7d6f50;--chart-series-3:#c3ad83}
+:root[data-theme="midnight"]{color-scheme:dark;--background:#0a1020;--surface:#141b2b;--surface-raised:#1c263a;--surface-soft:#141b2b;--text:#e6ebf7;--muted:#7f8cab;--subtle:#7f8cab;--border:rgba(150,180,255,.15);--accent:#7aa2ff;--lime:#7aa2ff;--blue:#4562c7;--violet:#7aa2ff;--shadow:0 12px 32px rgba(0,0,0,.22);--chart-series-1:#7aa2ff;--chart-series-2:#4562c7;--chart-series-3:#aab7db}
+:root[data-theme="emerald"]{color-scheme:dark;--background:#07130f;--surface:#112019;--surface-raised:#192820;--surface-soft:#112019;--text:#e2f3ec;--muted:#76968a;--subtle:#76968a;--border:rgba(110,230,190,.15);--accent:#4fd1a1;--lime:#4fd1a1;--blue:#1f8c68;--violet:#4fd1a1;--shadow:0 12px 32px rgba(0,0,0,.22);--chart-series-1:#4fd1a1;--chart-series-2:#1f8c68;--chart-series-3:#8cbba6}
+:root[data-theme="plum"]{color-scheme:dark;--background:#130b16;--surface:#201526;--surface-raised:#2a1d31;--surface-soft:#201526;--text:#f1e6f4;--muted:#9a82a1;--subtle:#9a82a1;--border:rgba(220,160,255,.16);--accent:#d58bff;--lime:#d58bff;--blue:#8f4cc0;--violet:#d58bff;--shadow:0 12px 32px rgba(0,0,0,.24);--chart-series-1:#d58bff;--chart-series-2:#8f4cc0;--chart-series-3:#c8a6d1}
+:root[data-theme="nord"]{color-scheme:dark;--background:#2e3440;--surface:#383f4c;--surface-raised:#434b59;--surface-soft:#383f4c;--text:#d8dee9;--muted:#7b88a1;--subtle:#7b88a1;--border:rgba(136,192,208,.15);--accent:#88c0d0;--lime:#88c0d0;--blue:#5e81ac;--violet:#88c0d0;--shadow:0 12px 32px rgba(0,0,0,.18);--chart-series-1:#88c0d0;--chart-series-2:#5e81ac;--chart-series-3:#a3b5c9}
+:root[data-theme="dracula"]{color-scheme:dark;--background:#282a36;--surface:#343746;--surface-raised:#414456;--surface-soft:#343746;--text:#f8f8f2;--muted:#7c80a0;--subtle:#7c80a0;--border:rgba(189,147,249,.18);--accent:#bd93f9;--lime:#bd93f9;--blue:#ff79c6;--violet:#bd93f9;--shadow:0 12px 32px rgba(0,0,0,.2);--chart-series-1:#bd93f9;--chart-series-2:#ff79c6;--chart-series-3:#c4b1d8}
+:root[data-theme="catppuccin"]{color-scheme:dark;--background:#1e1e2e;--surface:#29293b;--surface-raised:#35354a;--surface-soft:#29293b;--text:#cdd6f4;--muted:#8087a2;--subtle:#8087a2;--border:rgba(203,166,247,.15);--accent:#cba6f7;--lime:#cba6f7;--blue:#89b4fa;--violet:#cba6f7;--shadow:0 12px 32px rgba(0,0,0,.22);--chart-series-1:#cba6f7;--chart-series-2:#89b4fa;--chart-series-3:#b5a6c9}
+:root[data-theme="ivory"]{color-scheme:light;--background:#f3eee4;--surface:#fffdf8;--surface-raised:#fff;--surface-soft:#fffdf8;--text:#2a2620;--muted:#8a8272;--subtle:#8a8272;--border:rgba(255,255,255,.8);--accent:#a67c37;--lime:#a67c37;--blue:#d9b36c;--violet:#a67c37;--shadow:0 12px 32px rgba(168,150,118,.22);--chart-series-1:#a67c37;--chart-series-2:#d9b36c;--chart-series-3:#9f885c}
+:root[data-theme="cloud"]{color-scheme:light;--background:#eceff4;--surface:#fff;--surface-raised:#fff;--surface-soft:#fff;--text:#1d2330;--muted:#7a8296;--subtle:#7a8296;--border:rgba(255,255,255,.85);--accent:#4f6bed;--lime:#4f6bed;--blue:#9aa9f5;--violet:#4f6bed;--shadow:0 12px 32px rgba(150,160,185,.24);--chart-series-1:#4f6bed;--chart-series-2:#9aa9f5;--chart-series-3:#898fbb}
+:root{--n1:var(--accent);--n2:var(--chart-series-2);--n3:var(--violet);--n4:var(--lime);--n5:var(--chart-series-3);--pulse-font-body:"Manrope",system-ui,sans-serif;--pulse-font-display:"Manrope",system-ui,sans-serif}
+
+body,.app-shell{font-family:var(--pulse-font-body)}
+:root[data-theme] .app-shell{--n1:var(--accent);--n2:var(--chart-series-2);--n3:var(--violet);--n4:var(--lime);--n5:var(--chart-series-3);--glow:14%;--g-bg:color-mix(in srgb,var(--surface) 88%,transparent);--g-bg-soft:color-mix(in srgb,var(--surface-raised) 82%,transparent);--g-line:var(--border);--g-hi:color-mix(in srgb,var(--text) 7%,transparent);--g-shadow:var(--shadow);--g-track:color-mix(in srgb,var(--text) 10%,transparent);--ring-track:color-mix(in srgb,var(--text) 10%,transparent);--font-display:var(--pulse-font-display);position:relative;isolation:isolate;background:transparent;background-attachment:initial}
+.app-shell::before{content:"";position:fixed;z-index:-1;inset:-28vh -12vw;pointer-events:none;opacity:.62;background:radial-gradient(ellipse 48% 34% at 18% 24%,color-mix(in srgb,var(--accent) 7%,transparent),transparent 100%),radial-gradient(ellipse 42% 38% at 82% 74%,color-mix(in srgb,var(--chart-series-2) 6%,transparent),transparent 100%);transform:translate3d(-1.5%,0,0) scale(1.02);animation:pulse-ambient-drift 32s cubic-bezier(.45,0,.55,1) infinite alternate;will-change:transform}
+@keyframes pulse-ambient-drift{from{transform:translate3d(-1.5%,-.6%,0) scale(1.02)}to{transform:translate3d(1.5%,.8%,0) scale(1.06)}}
+.app-shell :where(button,input,select,textarea){font-family:var(--pulse-font-body)}
+.app-shell :is(h1,h2,h3,h4){font-family:var(--pulse-font-display)!important;letter-spacing:-.025em}
+.app-shell .pd-card,.app-shell .panel,.app-shell [class*="-card"]{transition:background-color .3s cubic-bezier(.2,.8,.2,1),border-color .3s cubic-bezier(.2,.8,.2,1),border-radius .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1)}
+
+/* Global design language: every page surface follows the navbar style choice. */
+:root[data-style="classic"] .app-shell .pd-card{border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="glass"] .app-shell :is(.panel,.stat-card,.energy-summary-card,.nutrition-summary,.weight-feature,.plan-card,.exercise-card,.quick-sheet,.food-dialog,.pd-card,[role="dialog"]){border-color:color-mix(in srgb,var(--text) 12%,transparent);border-radius:18px;background:color-mix(in srgb,var(--surface) 78%,transparent);box-shadow:0 16px 42px color-mix(in srgb,var(--background) 44%,transparent),inset 0 1px 0 color-mix(in srgb,var(--text) 8%,transparent);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+:root[data-style="neu"] .app-shell :is(.panel,.stat-card,.energy-summary-card,.nutrition-summary,.weight-feature,.plan-card,.exercise-card,.quick-sheet,.food-dialog,.pd-card,[role="dialog"]){border:1px solid color-mix(in srgb,var(--text) 3%,transparent);border-radius:18px;background:var(--background);box-shadow:8px 8px 20px color-mix(in srgb,#000 24%,transparent),-7px -7px 18px color-mix(in srgb,#fff 5%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="clay"] .app-shell :is(.panel,.stat-card,.energy-summary-card,.nutrition-summary,.weight-feature,.plan-card,.exercise-card,.quick-sheet,.food-dialog,.pd-card,[role="dialog"]){border:1px solid color-mix(in srgb,var(--accent) 12%,transparent);border-radius:24px;background:color-mix(in srgb,var(--surface) 91%,var(--accent) 9%);box-shadow:12px 13px 28px color-mix(in srgb,var(--background) 45%,transparent),inset -4px -4px 10px color-mix(in srgb,var(--background) 22%,transparent),inset 4px 4px 10px color-mix(in srgb,var(--text) 5%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="brutal"] .app-shell :is(.panel,.stat-card,.energy-summary-card,.nutrition-summary,.weight-feature,.plan-card,.exercise-card,.quick-sheet,.food-dialog,.pd-card,[role="dialog"]){border:2px solid var(--text);border-radius:7px;background:var(--surface);box-shadow:5px 5px 0 color-mix(in srgb,var(--text) 88%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="glass"] .app-shell :is([class*="-card"],.panel,.module-panel,.quick-sheet,.food-dialog,[role="dialog"]){border-color:color-mix(in srgb,var(--text) 12%,var(--border));background:color-mix(in srgb,var(--surface) 78%,transparent);box-shadow:0 12px 30px color-mix(in srgb,var(--background) 24%,transparent),inset 0 1px 0 color-mix(in srgb,var(--text) 8%,transparent);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+:root[data-style="neu"] .app-shell :is([class*="-card"],.panel,.module-panel,.quick-sheet,.food-dialog,[role="dialog"]){border:1px solid color-mix(in srgb,var(--text) 5%,var(--border));background:var(--surface);box-shadow:7px 7px 16px color-mix(in srgb,#000 17%,transparent),-5px -5px 13px color-mix(in srgb,#fff 4%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="clay"] .app-shell :is([class*="-card"],.panel,.module-panel,.quick-sheet,.food-dialog,[role="dialog"]){border-color:color-mix(in srgb,var(--accent) 12%,var(--border));background:color-mix(in srgb,var(--surface) 92%,var(--accent) 8%);box-shadow:9px 10px 22px color-mix(in srgb,var(--background) 28%,transparent),inset -3px -3px 8px color-mix(in srgb,var(--background) 15%,transparent),inset 3px 3px 8px color-mix(in srgb,var(--text) 4%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="brutal"] .app-shell :is([class*="-card"],.panel,.module-panel,.quick-sheet,.food-dialog,[role="dialog"]){border:2px solid var(--text);border-radius:7px;background:var(--surface);box-shadow:4px 4px 0 color-mix(in srgb,var(--text) 78%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="classic"] .app-shell .pd-card{border-radius:14px}
+:root[data-style="glass"] .app-shell :is(.primary-btn,.secondary-btn,.icon-btn,.theme-toggle,.palette-trigger,.nav-style-option){border-radius:14px}
+:root[data-style="neu"] .app-shell :is(.primary-btn,.secondary-btn,.icon-btn,.theme-toggle,.palette-trigger,.nav-style-option){border-radius:12px;box-shadow:4px 4px 9px color-mix(in srgb,#000 18%,transparent),-3px -3px 8px color-mix(in srgb,#fff 5%,transparent)}
+:root[data-style="clay"] .app-shell :is(.primary-btn,.secondary-btn,.icon-btn,.theme-toggle,.palette-trigger,.nav-style-option){border-radius:16px;box-shadow:4px 5px 11px color-mix(in srgb,var(--background) 25%,transparent),inset 2px 2px 4px color-mix(in srgb,var(--text) 7%,transparent)}
+:root[data-style="brutal"] .app-shell :is(.primary-btn,.secondary-btn,.icon-btn,.theme-toggle,.palette-trigger,.nav-style-option){border:2px solid var(--text);border-radius:6px;box-shadow:3px 3px 0 color-mix(in srgb,var(--text) 88%,transparent)}
+:root[data-style="brutal"] .app-shell .primary-btn{color:var(--background)}
+:root[data-style="classic"] .app-shell .topbar{background:color-mix(in srgb,var(--background) 90%,transparent);border-bottom:1px solid var(--border);box-shadow:none;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+:root[data-style="classic"] .app-shell .topbar.is-scrolled{background:color-mix(in srgb,var(--background) 90%,transparent);box-shadow:0 8px 22px color-mix(in srgb,var(--background) 20%,transparent)}
+:root[data-style="classic"] .app-shell .sidebar{background:var(--background);border-right:1px solid var(--border);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="classic"] .app-shell .sidebar::after{display:none}
+:root[data-style="classic"] .app-shell nav.mobile-nav{background:color-mix(in srgb,var(--surface) 94%,transparent);border-color:var(--border);box-shadow:0 8px 24px color-mix(in srgb,var(--background) 20%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+:root[data-style="classic"] .app-shell :is(.primary-btn,.secondary-btn,.icon-btn,.palette-trigger,.nav-style-option,.date-pill,.page-history-controls button){border-color:var(--border);box-shadow:none}
+:root[data-style="classic"] .app-shell .primary-btn{background:var(--accent);color:var(--background)}
+:root[data-style="classic"] .app-shell .secondary-btn,:root[data-style="classic"] .app-shell .page-history-controls button{background:var(--surface-raised);color:var(--text)}
+:root[data-style="classic"] .app-shell .date-pill{background:var(--surface);color:var(--text)}
+:root[data-style="classic"] .app-shell .top-avatar{background:transparent;color:var(--text);box-shadow:none}
+:root[data-style="classic"] .app-shell :is(.panel,[class*="-card"],.module-panel,.quick-sheet,.food-dialog,[role="dialog"]){border:1px solid var(--border);border-radius:13px;background:var(--surface);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-style="classic"] .app-shell{--g-bg:var(--surface);--g-bg-soft:var(--surface-soft);--g-line:var(--border);--g-hi:transparent;--g-shadow:none;background:transparent}
+:root[data-style="neu"] .app-shell .topbar,:root[data-style="neu"] .app-shell .sidebar{background:var(--background);box-shadow:inset -1px -1px 0 color-mix(in srgb,var(--text) 4%,transparent)}
+:root[data-style="clay"] .app-shell .topbar,:root[data-style="clay"] .app-shell .sidebar{background:color-mix(in srgb,var(--surface) 92%,var(--accent) 8%)}
+:root[data-style="brutal"] .app-shell .topbar,:root[data-style="brutal"] .app-shell .sidebar{backdrop-filter:none;box-shadow:0 3px 0 var(--text)}
+
+/* Shared content spacing and theme-aware history controls. */
+.app-shell .content-wrap{padding-top:clamp(16px,1.8vw,22px)}
+.app-shell .page-history-controls{border-color:var(--border);background:var(--surface)}
+.app-shell .page-history-controls .secondary-btn{background:var(--surface-raised);border-color:var(--border);color:var(--text)}
+.app-shell .page-history-controls .secondary-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Keep every primary action tied to the active site's palette. */
+:root[data-theme] .app-shell .primary-btn,:root[data-theme] .app-shell .mobile-nav .mobile-add{background:linear-gradient(110deg,var(--accent),var(--chart-series-2));color:var(--background);border-color:color-mix(in srgb,var(--accent) 60%,var(--border));box-shadow:none}
+:root[data-theme] .app-shell .primary-btn:hover,:root[data-theme] .app-shell .mobile-nav .mobile-add:hover{filter:brightness(1.06);box-shadow:none}
+
+/* Apply the selected style recipe to controls throughout every module. */
+:root[data-style="classic"] .app-shell button:not(.check-circle):not(.habit-row):not(.nav-item):not(.mn-tab):not(.mobile-menu):not(.mobile-add):not(.top-avatar):not(.icon-picker button):not(.habit-color-field button){border-radius:9px;box-shadow:none}
+:root[data-style="glass"] .app-shell button:not(.check-circle):not(.habit-row):not(.nav-item):not(.mn-tab):not(.mobile-menu):not(.mobile-add):not(.top-avatar):not(.icon-picker button):not(.habit-color-field button){border-radius:13px}
+:root[data-style="neu"] .app-shell button:not(.check-circle):not(.habit-row):not(.nav-item):not(.mn-tab):not(.mobile-menu):not(.mobile-add):not(.top-avatar):not(.icon-picker button):not(.habit-color-field button){border-radius:12px;box-shadow:3px 3px 7px color-mix(in srgb,#000 14%,transparent),-2px -2px 6px color-mix(in srgb,#fff 4%,transparent)}
+:root[data-style="clay"] .app-shell button:not(.check-circle):not(.habit-row):not(.nav-item):not(.mn-tab):not(.mobile-menu):not(.mobile-add):not(.top-avatar):not(.icon-picker button):not(.habit-color-field button){border-radius:15px;box-shadow:3px 4px 8px color-mix(in srgb,var(--background) 20%,transparent),inset 1px 1px 3px color-mix(in srgb,var(--text) 5%,transparent)}
+:root[data-style="brutal"] .app-shell button:not(.check-circle):not(.habit-row):not(.nav-item):not(.mn-tab):not(.mobile-menu):not(.mobile-add):not(.top-avatar):not(.icon-picker button):not(.habit-color-field button){border:2px solid var(--text);border-radius:6px;box-shadow:3px 3px 0 color-mix(in srgb,var(--text) 78%,transparent)}
+
+/* A quieter active state and no neon bloom across the interface. */
+.app-shell .side-glider{background:color-mix(in srgb,var(--accent) 8%,var(--surface));box-shadow:none}
+.app-shell .nav-item.selected{box-shadow:none!important;background:transparent!important}
+.app-shell .nav-item.selected>svg{color:var(--accent)!important}
+.app-shell .nav-indicator{box-shadow:none!important}
+.app-shell .brand-mark{box-shadow:none!important}
+.app-shell .top-avatar::after{display:none}
+.app-shell .palette-trigger:hover{box-shadow:none}
+.app-shell .date-pill:hover{box-shadow:none}
+.app-shell .pd-orbit{display:none!important}
+.app-shell .pd-ring-bar{filter:none}
+.app-shell .pd-hero{background:var(--pd-surface)}
+:root[data-theme] .app-shell .pulse-dashboard{--pd-bg:var(--background);--pd-surface:var(--surface);--pd-raised:var(--surface-raised);--pd-text:var(--text);--pd-muted:var(--muted);--pd-accent:var(--accent);--pd-accent-2:var(--chart-series-2);--pd-border:var(--border);--pd-good:var(--lime);--pd-warn:var(--chart-series-3);--pd-shadow:var(--shadow)}
+@media(prefers-reduced-motion:reduce){.app-shell::before{animation:none;transform:none;will-change:auto}}
+
+.app-shell.style-morph :is(.panel,[class*="-card"],[role="dialog"]){animation:site-style-enter .52s cubic-bezier(.2,.8,.2,1) both}
+.app-shell.style-morph :is(.panel,[class*="-card"],[role="dialog"]):nth-child(2n){animation-delay:45ms}
+@keyframes site-style-enter{from{opacity:.78;transform:translateY(8px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+
+/* Shared chart treatment for every Recharts view. */
+.app-shell .recharts-cartesian-grid line{stroke:color-mix(in srgb,var(--border) 82%,transparent)!important}
+.app-shell .recharts-cartesian-axis-tick-value{fill:var(--muted)!important;font-family:inherit;font-size:10px}
+.app-shell .recharts-legend-item-text{color:var(--muted)!important;font-family:inherit;font-size:11px}
+.app-shell .recharts-tooltip-wrapper{outline:none}
+.app-shell .recharts-default-tooltip{background:var(--surface)!important;border:1px solid var(--border)!important;border-radius:12px!important;box-shadow:var(--shadow);color:var(--text)!important}
+.app-shell .recharts-tooltip-label{color:var(--text)!important;font-weight:650}
+.app-shell .recharts-tooltip-item{color:var(--muted)!important}
+.app-shell .recharts-polar-grid-angle line,.app-shell .recharts-polar-grid-concentric path{stroke:var(--border)}
+
+/* Dashboard uses scoped chart variables so its graphs match module charts. */
+.pulse-dashboard{--chart-series-1:var(--pd-accent);--chart-series-2:var(--pd-accent-2);--chart-series-3:var(--pd-warn)}
+
+/* Module surfaces use different class names (nt-panel, wk-panel, fc-panel,
+   etc.). This final shared layer applies the selected style after each
+   module's own stylesheet, so appearance is consistent beyond Dashboard. */
+:root[data-theme="obsidian"],:root[data-theme="gold"],:root[data-theme="midnight"],:root[data-theme="emerald"],:root[data-theme="plum"],:root[data-theme="nord"],:root[data-theme="dracula"],:root[data-theme="catppuccin"]{--on-accent:var(--background)}
+:root[data-theme="ivory"]{--on-accent:var(--text)}
+:root[data-theme="cloud"]{--on-accent:#fff}
+
+:root[data-theme] .app-shell .brand-mark{background:var(--accent)!important;color:var(--on-accent)!important;border:1px solid color-mix(in srgb,var(--on-accent) 24%,var(--accent));box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 24%,transparent)!important}
+:root[data-theme] .app-shell nav.mobile-nav .mn-add{background:var(--accent)!important;color:var(--on-accent)!important;border:1px solid color-mix(in srgb,var(--on-accent) 26%,var(--accent));box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 34%,transparent),inset 0 1px 0 color-mix(in srgb,#fff 24%,transparent)!important}
+:root[data-theme] .app-shell nav.mobile-nav .mn-add svg{color:var(--on-accent)!important}
+:root[data-theme] .app-shell .primary-btn,:root[data-theme] .app-shell .mobile-nav .mobile-add{color:var(--on-accent)}
+
+:root[data-style] .app-shell :is(.panel,[class*="-panel"],[class*="-card"],[role="dialog"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){transition:background-color .3s cubic-bezier(.2,.8,.2,1),border-color .3s cubic-bezier(.2,.8,.2,1),border-radius .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s cubic-bezier(.2,.8,.2,1),backdrop-filter .3s cubic-bezier(.2,.8,.2,1)}
+:root[data-style="classic"] .app-shell :is([class*="-panel"],[class*="-card"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){border:1px solid var(--border)!important;border-radius:14px!important;background:var(--surface)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+:root[data-style="glass"] .app-shell :is([class*="-panel"],[class*="-card"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){border:1px solid color-mix(in srgb,var(--text) 12%,var(--border))!important;border-radius:20px!important;background:color-mix(in srgb,var(--surface) 76%,transparent)!important;box-shadow:0 14px 36px color-mix(in srgb,var(--background) 30%,transparent),inset 0 1px 0 color-mix(in srgb,var(--text) 7%,transparent)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important;backdrop-filter:blur(18px) saturate(150%)!important}
+:root[data-style="neu"] .app-shell :is([class*="-panel"],[class*="-card"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){border:1px solid color-mix(in srgb,var(--text) 5%,var(--border))!important;border-radius:20px!important;background:var(--surface)!important;box-shadow:8px 8px 18px color-mix(in srgb,#000 22%,transparent),-6px -6px 16px color-mix(in srgb,#fff 5%,transparent)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+:root[data-style="clay"] .app-shell :is([class*="-panel"],[class*="-card"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){border:1px solid color-mix(in srgb,var(--accent) 16%,var(--border))!important;border-radius:24px!important;background:color-mix(in srgb,var(--surface) 91%,var(--accent) 9%)!important;box-shadow:10px 11px 24px color-mix(in srgb,var(--background) 30%,transparent),inset 3px 3px 8px color-mix(in srgb,var(--text) 5%,transparent),inset -3px -3px 8px color-mix(in srgb,var(--background) 17%,transparent)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+:root[data-style="brutal"] .app-shell :is([class*="-panel"],[class*="-card"],.cb-tile,.wt-row,.pl-event,.fc-month,.fc-edit-day,.pl-stats>article,.wt-stats>article,.fc-cards>article,.fc-zones>article){border:2px solid var(--text)!important;border-radius:7px!important;background:var(--surface)!important;box-shadow:5px 5px 0 color-mix(in srgb,var(--text) 78%,transparent)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+::view-transition-old(root){animation:theme-view-out .18s ease both}
+::view-transition-new(root){animation:theme-view-in .55s cubic-bezier(.2,.8,.2,1) both;clip-path:circle(0 at var(--theme-x,50%) var(--theme-y,50%))}
+@keyframes theme-view-out{to{opacity:0}}
+@keyframes theme-view-in{to{clip-path:circle(150vmax at var(--theme-x,50%) var(--theme-y,50%))}}
+
+@media(prefers-reduced-motion:reduce){.app-shell .recharts-surface{scroll-behavior:auto}.app-shell.style-morph :is(.panel,[class*="-card"],[role="dialog"]){animation:none!important}.app-shell :is(button,.panel,[class*="-card"]){scroll-behavior:auto;transition-duration:.01ms!important}}
