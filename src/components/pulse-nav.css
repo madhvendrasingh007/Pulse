@@ -231,3 +231,7 @@
   .app-shell .nav-item,.app-shell nav.mobile-nav,.app-shell .sidebar.mobile-open,.app-shell .crumb-page,.app-shell .crumb-page::after{animation:none!important}
   .app-shell .sidebar,.app-shell .main-area,.app-shell .side-glider,.app-shell .tt-knob,.app-shell .mn-glider,.app-shell .topbar,.app-shell .theme-menu,.app-shell .palette-trigger,.app-shell .theme-choice,.app-shell .nav-style-option{transition-duration:.01ms!important;animation:none!important}
 }
+.guest-exit{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 11px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text);font:600 12px/1 var(--font-body,sans-serif);cursor:pointer;transition:transform .2s ease,border-color .2s ease}
+.guest-exit:hover{transform:translateY(-1px);border-color:var(--accent)}
+.guest-exit:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.guest-exit{min-height:32px;padding:0 9px}.guest-exit span{display:none}}

@@ -131,3 +131,11 @@ body,.app-shell{font-family:var(--pulse-font-body)}
 @keyframes theme-view-in{to{clip-path:circle(150vmax at var(--theme-x,50%) var(--theme-y,50%))}}
 
 @media(prefers-reduced-motion:reduce){.app-shell .recharts-surface{scroll-behavior:auto}.app-shell.style-morph :is(.pd-card,.panel,.module-panel,.nt-panel,.wk-panel,.fc-panel,.hs-panel,.ins-card,.pl-panel,.wt-panel,.cb-panel,[role="dialog"]){animation:none!important}.app-shell :is(button,.pd-card,.panel,.module-panel,.nt-panel,.wk-panel,.fc-panel,.hs-panel,.ins-card,.pl-panel,.wt-panel,.cb-panel){scroll-behavior:auto;transition-duration:.01ms!important}}
+/* Guest mode: preserve read-only navigation and workout browsing while removing data controls. */
+.app-shell.guest-mode .page-content button:not(.wk-tab):not(.wk-demo-toggle){display:none!important}
+.app-shell.guest-mode .page-content input,
+.app-shell.guest-mode .page-content textarea,
+.app-shell.guest-mode .page-content select{pointer-events:none!important;cursor:not-allowed!important}
+.app-shell.guest-mode .guest-view-note{display:flex}
+.guest-view-note{display:none;align-items:center;gap:8px;margin:0 0 14px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);font-size:12px}
+.app-shell.guest-mode .wk-week-tools .wk-date-picker{opacity:.72}

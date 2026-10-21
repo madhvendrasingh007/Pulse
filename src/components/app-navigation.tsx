@@ -4,12 +4,12 @@ import "./pulse-nav.css";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { CSSProperties, Dispatch, MouseEvent as ReactMouseEvent, SetStateAction } from "react";
 import { flushSync } from "react-dom";
-import { Activity, Apple, ArrowRight, BarChart3, CalendarDays, Check, ChevronsLeft, Circle, Dumbbell, Flame, Flower2, History as HistoryIcon, LayoutDashboard, Menu, X } from "lucide-react";
+import { Activity, Apple, ArrowRight, BarChart3, CalendarDays, Check, ChevronsLeft, Circle, Dumbbell, Flame, Flower2, History as HistoryIcon, LayoutDashboard, LogOut, Menu, X } from "lucide-react";
 import { nav } from "@/lib/pulse/shared";
 import type { Page } from "@/lib/pulse/shared";
 import { DEFAULT_THEME, isPulseTheme, PULSE_STYLES, PULSE_THEMES, themeForMode, themeMode, type PulseStyle, type PulseTheme, type ThemeMode } from "@/lib/pulse/themes";
 
-type NavigationProps = { page: Page; setPage: (page: Page) => void; mobileMenuOpen: boolean; setMobileMenuOpen: Dispatch<SetStateAction<boolean>> };
+type NavigationProps = { page: Page; setPage: (page: Page) => void; mobileMenuOpen: boolean; setMobileMenuOpen: Dispatch<SetStateAction<boolean>>; guestMode?: boolean };
 
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 const OPEN_MENU_EVENT = "pulse:open-menu";
@@ -18,7 +18,7 @@ const styleIcons = { classic: LayoutDashboard, glass: Activity, neu: Circle, cla
 /* =====================================================================
    SIDEBAR  (desktop: collapsible rail · mobile: swipe drawer)
    ===================================================================== */
-export function AppSidebar({ page, setPage, mobileMenuOpen, setMobileMenuOpen }: NavigationProps) {
+export function AppSidebar({ page, setPage, mobileMenuOpen, setMobileMenuOpen, guestMode = false }: NavigationProps) {
   const asideRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const drag = useRef({ x: 0, dx: 0, on: false });
@@ -105,7 +105,7 @@ export function AppSidebar({ page, setPage, mobileMenuOpen, setMobileMenuOpen }:
       <span className="nav-label">Your tracking</span>
       <nav ref={navRef} className="side-nav">
         <span className="side-glider" aria-hidden="true"/>
-        {nav.map(({ name, icon: Icon }, index) =>
+        {nav.filter(({name})=>!guestMode||["Dashboard","Habits","Workouts","Nutrition","Calorie Burn"].includes(name)).map(({ name, icon: Icon }, index) =>
           <button key={name} type="button" data-tip={name} style={{ "--i": index } as CSSProperties} aria-current={page === name ? "page" : undefined}
             className={`nav-item ${page === name ? "selected" : ""}`}
             onPointerMove={event => { const box = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--mx", `${event.clientX - box.left}px`); }}
@@ -115,7 +115,7 @@ export function AppSidebar({ page, setPage, mobileMenuOpen, setMobileMenuOpen }:
       </nav>
       <div className="sidebar-bottom">
         <div className="streak-mini"><span className="streak-icon"><Flame size={16}/></span><div><strong>Your personal dashboard</strong><small>Built around your routine</small></div><ArrowRight size={15}/></div>
-        <div className="side-user"><div className="avatar small">M</div><div className="side-user-text"><strong>Madhvendra Singh</strong><small>Personal space</small></div></div>
+        <div className="side-user"><div className="avatar small">{guestMode?"G":"M"}</div><div className="side-user-text"><strong>{guestMode?"Guest viewer":"Madhvendra Singh"}</strong><small>{guestMode?"Read-only access":"Personal space"}</small></div></div>
       </div>
     </aside>
     {mobileMenuOpen && <button type="button" className="drawer-scrim" aria-label="Close navigation" onClick={() => setMobileMenuOpen(false)}/>}
@@ -130,9 +130,10 @@ type AppTopbarProps = Pick<NavigationProps, "page" | "mobileMenuOpen" | "setMobi
   setTheme: ((theme: PulseTheme) => void) | ((mode: ThemeMode) => void);
   style?: PulseStyle;
   setStyle?: (style: PulseStyle) => void;
+  guestMode?: boolean;
 };
 
-export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMenuOpen }: AppTopbarProps) {
+export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMenuOpen, guestMode = false }: AppTopbarProps) {
   const barRef = useRef<HTMLElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
   const paletteRef = useRef<HTMLDivElement>(null);
@@ -254,6 +255,7 @@ export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMen
     <button type="button" aria-label="Open menu" className="mobile-menu" onClick={() => setMobileMenuOpen(true)}><Menu size={19}/></button>
     <div className="crumb"><span className="crumb-root">My PULSE</span><span className="slash">/</span><strong key={page} className="crumb-page">{page}</strong></div>
     <div className="top-actions">
+      {guestMode&&<button type="button" className="guest-exit" onClick={()=>{document.cookie="pulse-guest-mode=; Path=/; Max-Age=0; SameSite=Lax";window.location.assign("/login")}}><LogOut size={14}/><span>Exit guest</span></button>}
       <span className="date-pill" aria-label={new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })} title={new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}>
         <CalendarDays size={15}/><span className="date-day">{new Date().getDate()}</span><span className="date-month">{new Date().toLocaleDateString("en-IN", { month: "short" })}</span>
       </span>
@@ -274,7 +276,7 @@ export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMen
           <section className="theme-menu-group" aria-label="Light themes"><h3>Light</h3>{paletteGroup("Light")}</section>
         </div>}
       </div>
-      <div className="top-avatar"><span>M</span></div>
+      <div className="top-avatar"><span>{guestMode?"G":"M"}</span></div>
     </div>
     <span ref={progressRef} className="topbar-progress" aria-hidden="true"/>
   </header>;
@@ -283,9 +285,9 @@ export function AppTopbar({ page, theme, setTheme, style, setStyle, setMobileMen
 /* =====================================================================
    MOBILE BOTTOM BAR  (primary daily routes)
    ===================================================================== */
-export function AppMobileNav({ page, setPage }: { page: Page; setPage: (page: Page) => void }) {
+export function AppMobileNav({ page, setPage, guestMode = false }: { page: Page; setPage: (page: Page) => void; guestMode?: boolean }) {
   const navRef = useRef<HTMLElement>(null);
-  const tabs = [
+  const allTabs = [
     { name: "Dashboard" as Page, icon: LayoutDashboard, label: "Home" },
     { name: "Workouts" as Page, icon: Dumbbell, label: "Workout" },
     { name: "Nutrition" as Page, icon: Apple, label: "Nutrition" },
@@ -293,6 +295,7 @@ export function AppMobileNav({ page, setPage }: { page: Page; setPage: (page: Pa
     { name: "Planner" as Page, icon: CalendarDays, label: "Planner" },
     { name: "History" as Page, icon: HistoryIcon, label: "History" },
   ];
+  const tabs=allTabs.filter(tab=>!guestMode||["Dashboard","Workouts","Nutrition","Calorie Burn"].includes(tab.name));
   const active = tabs.findIndex(tab => tab.name === page);
   useEffect(() => {
     const navElement = navRef.current;
